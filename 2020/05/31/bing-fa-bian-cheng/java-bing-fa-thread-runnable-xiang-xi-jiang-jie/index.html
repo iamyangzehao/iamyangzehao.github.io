@@ -16,12 +16,12 @@
 
   <!-- 页面元数据 -->
   
-    <title>JDK体系结构 - iamyangzehao</title>
+    <title>Java并发--Thread&amp;&amp;Runnable详细讲解 - iamyangzehao</title>
   
-    <meta name="keywords" content="JVM">
+    <meta name="keywords" content="并发编程">
   
   
-    <meta name="description" content="这是摘要">
+    <meta name="description" content="关于Thread和Runnable的一些理解">
   
 
   <!-- feed -->
@@ -111,61 +111,7 @@
 
 <body>
   
-  <div class="cover-wrapper">
-    
-      <cover class='cover post half'>
-        <div class='cover-body'>
-  <div class='a'>
-    
-    
-      <p class="title">IAMYANGZEHAO</p>
-    
-    
-      <p class="subtitle">YZH's personal Blog</p>
-    
-  </div>
-  <div class='b'>
-    
-      <div class="m_search">
-        <form name="searchform" class="form u-search-form">
-          <input type="text" class="input u-search-input" placeholder="" />
-          <i class="icon fas fa-search fa-fw"></i>
-        </form>
-      </div>
-    
-    <div class='menu navigation'>
-      <ul class='cover-list-h'>
-        
-          
-            <li>
-              <a class="nav home"
-                href="https://volantis.js.org/getting-started/"
-                
-                
-                id="https:volantisjsorggetting-started">
-                <i class='fas fa-book fa-fw'></i>文档
-              </a>
-            </li>
-          
-            <li>
-              <a class="nav home"
-                href="https://volantis.js.org/archives/"
-                
-                
-                id="https:volantisjsorgarchives">
-                <i class='fas fa-rss fa-fw'></i>博文
-              </a>
-            </li>
-          
-        
-      </ul>
-    </div>
-  </div>
-</div>
-
-      </cover>
-    
-    <div id="loading-bar-wrapper">
+  <div id="loading-bar-wrapper">
   <div id="loading-bar"></div>
 </div>
 <header class="l_header shadow blur">
@@ -420,10 +366,9 @@
 
 <script>setLoadingBarProgress(40);</script>
 
-  </div>
 
 
-  <div class="l_body">
+  <div class="l_body nocover">
     <div class='body-wrapper'>
       
 
@@ -438,15 +383,30 @@
   <section class='meta'>
     
       
+        
+
+  
+    <meting-js
+      mini='true'
+      autoplay='false'
+      volume='0.6'
+      loop='all'
+      order='list'
+      server='netease'
+      type='song'
+      id='26141649'>
+    </meting-js>
+  
+
+
       
-        <a title='JDK体系结构' href='/2020/05/24/jdk-ti-xi-jie-gou/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/iamyangzehao/ImgBed@0.0.2/images/bg/bg-1.jpg'></a>
       
       <div class="meta" id="header-meta">
         
           
   <h1 class="title">
-    <a href="/2020/05/24/jdk-ti-xi-jie-gou/">
-      JDK体系结构
+    <a href="/2020/05/31/bing-fa-bian-cheng/java-bing-fa-thread-runnable-xiang-xi-jiang-jie/">
+      Java并发--Thread&&Runnable详细讲解
     </a>
   </h1>
 
@@ -471,9 +431,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/Java/JDK/' rel="nofollow">
+    <a href='/categories/Java%E5%B9%B6%E5%8F%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>Java/JDK</p>
+      <p>Java并发/多线程</p>
     </a>
   </div>
 
@@ -484,7 +444,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年5月24日</p>
+    <p>发布于：2020年5月31日</p>
   </a>
 </div>
 
@@ -495,7 +455,7 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：100字</p>
+      <p>字数：9字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
@@ -525,22 +485,8 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <p>这是摘要</p>
+          <p>关于Thread和Runnable的一些理解</p>
 <a id="more"></a>
-
-<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h1 id="主题配置修改到-Next主题进阶优化配置-部分了"><a href="#主题配置修改到-Next主题进阶优化配置-部分了" class="headerlink" title="主题配置修改到 Next主题进阶优化配置 部分了"></a>主题配置修改到 Next主题进阶优化配置 部分了</h1><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-<blockquote>
-<p>Deploy to remote sites</p>
-</blockquote>
-
           
             <div class='article_footer'>
               
@@ -548,37 +494,6 @@
   
     
     
-
-
-  
-
-<section class="widget list references  desktop mobile">
-  
-  <header>
-    
-      <i class="fas fa-quote-left fa-fw" aria-hidden="true"></i><span class='name'>参考资料</span>
-    
-  </header>
-
-
-  <div class='content'>
-    <ul class="list entry navigation">
-      
-        <li><a class="flat-box" title="https://developer.apple.com/documentation/" href="https://developer.apple.com/documentation/"
-          
-          
-          id="https:developerapplecomdocumentation"
-          >
-          <div class='name'>
-            
-            Apple Developer Documentation
-          </div>
-          
-        </a></li>
-      
-    </ul>
-  </div>
-</section>
 
 
 
@@ -607,7 +522,7 @@
           
         
           
-            <p>本文永久链接是：<a href=https://iamyangzehao.github.io/2020/05/24/jdk-ti-xi-jie-gou/>https://iamyangzehao.github.io/2020/05/24/jdk-ti-xi-jie-gou/</a></p>
+            <p>本文永久链接是：<a href=https://iamyangzehao.github.io/2020/05/31/bing-fa-bian-cheng/java-bing-fa-thread-runnable-xiang-xi-jiang-jie/>https://iamyangzehao.github.io/2020/05/31/bing-fa-bian-cheng/java-bing-fa-thread-runnable-xiang-xi-jiang-jie/</a></p>
           
         
       </blockquote>
@@ -681,10 +596,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-05-31T21:13:20+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-06T16:34:17+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年5月31日</p>
+    <p>更新于：2020年6月6日</p>
   </a>
 </div>
 
@@ -693,7 +608,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/JVM/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>JVM</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>并发编程</p></a></div>
 
 
         
@@ -711,7 +626,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://iamyangzehao.github.io/2020/05/24/jdk-ti-xi-jie-gou/&title=JDK体系结构 - iamyangzehao&pics=https://cdn.jsdelivr.net/gh/iamyangzehao/ImgBed@0.0.2/images/bg/bg-1.jpg&summary=这是摘要"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://iamyangzehao.github.io/2020/05/31/bing-fa-bian-cheng/java-bing-fa-thread-runnable-xiang-xi-jiang-jie/&title=Java并发--Thread&&Runnable详细讲解 - iamyangzehao&summary=关于Thread和Runnable的一些理解"
           
           >
           
@@ -723,7 +638,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://iamyangzehao.github.io/2020/05/24/jdk-ti-xi-jie-gou/&title=JDK体系结构 - iamyangzehao&pics=https://cdn.jsdelivr.net/gh/iamyangzehao/ImgBed@0.0.2/images/bg/bg-1.jpg&summary=这是摘要"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://iamyangzehao.github.io/2020/05/31/bing-fa-bian-cheng/java-bing-fa-thread-runnable-xiang-xi-jiang-jie/&title=Java并发--Thread&&Runnable详细讲解 - iamyangzehao&summary=关于Thread和Runnable的一些理解"
           
           >
           
@@ -735,7 +650,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://iamyangzehao.github.io/2020/05/24/jdk-ti-xi-jie-gou/&title=JDK体系结构 - iamyangzehao&pics=https://cdn.jsdelivr.net/gh/iamyangzehao/ImgBed@0.0.2/images/bg/bg-1.jpg&summary=这是摘要"
+          href="http://service.weibo.com/share/share.php?url=https://iamyangzehao.github.io/2020/05/31/bing-fa-bian-cheng/java-bing-fa-thread-runnable-xiang-xi-jiang-jie/&title=Java并发--Thread&&Runnable详细讲解 - iamyangzehao&summary=关于Thread和Runnable的一些理解"
           
           >
           
@@ -749,7 +664,7 @@
         <div class='hoverbox'>
           <a><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png"></a>
           <div class='target'>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATgAAAE4CAAAAADqFLC2AAADnUlEQVR42u3aQW7DMAwEwPz/0+0DisJako6ZdnRLYMvi+LIg/fqySuuFABw4cOAscOCWwL2K68eGv/z/23VX+53ef/r/VL3gwIEDBw4cOHDb4NKDVws8LaC6TwqZ1gsOHDhw4MCBA7cV7rSQ09/VgHr6wq4gqoEYHDhw4MCBAwfuv8JV951qRIIDBw4cOHDgwIHrPbganKvP+bgADA4cOHDgwIEDNwQ3dZBuYO42QtdP8sGBAwcOHDhw4Ibg0nU35LteVFwvOHDgwIEDBw7cErjuqgbYNAhPNS7b9YIDBw4cOHDgwC2B6364d3rw2xqL4b7t+sCBAwcOHDhw4JbAnRZwV8NwGqYbnC/PBw4cOHDgwIEDtwwuDYrV+6oNzXQgXm2MtgfS4MCBAwcOHDhwD8Glg+L0IFONxmqA7g7CwYEDBw4cOHDgtsFVg+jUQacD8tRzwYEDBw4cOHDgtsNNfehX3acbuKsNy/h84MCBAwcOHDhwS+BOB7zVgW+3cZjeNzW4vgzA4MCBAwcOHDhwD8NVG3p3wVYbq+l5ykEbHDhw4MCBAwduCdxdMFMNximIsWAMDhw4cODAgQO3BG660OmG6FTQHmuYggMHDhw4cODALYO7OngaJNP90wKrAO06wYEDBw4cOHDglsNVYaqN0dNCqnBTLxwcOHDgwIEDB24rXDrwrX4AeArehUnPdQkJDhw4cODAgQO3DC4dzFYblunAuXt9N2CDAwcOHDhw4MB9GlwajNPAORWQqy/+NHhfNjLBgQMHDhw4cOAegju9MR0wpwV3G6hpcC8HfHDgwIEDBw4cuCVw6cZV4KkXUt23+0LAgQMHDhw4cOC2wZ028NLgW91/etA8PjgHBw4cOHDgwIH7MLhqw3Pq/7TgNOiWB9LgwIEDBw4cOHBL4G4PkIcwaYM0HWyPTfLBgQMHDhw4cOCWwXUbnNXB8PSHjFMLHDhw4MCBAwduG1x3VQvpBuzu4Du9Dhw4cODAgQMHbhvcVOPvdPCbXp8C3b4fOHDgwIEDBw7cMripwFsdQE/dVw3Sxy8cHDhw4MCBAwduKdxUoExfyLsHzKcDc3DgwIEDBw4cuL8Odxogp4Gngu5xveDAgQMHDhw4cP8MrgqVNkrTQXoMDQ4cOHDgwIEDtxSuOuB912A5DbrdIA4OHDhw4MCBA7cd7q4B7nRjs/v808B/HIDBgQMHDhw4cOAegrPCQTgCcODAgbPAgXt2fQPiNP41nqOqqQAAAABJRU5ErkJggg==">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXgAAAF4CAAAAAB79r16AAAFJklEQVR42u3dS25jMQwEQN//0pkDDIInNltOjJR2tt9HKmrToYC8vowfGS8E4MEb4MEb4MEbBfhXOP574MN1T/fd+v67+T19/91zt17gwYMHDx48ePDgwTfhjwNAeH1r4acA0/tbBX4sHHjw4MGDBw8ePHjwF+CnC9leN4VMg9G0ANtABR48ePDgwYMHDx78J8CnhZkGrGlh0iCYbijw4MGDBw8ePHjw4D8JfhqYbh8cehskePDgwYMHDx48ePC/AD4FunVg6BR0e3+6QX7sJBl48ODBgwcPHjx48Iug8lc/x17gwYMHDx48ePDgwRfgt2M7sWmj4ikAbRsk04A09gIPHjx48ODBgwcPvgCfwrULsQ0o24NN040Wvx88ePDgwYMHDx48+CL8dzdMfz8NRq3AlYKlATHdaODBgwcPHjx48ODBN+GnLzyFTCe+hTwt1BhsGSTBgwcPHjx48ODBg2/CTxsRaQG2DYb2BpkWsBXswIMHDx48ePDgwYNvwKfBo12Q68Hl8Dm31gUePHjw4MGDBw8efBM+DRi/5bo0CJ4GnzU0ePDgwYMHDx48ePAX4dPglI5tIEsPLk0Ltl3/YwcKPHjw4MGDBw8ePPgi/K0DQ9P3pCMNTtt1gQcPHjx48ODBgwf/DvgpwBTwVmCabohpsEoPTD3eDx48ePDgwYMHDx58AX470e330+tuFTwNfuN1gAcPHjx48ODBgwf/BvhpIyGF3ga2baMlfc5444EHDx48ePDgwYMHX4DfLny6kG2jZVrgbeNluq7HIAcePHjw4MGDBw8e/AX4VzimDYzXpTFtjGw30DhAggcPHjx48ODBgwdfgD8NCulBni1AO3C1g9x4Q4AHDx48ePDgwYMHX4RPGwSn900PEKUBrQ3WDmbgwYMHDx48ePDgwTfgT4PQ7QNIrQA1LejT/K8FKPDgwYMHDx48ePDg3/D3+DRgnBbo9L70/dvCbwsMHjx48ODBgwcPHnwTftqYOF3IdELb39OGybZRc+oAHjx48ODBgwcPHnwTPg1A4+CwDDbbebaC0TooggcPHjx48ODBgwd/AT4NSGkwSQuwbeCkGyUtKHjw4MGDBw8ePHjwTfjWwaZpwyQNWLcaG9MNFxcOPHjw4MGDBw8ePPgCfBpkpo2L9ADU9PdtEEzXdfoc8ODBgwcPHjx48OAb8K0AlUK2NkArKG0PNL09uYIHDx48ePDgwYP/0/DTkQaeVgNjW/htIErXBR48ePDgwYMHDx58A74dMLaQ03m1rp8GrrjhAx48ePDgwYMHDx58AT5+QDi297cL/lUa6wNN4MGDBw8ePHjw4MEH8C3wdELpBpg2aKYFmT7ncX3gwYMHDx48ePDgwRfhU9DbjYjWganpOtLg9ng9ePDgwYMHDx48ePAF+O3C0sZAu0GSNiq2hRw/Dzx48ODBgwcPHjz4Anz7IE9asHZjZFu4dIM9Bizw4MGDBw8ePHjw4AvwrcAyBU8LNf3cPqi1fT948ODBgwcPHjx48E347UGktOEwLUj7YFP7/Y/vAw8ePHjw4MGDBw/+Anxromnw2j5/29hovRc8ePDgwYMHDx48+E+AnzYGTp+fBrtpgbcHuI5/Bw8ePHjw4MGDBw/+F8GnkNuANi3ANjil6wIPHjx48ODBgwcP/iZ8GlROv9/e3wo6rUKPgxx48ODBgwcPHjx48EX41sGd2wEkbWxsGzTTBs5xgAIPHjx48ODBgwcP/sI/0jW6Azx48AZ48AZ48MZi/AN0168h6fU0KAAAAABJRU5ErkJggg==">
           </div>
         </div>
       
@@ -769,21 +684,26 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/2020/05/31/ce-shi-wen-dang/test1/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>test1</p>
-                <p class='content'>这是摘要
+              <a class='prev' href='/2020/06/13/gu-li-shang-cheng-xiang-mu-fang-dang/nacos-gateway/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>nacos_gateway</p>
+                <p class='content'>谷粒商城项目文档第一篇: nacos&amp;&amp;gateway
 
 
-一、摸不清世间的方向，看不清未来的道路，与其在黑暗中摸索匍匐前进，不如学会静得其心。以“静”的姿态铸就人性的优雅；以“静”的淡然锤炼心的明镜；以“静”的倩影折射出世间的温暖。二、走...</p>
+1. Nacos概述官方地址：https://nacos.io
+github地址：https://github.com...</p>
               </a>
             
             
-              <a class='next' href='/2020/05/03/ce-shi-wen-dang/hello-world/'>
-                <p class='title'>Hello World<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>meta 区域显示外链按钮
-这是摘要
+              <a class='next' href='/2020/05/31/ce-shi-wen-dang/ce-shi-6/'>
+                <p class='title'>如何搭建基于Hexo的独立博客<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>文本设置
 
-Welcome to Hexo! This is your very first post. Check documentation for more i...</p>
+
+在一段话中方便插入各种颜色的标签，包括：红色、黄色、绿色、青色、蓝色、灰色。
+
+文档「开始」页面中的标题部分就是超大文字。
+Volantis
+A Wonderful Theme f...</p>
               </a>
             
           </div>
@@ -828,7 +748,7 @@ Welcome to Hexo! This is your very first post. Check documentation for more i...
 
   <script>
     window.subData = {
-      title: 'JDK体系结构',
+      title: 'Java并发--Thread&&Runnable详细讲解',
       tools: true
     }
   </script>
@@ -841,20 +761,6 @@ Welcome to Hexo! This is your very first post. Check documentation for more i...
     
     
 
-
-  <section class="widget toc-wrapper shadow desktop mobile">
-    
-  <header>
-    
-      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>文章目录</span>
-    
-  </header>
-
-
-    <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
-    </div>
-  </section>
 
 
   

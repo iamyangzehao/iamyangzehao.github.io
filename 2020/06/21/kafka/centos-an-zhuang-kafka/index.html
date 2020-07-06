@@ -16,12 +16,10 @@
 
   <!-- 页面元数据 -->
   
-    <title>Jenkins配置主题 - iamyangzehao</title>
-  
-    <meta name="keywords" content="Jenkins">
+    <title>CentOS安装Kafka - iamyangzehao</title>
   
   
-    <meta name="description" content="Jenkins默认的主题实在是太丑了,所以简单配置了一下主题, 现在舒服多了">
+    <meta name="description" content="最近刚开始学习Kafka，第一步肯定是学会怎么安装Kafka，现在我来讲解一下">
   
 
   <!-- feed -->
@@ -388,8 +386,8 @@
         
           
   <h1 class="title">
-    <a href="/2020/06/25/jenkins-pei-zhi-zhu-ti/">
-      Jenkins配置主题
+    <a href="/2020/06/21/kafka/centos-an-zhuang-kafka/">
+      CentOS安装Kafka
     </a>
   </h1>
 
@@ -419,7 +417,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年6月25日</p>
+    <p>发布于：2020年6月21日</p>
   </a>
 </div>
 
@@ -430,13 +428,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：295字</p>
+      <p>字数：631字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：1分钟</p>
+      <p>时长：2分钟</p>
     </a>
   </div>
 
@@ -460,25 +458,37 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <p>Jenkins默认的主题实在是太丑了,所以简单配置了一下主题, 现在舒服多了</p>
+          <p>最近刚开始学习Kafka，第一步肯定是学会怎么安装Kafka，现在我来讲解一下</p>
 <a id="more"></a>
 
-<p>Jenkins主题的配置步骤:</p>
+<h3 id="第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装"><a href="#第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装" class="headerlink" title="第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装"></a>第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装</h3><h3 id="第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper-安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper"><a href="#第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper-安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper" class="headerlink" title="第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper,安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper"></a>第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper,安装和启动Zookeeper的步骤参考<a href="https://segmentfault.com/a/1190000022199813" target="_blank" rel="noopener">CentOS安装ZooKeeper</a></h3><h3 id="第三步：-安装Kafka。"><a href="#第三步：-安装Kafka。" class="headerlink" title="第三步： 安装Kafka。"></a>第三步： 安装Kafka。</h3><p>安装Kafka分为:</p>
 <ul>
-<li>首先进入配置Jenkins主题的网站: <a href="http://afonsof.com/jenkins-material-theme/" target="_blank" rel="noopener">http://afonsof.com/jenkins-material-theme/</a></li>
-<li><ol>
-<li>选择你喜欢的颜色，这里我选teal, 2. 然后上传logo，logo最好是透明背景的，要不然会很丑. 3.下载主题</li>
-</ol>
-</li>
-<li>将该主题上传到服务器中。因为我是用docker安装Jenkins的，然后Jenkins指向的实际目录是/home/jenkins_home,，所以进入 /home/jenkins_home下的useContent目录，然后新建layout目录，然后上传该主题到layout目录下</li>
-<li>进入Jenkins管理界面, 点击Manage Jenkins，然后点击Manage Plugins，在可选插件项的搜索框中搜索Simple Theme并安装，安装成功后点击Manage Jenkins，然后点击Configure System，找到Theme一栏，新增CSS URL，填入主题所在位置的路径(<a href="http://192.168.155.4:9090/userContent/layout/主题名称.css" target="_blank" rel="noopener">http://192.168.155.4:9090/userContent/layout/主题名称.css</a> PS：192.168.155.4:9090是访问Jenkins的路径，主题名称填具体的主题名称)</li>
-<li>保存<blockquote>
-<p>具体参考： <a href="https://blog.csdn.net/DynastyRumble/article/details/103910441" target="_blank" rel="noopener">https://blog.csdn.net/DynastyRumble/article/details/103910441</a></p>
+<li>先下载Kafka并解压出来</li>
+<li>修改config/server.properties文件, 主要修改listeners、advertised.listeners配置(将host.name修改成kafka安装的主机的ip)和log.dirs(主要存放kafka的日志，可以在kafka根目录下创建一个logs文件夹，并将log.dirs设置成该文件夹的路径)和zookeeper.connect（设置连接的Zookeeper所在主机的ip，如果kafka和Zookeeper在同一台机器上，该配置不用改，默认为localhost）</li>
+<li>最后，在kafka的根目录下，执行bin/kafka-server-start.sh config/server.properties &amp; 命令，让kafka以后台方式启动<blockquote>
+<p>注意事项:kafka启动时，报cannot allocate memory错误，即内存不足，因为学生机内存较小，1G，所以需要更改kafka启动时的内存，解决方法: 进入bin目录，修改kafka-server-start.sh文件，将export KAFKA_HEAP_OPTS=”-Xmx1G -Xms1G”改成export KAFKA_HEAP_OPTS=”-Xmx256M -Xms128M” ，改小点，确保能启动</p>
 </blockquote>
 </li>
 </ul>
-<p>Jenkins的登录账号密码<br>账号: admin<br>密码: wsyzhstbms</p>
-<p>/** <a href="https://jenkins-zh.cn/" target="_blank" rel="noopener">https://jenkins-zh.cn/</a> */</p>
+<p>Kafka的基本命令:</p>
+<ul>
+<li>bin/kafka-server-stop.sh  – 停止Kafka</li>
+<li>bin/kafka-topics.sh –create –zookeeper localhost:2181 –replication-factor 1 –partitions 1 –topic test-topic 创建名为test-topic的Topic，localhost可更换为zookeeper所在的机器的ip</li>
+<li>bin/kafka-topics.sh –list –zookeeper localhost:2181 – 查看已经创建的Topic信息</li>
+<li>bin/kafka-console-producer.sh –broker-list localhost:9092 –topic test-topic – 发送消息</li>
+<li>bin/kafka-console-consumer.sh –bootstrap-server localhost:9092 –topic test-topic –from-beginning   – 接收消息</li>
+</ul>
+<blockquote>
+<p>如何安装Kafka图形界面工具Kafka-Center?</p>
+</blockquote>
+<ol>
+<li>网址: <a href="https://github.com/xaecbd/KafkaCenter" target="_blank" rel="noopener">https://github.com/xaecbd/KafkaCenter</a> 到github上下载table_script.sql和application.properties，并上传到服务器中(我传到了/usr/local/workspace/projects/gitproject/others目录中)</li>
+<li>将table_script.sql导入到数据库中</li>
+<li>修改application.properties配置文件，注意主要修改数据库地址和ElasticSearch地址(ES没有的话可不改)</li>
+<li>进入到/usr/local/workspace/projects/gitproject/others目录中，执行docker run -d -p 8240:8240 –name KafkaCenter -v ${PWD}/application.properties:/opt/app/kafka-center/config/application.properties xaecbd/kafka-center:2.1.0 命令</li>
+<li>在安全组中开放8240端口号(因为在上一步中指定了Kafka-Center的端口号为8240，不放开该端口号就无法访问)</li>
+<li>访问<a href="http://ip:8240，我的机器的ip是129.204.22.23，">http://ip:8240，我的机器的ip是129.204.22.23，</a> 所以通过<a href="http://129.204.22.23:8240/访问，访问账号密码是admin/admin" target="_blank" rel="noopener">http://129.204.22.23:8240/访问，访问账号密码是admin/admin</a></li>
+</ol>
 
           
             <div class='article_footer'>
@@ -515,7 +525,7 @@
           
         
           
-            <p>本文永久链接是：<a href=https://iamyangzehao.github.io/2020/06/25/jenkins-pei-zhi-zhu-ti/>https://iamyangzehao.github.io/2020/06/25/jenkins-pei-zhi-zhu-ti/</a></p>
+            <p>本文永久链接是：<a href=https://iamyangzehao.github.io/2020/06/21/kafka/centos-an-zhuang-kafka/>https://iamyangzehao.github.io/2020/06/21/kafka/centos-an-zhuang-kafka/</a></p>
           
         
       </blockquote>
@@ -589,10 +599,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-25T22:17:41+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-23T23:46:57+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年6月25日</p>
+    <p>更新于：2020年6月23日</p>
   </a>
 </div>
 
@@ -600,9 +610,6 @@
       
         
           
-  
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Jenkins/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Jenkins</p></a></div>
-
 
         
       
@@ -619,7 +626,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://iamyangzehao.github.io/2020/06/25/jenkins-pei-zhi-zhu-ti/&title=Jenkins配置主题 - iamyangzehao&summary=Jenkins默认的主题实在是太丑了,所以简单配置了一下主题, 现在舒服多了"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://iamyangzehao.github.io/2020/06/21/kafka/centos-an-zhuang-kafka/&title=CentOS安装Kafka - iamyangzehao&summary=最近刚开始学习Kafka，第一步肯定是学会怎么安装Kafka，现在我来讲解一下"
           
           >
           
@@ -631,7 +638,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://iamyangzehao.github.io/2020/06/25/jenkins-pei-zhi-zhu-ti/&title=Jenkins配置主题 - iamyangzehao&summary=Jenkins默认的主题实在是太丑了,所以简单配置了一下主题, 现在舒服多了"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://iamyangzehao.github.io/2020/06/21/kafka/centos-an-zhuang-kafka/&title=CentOS安装Kafka - iamyangzehao&summary=最近刚开始学习Kafka，第一步肯定是学会怎么安装Kafka，现在我来讲解一下"
           
           >
           
@@ -643,7 +650,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://iamyangzehao.github.io/2020/06/25/jenkins-pei-zhi-zhu-ti/&title=Jenkins配置主题 - iamyangzehao&summary=Jenkins默认的主题实在是太丑了,所以简单配置了一下主题, 现在舒服多了"
+          href="http://service.weibo.com/share/share.php?url=https://iamyangzehao.github.io/2020/06/21/kafka/centos-an-zhuang-kafka/&title=CentOS安装Kafka - iamyangzehao&summary=最近刚开始学习Kafka，第一步肯定是学会怎么安装Kafka，现在我来讲解一下"
           
           >
           
@@ -657,7 +664,7 @@
         <div class='hoverbox'>
           <a><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png"></a>
           <div class='target'>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATgAAAE4CAAAAADqFLC2AAADpElEQVR42u3aQXLbQAwEQP3/08k9VS5hADCG7N6bbHJF9OowBfD1x2qtFwJw4MCBs8CBOwL3aq7yF4X7/Pv39Lp390/rBQcOHDhw4MCBuwaXQkyvrxZU3acLmT4/OHDgwIEDBw7cVbi0gG5g7QbUKsA0EIMDBw4cOHDgwP0WuGoh3YZiel960ODAgQMHDhw4cOB6+z7d6AQHDhw4cODAgfvpcPGAtjko3t7v4yb54MCBAwcOHDhwS3DTxuKnfW7XCw4cOHDgwIEDdwRuuqqNyel96f7T+77cDxw4cODAgQMH7gjc9MW9tKFY3Wc6qK4+ZzwoBwcOHDhw4MCB+xC4aoDdeiFxOgifBuO38ODAgQMHDhw4cEfg4hubINOG5fRA08ZqPJAGBw4cOHDgwIH7z3BbDca0sdk9iOnBdesABw4cOHDgwIG7BpcGz2qwnUKnAE8NzMGBAwcOHDhw4K7CpS/yTRugWwc0PcDuQBscOHDgwIEDB+4qXBoUnwqa3YF02hCNgzY4cODAgQMHDtwxuG7Dsj3Y3SokBB//AMCBAwcOHDhw4I7BpQ3FtOHYDb5PQbTrAwcOHDhw4MCBOwZXDZzdwrYC8VZAbjdqwYEDBw4cOHDgPgwuDbxdkLUXAMMG5WMBGBw4cODAgQMH7j/BpYFxK8CmLxRWB9HpD+HtPuDAgQMHDhw4cEfgpoPfLZCnBszdoP/lc4MDBw4cOHDgwB2F6wbObmOxe316QGvXgQMHDhw4cODAHYHbCphbB/EuoHaDdTx4rg6kwYEDBw4cOHDgvglua20NgNPCpg3L+IcADhw4cODAgQN3BK7aMKwWkL6AWC386YBd9gAHDhw4cODAgTsO1w2IW0BbwNMDAAcOHDhw4MCB+xS4V3FNA+tT/386iIMDBw4cOHDgwF2FqzYwtwbAWwVuB/ov9wEHDhw4cODAgTsOV4VM4boHtP0c3RcNwYEDBw4cOHDgrsBNV3dg3Q2yW8G5HYzBgQMHDhw4cOCOwG0FxK0A2wXa/lweSIMDBw4cOHDgwH0z3DSopoPn7sFV90uDdHl/cODAgQMHDhy4o3DpA3chU9BpYO8OsMGBAwcOHDhw4H4LXBqYq4F4e992oxMcOHDgwIEDB+6HwqX3pYPsrUZod1AODhw4cODAgQN3FS4dSHcbmluNza1gXN4PHDhw4MCBAwfuGNx0gJsW2g3EKcx2MAcHDhw4cODAgbsCZ2ULHDhw4MBZ4MB98/oLeM4BF6l2YRcAAAAASUVORK5CYII=">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATgAAAE4CAAAAADqFLC2AAADn0lEQVR42u3aQXLbQAwEQP7/08kLVNwBQAmSe2+q0BTQ68ME8PXPKZ0LAThw4MA54MAtgbuK5+WLb56/e0/6PXc/d/dc2i84cODAgQMHDtw2uOMAGDZ02tgp6DRk2i84cODAgQMHDtxWuNMAmwbKtOH0QtKLKvcLDhw4cODAgQP3Y3BPBeHxxsGBAwcOHDhw4MA9OmDs1gUOHDhw4MCBA/fX4OIFbTjIPIWcuoi1m3xw4MCBAwcOHLghuPSkAXPb53K/4MCBAwcOHDhwS+C6pxpoq4vsbn3tfsGBAwcOHDhw4JbAdQeTdwVXB5RTgfaurrQ/cODAgQMHDhy4b4GrNpAWXH2uG9TjiwQHDhw4cODAgVsGV208LSwtOA6ozaDe3uSDAwcOHDhw4MC9GW4a4LShqT8EfGowCw4cOHDgwIEDtxUuDZDpYDF9rjow7dYdB2Bw4MCBAwcOHLglcFMg3QFmOZiG35sGeHDgwIEDBw4cuK1w1cFidXGdXlTc4NBANP6fAzhw4MCBAwcO3JvgpgtNB49PvScFPK4DHDhw4MCBAwduCVx1YXtaaDWApgPPqUX67Wdw4MCBAwcOHLhlcFOL3rTRalCdCtpxMAYHDhw4cODAgVsKV/3CalBNA/BTg9XjCwMHDhw4cODAgVsCN93Q0wG6W0d1cAoOHDhw4MCBA7cNLm1oajBYHXBWL3xs4Q4OHDhw4MCBA7cErttAdSHdDdLV97SfAwcOHDhw4MCBWwpXDbbdoDs1yOzWdRuYwYEDBw4cOHDglsF1B5pTQfoKzyn0KcytCzhw4MCBAwcO3DK4qVMNtN1BZXchfXyx4MCBAwcOHDhwS+GmBonVBXU36D5+UeDAgQMHDhw4cMvgjgd5b1ooV/+9u3B+bCENDhw4cODAgQP3MFwVstvg1GK7u8gGBw4cOHDgwIH7VrjpIFsdXFYbTN+fXhA4cODAgQMHDtwWuO7pFlJdEFcX0e1fCHDgwIEDBw4cuCVw3YA4BZ4OOqvAp5+PB5ngwIEDBw4cOHAfhksbvl3cFp97arGcXuDL94MDBw4cOHDgwC2Fixe0h41MNXw9dI77AQcOHDhw4MCB+zG404Xxu6G7Qf14kAkOHDhw4MCBA/djcNMDzW4gThfl4MCBAwcOHDhw3wKXLqTHA+ZQMO5e/MvnwYEDBw4cOHDglsF1F7jV4DsFMxXU4wAMDhw4cODAgQP3ITgnO+DAgQMHzgEH7sPnPx9JgJdZaqX1AAAAAElFTkSuQmCC">
           </div>
         </div>
       
@@ -677,13 +684,22 @@
         
           <div class="prev-next">
             
+              <a class='prev' href='/2020/06/25/jenkins/jenkins-pei-zhi-zhu-ti/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Jenkins配置主题</p>
+                <p class='content'>Jenkins默认的主题实在是太丑了,所以简单配置了一下主题, 现在舒服多了
+
+
+Jenkins主题的配置步骤:
+
+首先进入配置Jenkins主题的网站: http://afonsof.com/...</p>
+              </a>
             
-              <a class='next' href='/2020/06/21/centos-an-zhuang-kafka/'>
-                <p class='title'>CentOS安装Kafka<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>最近刚开始学习Kafka，第一步肯定是学会怎么安装Kafka，现在我来讲解一下
+            
+              <a class='next' href='/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/'>
+                <p class='title'>MySQL对于千万级的大表要怎么优化?<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>
 
-
-第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装第二步：安装Zookeepe...</p>
+首先采用MySQL存储千亿级别的数据，确实是一项非常大的挑战。MySQL单表确实可以存储10亿级的数据，只是这个时候性能非常差，项目钟大量的实验证明，MySQL单表容量在500万左右，性能处...</p>
               </a>
             
           </div>
@@ -728,7 +744,7 @@
 
   <script>
     window.subData = {
-      title: 'Jenkins配置主题',
+      title: 'CentOS安装Kafka',
       tools: true
     }
   </script>
@@ -741,6 +757,20 @@
     
     
 
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>文章目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装"><span class="toc-number">1.</span> <span class="toc-text">第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper-安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper"><span class="toc-number">2.</span> <span class="toc-text">第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper,安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三步：-安装Kafka。"><span class="toc-number">3.</span> <span class="toc-text">第三步： 安装Kafka。</span></a></li></ol>
+    </div>
+  </section>
 
 
   

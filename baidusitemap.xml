@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://iamyangzehao.github.io/2020/06/25/jenkins-pei-zhi-zhu-ti/</loc>
+    <loc>https://iamyangzehao.github.io/2020/06/25/jenkins/jenkins-pei-zhi-zhu-ti/</loc>
     <lastmod>2020-06-25</lastmod>
   </url>  <url>
-    <loc>https://iamyangzehao.github.io/2020/06/21/centos-an-zhuang-kafka/</loc>
+    <loc>https://iamyangzehao.github.io/2020/06/21/kafka/centos-an-zhuang-kafka/</loc>
     <lastmod>2020-06-23</lastmod>
   </url>  <url>
     <loc>https://iamyangzehao.github.io/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/</loc>
@@ -16,10 +16,10 @@
     <loc>https://iamyangzehao.github.io/2020/06/13/gu-li-shang-cheng-xiang-mu-fang-dang/nacos-gateway/</loc>
     <lastmod>2020-06-13</lastmod>
   </url>  <url>
-    <loc>https://iamyangzehao.github.io/2020/05/31/java-bing-fa-thread-runnable-xiang-xi-jiang-jie/</loc>
+    <loc>https://iamyangzehao.github.io/2020/05/31/bing-fa-bian-cheng/java-bing-fa-thread-runnable-xiang-xi-jiang-jie/</loc>
     <lastmod>2020-06-06</lastmod>
   </url>  <url>
-    <loc>https://iamyangzehao.github.io/2020/05/24/jdk-ti-xi-jie-gou/</loc>
+    <loc>https://iamyangzehao.github.io/2020/05/24/jvm/jdk-ti-xi-jie-gou/</loc>
     <lastmod>2020-05-31</lastmod>
   </url>  <url>
     <loc>https://iamyangzehao.github.io/2020/05/31/ce-shi-wen-dang/ce-shi-6/</loc>

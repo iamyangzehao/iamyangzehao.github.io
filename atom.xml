@@ -18,8 +18,8 @@
   
   <entry>
     <title>Jenkins配置主题</title>
-    <link href="https://iamyangzehao.github.io/2020/06/25/jenkins-pei-zhi-zhu-ti/"/>
-    <id>https://iamyangzehao.github.io/2020/06/25/jenkins-pei-zhi-zhu-ti/</id>
+    <link href="https://iamyangzehao.github.io/2020/06/25/jenkins/jenkins-pei-zhi-zhu-ti/"/>
+    <id>https://iamyangzehao.github.io/2020/06/25/jenkins/jenkins-pei-zhi-zhu-ti/</id>
     <published>2020-06-25T02:43:53.000Z</published>
     <updated>2020-06-25T14:17:41.143Z</updated>
     
@@ -37,8 +37,8 @@
   
   <entry>
     <title>CentOS安装Kafka</title>
-    <link href="https://iamyangzehao.github.io/2020/06/21/centos-an-zhuang-kafka/"/>
-    <id>https://iamyangzehao.github.io/2020/06/21/centos-an-zhuang-kafka/</id>
+    <link href="https://iamyangzehao.github.io/2020/06/21/kafka/centos-an-zhuang-kafka/"/>
+    <id>https://iamyangzehao.github.io/2020/06/21/kafka/centos-an-zhuang-kafka/</id>
     <published>2020-06-21T15:17:42.000Z</published>
     <updated>2020-06-23T15:46:57.497Z</updated>
     
@@ -103,8 +103,8 @@
   
   <entry>
     <title>Java并发--Thread&amp;&amp;Runnable详细讲解</title>
-    <link href="https://iamyangzehao.github.io/2020/05/31/java-bing-fa-thread-runnable-xiang-xi-jiang-jie/"/>
-    <id>https://iamyangzehao.github.io/2020/05/31/java-bing-fa-thread-runnable-xiang-xi-jiang-jie/</id>
+    <link href="https://iamyangzehao.github.io/2020/05/31/bing-fa-bian-cheng/java-bing-fa-thread-runnable-xiang-xi-jiang-jie/"/>
+    <id>https://iamyangzehao.github.io/2020/05/31/bing-fa-bian-cheng/java-bing-fa-thread-runnable-xiang-xi-jiang-jie/</id>
     <published>2020-05-31T13:08:47.000Z</published>
     <updated>2020-06-06T08:34:17.276Z</updated>
     
@@ -248,8 +248,8 @@
   
   <entry>
     <title>JDK体系结构</title>
-    <link href="https://iamyangzehao.github.io/2020/05/24/jdk-ti-xi-jie-gou/"/>
-    <id>https://iamyangzehao.github.io/2020/05/24/jdk-ti-xi-jie-gou/</id>
+    <link href="https://iamyangzehao.github.io/2020/05/24/jvm/jdk-ti-xi-jie-gou/"/>
+    <id>https://iamyangzehao.github.io/2020/05/24/jvm/jdk-ti-xi-jie-gou/</id>
     <published>2020-05-24T09:57:59.000Z</published>
     <updated>2020-05-31T13:13:20.797Z</updated>
     
