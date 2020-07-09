@@ -1,42 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CentOS安装Kafka</title>
-    <url>/2020/06/21/kafka/centos-an-zhuang-kafka/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>最近刚开始学习Kafka，第一步肯定是学会怎么安装Kafka，现在我来讲解一下</p>
-<a id="more"></a>
-
-<h3 id="第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装"><a href="#第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装" class="headerlink" title="第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装"></a>第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装</h3><h3 id="第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper-安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper"><a href="#第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper-安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper" class="headerlink" title="第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper,安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper"></a>第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper,安装和启动Zookeeper的步骤参考<a href="https://segmentfault.com/a/1190000022199813" target="_blank" rel="noopener">CentOS安装ZooKeeper</a></h3><h3 id="第三步：-安装Kafka。"><a href="#第三步：-安装Kafka。" class="headerlink" title="第三步： 安装Kafka。"></a>第三步： 安装Kafka。</h3><p>安装Kafka分为:</p>
-<ul>
-<li>先下载Kafka并解压出来</li>
-<li>修改config/server.properties文件, 主要修改listeners、advertised.listeners配置(将host.name修改成kafka安装的主机的ip)和log.dirs(主要存放kafka的日志，可以在kafka根目录下创建一个logs文件夹，并将log.dirs设置成该文件夹的路径)和zookeeper.connect（设置连接的Zookeeper所在主机的ip，如果kafka和Zookeeper在同一台机器上，该配置不用改，默认为localhost）</li>
-<li>最后，在kafka的根目录下，执行bin/kafka-server-start.sh config/server.properties &amp; 命令，让kafka以后台方式启动<blockquote>
-<p>注意事项:kafka启动时，报cannot allocate memory错误，即内存不足，因为学生机内存较小，1G，所以需要更改kafka启动时的内存，解决方法: 进入bin目录，修改kafka-server-start.sh文件，将export KAFKA_HEAP_OPTS=”-Xmx1G -Xms1G”改成export KAFKA_HEAP_OPTS=”-Xmx256M -Xms128M” ，改小点，确保能启动</p>
-</blockquote>
-</li>
-</ul>
-<p>Kafka的基本命令:</p>
-<ul>
-<li>bin/kafka-server-stop.sh  – 停止Kafka</li>
-<li>bin/kafka-topics.sh –create –zookeeper localhost:2181 –replication-factor 1 –partitions 1 –topic test-topic 创建名为test-topic的Topic，localhost可更换为zookeeper所在的机器的ip</li>
-<li>bin/kafka-topics.sh –list –zookeeper localhost:2181 – 查看已经创建的Topic信息</li>
-<li>bin/kafka-console-producer.sh –broker-list localhost:9092 –topic test-topic – 发送消息</li>
-<li>bin/kafka-console-consumer.sh –bootstrap-server localhost:9092 –topic test-topic –from-beginning   – 接收消息</li>
-</ul>
-<blockquote>
-<p>如何安装Kafka图形界面工具Kafka-Center?</p>
-</blockquote>
-<ol>
-<li>网址: <a href="https://github.com/xaecbd/KafkaCenter" target="_blank" rel="noopener">https://github.com/xaecbd/KafkaCenter</a> 到github上下载table_script.sql和application.properties，并上传到服务器中(我传到了/usr/local/workspace/projects/gitproject/others目录中)</li>
-<li>将table_script.sql导入到数据库中</li>
-<li>修改application.properties配置文件，注意主要修改数据库地址和ElasticSearch地址(ES没有的话可不改)</li>
-<li>进入到/usr/local/workspace/projects/gitproject/others目录中，执行docker run -d -p 8240:8240 –name KafkaCenter -v ${PWD}/application.properties:/opt/app/kafka-center/config/application.properties xaecbd/kafka-center:2.1.0 命令</li>
-<li>在安全组中开放8240端口号(因为在上一步中指定了Kafka-Center的端口号为8240，不放开该端口号就无法访问)</li>
-<li>访问<a href="http://ip:8240，我的机器的ip是129.204.22.23，">http://ip:8240，我的机器的ip是129.204.22.23，</a> 所以通过<a href="http://129.204.22.23:8240/访问，访问账号密码是admin/admin" target="_blank" rel="noopener">http://129.204.22.23:8240/访问，访问账号密码是admin/admin</a></li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
     <title>JDK体系结构</title>
     <url>/2020/05/24/jvm/jdk-ti-xi-jie-gou/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这是摘要</p>
@@ -104,6 +68,64 @@
       </tags>
   </entry>
   <entry>
+    <title>渲染公式（MathJax）</title>
+    <url>/2020/02/23/ce-shi-wen-dang/example-md/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>more：</p>
+<a id="more"></a>
+
+<p>$$t+1=2$$</p>
+<p>$$<br>\mbox{积累因子}=\begin{cases}<br>1+ni &amp; \mbox{单利}\\<br>(1+i)^n &amp; \mbox{复利}<br>\end{cases}<br>$$</p>
+<p>$$<br>\begin{equation}<br>\sum_{i=0}^n F_i \cdot \phi (H, p_i) - \sum_{i=1}^n a_i \cdot ( \tilde{x_i}, \tilde{y_i}) + b_i \cdot ( \tilde{x_i}^2 , \tilde{y_i}^2 )<br>\end{equation}<br>$$<br>$$<br>\begin{equation}<br>\beta^*(D) = \mathop{argmin} \limits_{\beta} \lambda {||\beta||}^2 + \sum_{i=1}^n max(0, 1 - y_i f_{\beta}(x_i))<br>\end{equation}<br>$$</p>
+]]></content>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/05/03/ce-shi-wen-dang/hello-world/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>meta 区域显示外链按钮</p>
+<p>这是摘要</p>
+<a id="more"></a>
+<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h1 id="主题配置修改到-Next主题进阶优化配置-部分了"><a href="#主题配置修改到-Next主题进阶优化配置-部分了" class="headerlink" title="主题配置修改到 Next主题进阶优化配置 部分了"></a>主题配置修改到 Next主题进阶优化配置 部分了</h1><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test3</title>
+    <url>/2020/05/31/ce-shi-wen-dang/test3/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>由于支持多作者共同维护一个博客，所以可以设置单独一篇文章的作者：</p>
+<a id="more"></a>]]></content>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test2</title>
+    <url>/2020/05/31/ce-shi-wen-dang/test2/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这是摘要</p>
+<a id="more"></a>
+
+<p>这是正文</p>
+<blockquote>
+<p>注意： <code>&lt;!-- more --&gt;</code>前后一定要有空行，不然可能导致显示错位。</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>test1</title>
     <url>/2020/05/31/ce-shi-wen-dang/test1/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这是摘要</p>
@@ -119,15 +141,295 @@
       </tags>
   </entry>
   <entry>
-    <title>渲染公式（MathJax）</title>
-    <url>/2020/02/23/ce-shi-wen-dang/example-md/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>more：</p>
+    <title>test5</title>
+    <url>/2020/05/31/ce-shi-wen-dang/test5/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>如果标题居中且下方不想显示任何 meta 信息，可以这样设置：</p>
+<a id="more"></a>]]></content>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何搭建基于Hexo的独立博客</title>
+    <url>/2020/05/31/ce-shi-wen-dang/ce-shi-6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>文本设置</p>
 <a id="more"></a>
 
-<p>$$t+1=2$$</p>
-<p>$$<br>\mbox{积累因子}=\begin{cases}<br>1+ni &amp; \mbox{单利}\\<br>(1+i)^n &amp; \mbox{复利}<br>\end{cases}<br>$$</p>
-<p>$$<br>\begin{equation}<br>\sum_{i=0}^n F_i \cdot \phi (H, p_i) - \sum_{i=1}^n a_i \cdot ( \tilde{x_i}, \tilde{y_i}) + b_i \cdot ( \tilde{x_i}^2 , \tilde{y_i}^2 )<br>\end{equation}<br>$$<br>$$<br>\begin{equation}<br>\beta^*(D) = \mathop{argmin} \limits_{\beta} \lambda {||\beta||}^2 + \sum_{i=1}^n max(0, 1 - y_i f_{\beta}(x_i))<br>\end{equation}<br>$$</p>
+<p>在一段话中方便插入各种颜色的标签，包括：<span class='p red'>红色</span>、<span class='p yellow'>黄色</span>、<span class='p green'>绿色</span>、<span class='p cyan'>青色</span>、<span class='p blue'>蓝色</span>、<span class='p gray'>灰色</span>。</p>
+<hr>
+<p>文档「开始」页面中的标题部分就是超大文字。</p>
+<p class='p center logo large'>Volantis</p>
+<p class='p center small'>A Wonderful Theme for Hexo</p>
+
+<hr>
+<div class="note "><p>为简单的一句话提供的简便写法。</p></div>
+
+<div class="note success"><p>支持同样丰富的参数。</p></div>
+
+<hr>
+<p>可以在区块中放置一些复杂的结构，支持嵌套。</p>
+<div class="note quote">
+            <p class='p subtitle'>小标题</p><p>Windows 10不是為所有人設計,而是為每個人設計</p><p class='p subtitle'>嵌套测试</p><div class="note ">            <p>请坐和放宽，我正在帮你搞定一切…</p>          </div><p class='p subtitle'>Folding 测试</p><details ><summary> <p>点击查看更多</p> </summary>              <div class='content'>              <div class="note warning"><p>不要说我们没有警告过你</p></div><div class="note bug red">            <p>我们都有不顺利的时候</p>          </div>              </div>            </details>
+          </div>
+
+<hr>
+<div class='checkbox'><input type="checkbox" />
+            <p>纯文本测试</p>
+            </div>
+<div class='checkbox checked'><input type="checkbox" checked="checked"/>
+            <p>支持简单的 <a href="https://guides.github.com/features/mastering-markdown/" target="_blank" rel="noopener">markdown</a> 语法</p>
+            </div>
+<div class='checkbox red'><input type="checkbox" />
+            <p>支持自定义颜色</p>
+            </div>
+<div class='checkbox green checked'><input type="checkbox" checked="checked"/>
+            <p>绿色 + 默认选中</p>
+            </div>
+<div class='checkbox yellow checked'><input type="checkbox" checked="checked"/>
+            <p>黄色 + 默认选中</p>
+            </div>
+<div class='checkbox cyan checked'><input type="checkbox" checked="checked"/>
+            <p>青色 + 默认选中</p>
+            </div>
+<div class='checkbox blue checked'><input type="checkbox" checked="checked"/>
+            <p>蓝色 + 默认选中</p>
+            </div>
+<div class='checkbox plus green checked'><input type="checkbox" checked="checked"/>
+            <p>增加</p>
+            </div>
+<div class='checkbox minus yellow checked'><input type="checkbox" checked="checked"/>
+            <p>减少</p>
+            </div>
+<div class='checkbox times red checked'><input type="checkbox" checked="checked"/>
+            <p>叉</p>
+            </div>
+
+<hr>
+<div class='checkbox'><input type="radio" />
+            <p>纯文本测试</p>
+            </div>
+<div class='checkbox checked'><input type="radio" checked="checked"/>
+            <p>支持简单的 <a href="https://guides.github.com/features/mastering-markdown/" target="_blank" rel="noopener">markdown</a> 语法</p>
+            </div>
+<div class='checkbox red'><input type="radio" />
+            <p>支持自定义颜色</p>
+            </div>
+<div class='checkbox green'><input type="radio" />
+            <p>绿色</p>
+            </div>
+<div class='checkbox yellow'><input type="radio" />
+            <p>黄色</p>
+            </div>
+<div class='checkbox cyan'><input type="radio" />
+            <p>青色</p>
+            </div>
+<div class='checkbox blue'><input type="radio" />
+            <p>蓝色</p>
+            </div>
+
+<hr>
+<p>不设置任何参数的 <span class='btn'><a href='/' title='按钮'>按钮</a></span> 适合融入段落中。</p>
+<p>regular 按钮适合独立于段落之外：</p>
+<span class='btn regular'><a href='http://www.baidu.com' target="_blank" rel="noopener" title='示例博客'><i class='fas fa-play-circle'></i>示例博客</a></span>
+
+<p>large 按钮更具有强调作用，建议搭配 center 使用：</p>
+<span class='btn center large'><a href='http://www.baidu.com' target="_blank" rel="noopener" title='开始使用'><i class='fas fa-download'></i>开始使用</a></span>
+
+<hr>
+<div class="btns circle grid5">
+            <a href='https://xaoxuu.com' target="_blank" rel="noopener" title='xaoxuu'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png'>xaoxuu</a>
+<a href='https://xaoxuu.com' target="_blank" rel="noopener" title='xaoxuu'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png'>xaoxuu</a>
+<a href='https://xaoxuu.com' target="_blank" rel="noopener" title='xaoxuu'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png'>xaoxuu</a>
+<a href='https://xaoxuu.com' target="_blank" rel="noopener" title='xaoxuu'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png'>xaoxuu</a>
+<a href='https://xaoxuu.com' target="_blank" rel="noopener" title='xaoxuu'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png'>xaoxuu</a>
+          </div>
+
+<hr>
+<div class="btns rounded grid5">
+            <a href='/' title='下载源码'><i class='fas fa-download'></i>下载源码</a>
+<a href='/' title='查看文档'><i class='fas fa-book-open'></i>查看文档</a>
+          </div>
+
+<hr>
+<div class="btns circle center grid5">
+            <a href='https://apps.apple.com/cn/app/heart-mate-pro-hrm-utility/id1463348922?ls=1' target="_blank" rel="noopener">
+  <i class='fab fa-apple'></i>
+  <b>心率管家</b>
+  <p class='p red'>专业版</p>
+  <img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/heartmate_pro.png'>
+</a>
+<a href='https://apps.apple.com/cn/app/heart-mate-lite-hrm-utility/id1475747930?ls=1' target="_blank" rel="noopener">
+  <i class='fab fa-apple'></i>
+  <b>心率管家</b>
+  <p class='p green'>免费版</p>
+  <img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/heartmate_lite.png'>
+</a>
+          </div>
+
+<hr>
+<div class='dropmenu'>
+              <span>下拉菜单</span>
+              <i class='fas fa-caret-down'></i>
+              <ul class='list-v'>
+                <li>
+                <a href='https://github.com/xaoxuu/hexo-theme-volantis/' target="_blank" rel="noopener" title='主题源码'>
+                  <i class='fas fa-file-code fa-fw'></i>
+                  主题源码
+                </a>
+              </li>
+<li>
+                <a href='https://github.com/xaoxuu/hexo-theme-volantis/releases/' target="_blank" rel="noopener" title='更新日志'>
+                  <i class='fas fa-clipboard-list fa-fw'></i>
+                  更新日志
+                </a>
+              </li>
+<hr>
+<li>
+              <a>
+                <i class=' fas fa-question-circle fa-fw'></i>
+                有疑问？
+              </a>
+              <ul class='list-v'>
+                <li>
+                <a href='/faqs/' title='看 FAQ'>
+                  看 FAQ
+                </a>
+              </li>
+<li>
+                <a href='https://github.com/xaoxuu/volantis-docs/' target="_blank" rel="noopener" title='看 本站源码'>
+                  看 本站源码
+                </a>
+              </li>
+<li>
+                <a href='https://github.com/xaoxuu/hexo-theme-volantis/issues/' target="_blank" rel="noopener" title='提 Issue'>
+                  提 Issue
+                </a>
+              </li>
+              </ul>
+            </li>
+              </ul>
+            </div>
+
+<hr>
+<div class="tabs" id="tab-id"><ul class="nav-tabs"><li class="tab active"><a href="#tab-id-1">tab-name</a></li><li class="tab"><a href="#tab-id-2">tab-name</a></li></ul><div class="tab-content"><div class="tab-pane active" id="tab-id-1"><p><img src="https://i.loli.net/2020/03/18/f5PQlWisvm9zbgK.jpg" alt=""></p></div><div class="tab-pane" id="tab-id-2"><p>这里面写内容，支持的语法格式有限，请尽量<u>不要</u>写太过复杂的东西。</p></div></div></div>
+
+<hr>
+<details ><summary> <p>查看图片测试</p> </summary>
+              <div class='content'>
+              <p><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg" alt=""></p>
+              </div>
+            </details>
+
+<details cyan open><summary> <p>查看默认打开的折叠框</p> </summary>
+              <div class='content'>
+              <p>这是一个默认打开的折叠框。</p>
+              </div>
+            </details>
+
+<details green><summary> <p>查看代码测试</p> </summary>
+              <div class='content'>
+              
+              </div>
+            </details>
+
+<details yellow><summary> <p>查看列表测试</p> </summary>
+              <div class='content'>
+              <ul><li>haha</li><li>hehe</li></ul>
+              </div>
+            </details>
+
+<details red><summary> <p>查看嵌套测试</p> </summary>
+              <div class='content'>
+              <details blue><summary> <p>查看嵌套测试2</p> </summary>              <div class='content'>              <details ><summary> <p>查看嵌套测试3</p> </summary>              <div class='content'>              <p>hahaha <span><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/tieba/%E6%BB%91%E7%A8%BD.png' style='height:24px'></span></p>              </div>            </details>              </div>            </details>
+              </div>
+            </details>
+
+<hr>
+<p>添加描述：</p>
+<img src='https://i.loli.net/2020/04/06/zdeQiOY9rBCjhDR.jpg' alt='每天下课回宿舍的路，承载了太多记忆。'>
+
+<p>指定宽度：</p>
+<img src='https://i.loli.net/2020/04/06/zdeQiOY9rBCjhDR.jpg' style='width:300px'>
+
+<p>指定宽度并添加描述：</p>
+<img src='https://i.loli.net/2020/04/06/zdeQiOY9rBCjhDR.jpg' alt='每天下课回宿舍的路，承载了太多记忆。' style='width:300px'>
+
+
+<hr>
+<div class="gallery ">
+              <p><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg" alt="图片描述"></p>
+            </div>
+
+<div class="gallery ">
+              <p><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg" alt="图片描述"><br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/67239FBB-E15D-4F4F-8EE8-0F1C9F3C4E7C.jpeg" alt="图片描述"><br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/00E0F0ED-9F1C-407A-9AA6-545649D919F4.jpeg" alt="图片描述"></p>
+            </div>
+
+<div class="gallery stretch" col='4'>
+              <p><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B951AE18-D431-417F-B3FE-A382403FF21B.jpeg" alt=""><br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/AEB33F9D-7294-4CF1-B8C5-3020748A9D45.jpeg" alt=""><br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/250662D4-5A21-4AAA-BB63-CD25CF97CFF1.jpeg" alt=""><br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/10A0FCE5-36A1-4AD0-8CF0-019259A89E03.jpeg" alt=""><br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B951AE18-D431-417F-B3FE-A382403FF21B.jpeg" alt=""><br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/AEB33F9D-7294-4CF1-B8C5-3020748A9D45.jpeg" alt=""><br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/250662D4-5A21-4AAA-BB63-CD25CF97CFF1.jpeg" alt=""><br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/10A0FCE5-36A1-4AD0-8CF0-019259A89E03.jpeg" alt=""></p>
+            </div>
+
+<hr>
+<div class="audio"><audio controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/Lumia1020.mp3' type='audio/mp3'>Your browser does not support the audio tag.</audio></div>
+
+
+<hr>
+<div class="videos" col='2'><div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
+<div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
+<div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
+<div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div></div>
+
+<div class="videos" col='4'><div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
+<div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
+<div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
+<div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
+<div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
+<div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
+<div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
+<div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div></div>
+
+<hr>
+<pre><code>code snippet</code></pre>
+
+<pre><code>[rectangle setX: 10 y: 10 width: 20 height: 20];</code></pre>
+
+
+<pre><code>array.map(callback[, thisArg])</code></pre>
+
+<hr>
+<pre><code>n&#x3D;eval(input())
+if n&#x3D;&#x3D;0:
+   print(&quot;Hello World&quot;)
+elif n&gt;0:
+   print(&quot;He\nll\no \nWo\nrl\nd&quot;)
+else:
+   for c in &quot;Hello World&quot;:
+   print(c)</code></pre>
+
+<hr>
+<blockquote class="pullquote [class]"><p>content</p>
+</blockquote>
+
+<hr>
+<iframe scrolling="no" width="[width]" height="[height]" src="https://jsfiddle.net/shorttag/embedded/[tabs]/[skin]" frameborder="0" loading="lazy" allowfullscreen></iframe>
+
+<hr>
+<!-- <script src="//gist.github.com/gist_id.js?file=[filename]"></script> -->
+
+<hr>
 ]]></content>
+      <categories>
+        <category>测试</category>
+        <category>测试A</category>
+      </categories>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test4</title>
+    <url>/2020/05/31/ce-shi-wen-dang/test4/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>标题右边显示迷你音乐播放器，支持的字段有：server、type、id</p>
+<a id="more"></a>]]></content>
       <tags>
         <tag>测试</tag>
       </tags>
@@ -160,46 +462,40 @@
       </tags>
   </entry>
   <entry>
-    <title>test2</title>
-    <url>/2020/05/31/ce-shi-wen-dang/test2/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这是摘要</p>
+    <title>CentOS安装Kafka</title>
+    <url>/2020/06/21/kafka/centos-an-zhuang-kafka/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>最近刚开始学习Kafka，第一步肯定是学会怎么安装Kafka，现在我来讲解一下</p>
 <a id="more"></a>
 
-<p>这是正文</p>
-<blockquote>
-<p>注意： <code>&lt;!-- more --&gt;</code>前后一定要有空行，不然可能导致显示错位。</p>
+<h3 id="第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装"><a href="#第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装" class="headerlink" title="第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装"></a>第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装</h3><h3 id="第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper-安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper"><a href="#第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper-安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper" class="headerlink" title="第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper,安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper"></a>第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper,安装和启动Zookeeper的步骤参考<a href="https://segmentfault.com/a/1190000022199813" target="_blank" rel="noopener">CentOS安装ZooKeeper</a></h3><h3 id="第三步：-安装Kafka。"><a href="#第三步：-安装Kafka。" class="headerlink" title="第三步： 安装Kafka。"></a>第三步： 安装Kafka。</h3><p>安装Kafka分为:</p>
+<ul>
+<li>先下载Kafka并解压出来</li>
+<li>修改config/server.properties文件, 主要修改listeners、advertised.listeners配置(将host.name修改成kafka安装的主机的ip)和log.dirs(主要存放kafka的日志，可以在kafka根目录下创建一个logs文件夹，并将log.dirs设置成该文件夹的路径)和zookeeper.connect（设置连接的Zookeeper所在主机的ip，如果kafka和Zookeeper在同一台机器上，该配置不用改，默认为localhost）</li>
+<li>最后，在kafka的根目录下，执行bin/kafka-server-start.sh config/server.properties &amp; 命令，让kafka以后台方式启动<blockquote>
+<p>注意事项:kafka启动时，报cannot allocate memory错误，即内存不足，因为学生机内存较小，1G，所以需要更改kafka启动时的内存，解决方法: 进入bin目录，修改kafka-server-start.sh文件，将export KAFKA_HEAP_OPTS=”-Xmx1G -Xms1G”改成export KAFKA_HEAP_OPTS=”-Xmx256M -Xms128M” ，改小点，确保能启动</p>
 </blockquote>
+</li>
+</ul>
+<p>Kafka的基本命令:</p>
+<ul>
+<li>bin/kafka-server-stop.sh  – 停止Kafka</li>
+<li>bin/kafka-topics.sh –create –zookeeper localhost:2181 –replication-factor 1 –partitions 1 –topic test-topic 创建名为test-topic的Topic，localhost可更换为zookeeper所在的机器的ip</li>
+<li>bin/kafka-topics.sh –list –zookeeper localhost:2181 – 查看已经创建的Topic信息</li>
+<li>bin/kafka-console-producer.sh –broker-list localhost:9092 –topic test-topic – 发送消息</li>
+<li>bin/kafka-console-consumer.sh –bootstrap-server localhost:9092 –topic test-topic –from-beginning   – 接收消息</li>
+</ul>
+<blockquote>
+<p>如何安装Kafka图形界面工具Kafka-Center?</p>
+</blockquote>
+<ol>
+<li>网址: <a href="https://github.com/xaecbd/KafkaCenter" target="_blank" rel="noopener">https://github.com/xaecbd/KafkaCenter</a> 到github上下载table_script.sql和application.properties，并上传到服务器中(我传到了/usr/local/workspace/projects/gitproject/others目录中)</li>
+<li>将table_script.sql导入到数据库中</li>
+<li>修改application.properties配置文件，注意主要修改数据库地址和ElasticSearch地址(ES没有的话可不改)</li>
+<li>进入到/usr/local/workspace/projects/gitproject/others目录中，执行docker run -d -p 8240:8240 –name KafkaCenter -v ${PWD}/application.properties:/opt/app/kafka-center/config/application.properties xaecbd/kafka-center:2.1.0 命令</li>
+<li>在安全组中开放8240端口号(因为在上一步中指定了Kafka-Center的端口号为8240，不放开该端口号就无法访问)</li>
+<li>访问<a href="http://ip:8240，我的机器的ip是129.204.22.23，">http://ip:8240，我的机器的ip是129.204.22.23，</a> 所以通过<a href="http://129.204.22.23:8240/访问，访问账号密码是admin/admin" target="_blank" rel="noopener">http://129.204.22.23:8240/访问，访问账号密码是admin/admin</a></li>
+</ol>
 ]]></content>
-      <tags>
-        <tag>测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>test3</title>
-    <url>/2020/05/31/ce-shi-wen-dang/test3/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>由于支持多作者共同维护一个博客，所以可以设置单独一篇文章的作者：</p>
-<a id="more"></a>]]></content>
-      <tags>
-        <tag>测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>test4</title>
-    <url>/2020/05/31/ce-shi-wen-dang/test4/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>标题右边显示迷你音乐播放器，支持的字段有：server、type、id</p>
-<a id="more"></a>]]></content>
-      <tags>
-        <tag>测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>test5</title>
-    <url>/2020/05/31/ce-shi-wen-dang/test5/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>如果标题居中且下方不想显示任何 meta 信息，可以这样设置：</p>
-<a id="more"></a>]]></content>
-      <tags>
-        <tag>测试</tag>
-      </tags>
   </entry>
   <entry>
     <title>nacos_gateway</title>
@@ -826,302 +1122,6 @@ public RouteLocator customRouteLocator(RouteLocatorBuilder builder, ThrottleGate
       </categories>
       <tags>
         <tag>项目文档</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2020/05/03/ce-shi-wen-dang/hello-world/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>meta 区域显示外链按钮</p>
-<p>这是摘要</p>
-<a id="more"></a>
-<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h1 id="主题配置修改到-Next主题进阶优化配置-部分了"><a href="#主题配置修改到-Next主题进阶优化配置-部分了" class="headerlink" title="主题配置修改到 Next主题进阶优化配置 部分了"></a>主题配置修改到 Next主题进阶优化配置 部分了</h1><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
-      <tags>
-        <tag>测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何搭建基于Hexo的独立博客</title>
-    <url>/2020/05/31/ce-shi-wen-dang/ce-shi-6/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>文本设置</p>
-<a id="more"></a>
-
-<p>在一段话中方便插入各种颜色的标签，包括：<span class='p red'>红色</span>、<span class='p yellow'>黄色</span>、<span class='p green'>绿色</span>、<span class='p cyan'>青色</span>、<span class='p blue'>蓝色</span>、<span class='p gray'>灰色</span>。</p>
-<hr>
-<p>文档「开始」页面中的标题部分就是超大文字。</p>
-<p class='p center logo large'>Volantis</p>
-<p class='p center small'>A Wonderful Theme for Hexo</p>
-
-<hr>
-<div class="note "><p>为简单的一句话提供的简便写法。</p></div>
-
-<div class="note success"><p>支持同样丰富的参数。</p></div>
-
-<hr>
-<p>可以在区块中放置一些复杂的结构，支持嵌套。</p>
-<div class="note quote">
-            <p class='p subtitle'>小标题</p><p>Windows 10不是為所有人設計,而是為每個人設計</p><p class='p subtitle'>嵌套测试</p><div class="note ">            <p>请坐和放宽，我正在帮你搞定一切…</p>          </div><p class='p subtitle'>Folding 测试</p><details ><summary> <p>点击查看更多</p> </summary>              <div class='content'>              <div class="note warning"><p>不要说我们没有警告过你</p></div><div class="note bug red">            <p>我们都有不顺利的时候</p>          </div>              </div>            </details>
-          </div>
-
-<hr>
-<div class='checkbox'><input type="checkbox" />
-            <p>纯文本测试</p>
-            </div>
-<div class='checkbox checked'><input type="checkbox" checked="checked"/>
-            <p>支持简单的 <a href="https://guides.github.com/features/mastering-markdown/" target="_blank" rel="noopener">markdown</a> 语法</p>
-            </div>
-<div class='checkbox red'><input type="checkbox" />
-            <p>支持自定义颜色</p>
-            </div>
-<div class='checkbox green checked'><input type="checkbox" checked="checked"/>
-            <p>绿色 + 默认选中</p>
-            </div>
-<div class='checkbox yellow checked'><input type="checkbox" checked="checked"/>
-            <p>黄色 + 默认选中</p>
-            </div>
-<div class='checkbox cyan checked'><input type="checkbox" checked="checked"/>
-            <p>青色 + 默认选中</p>
-            </div>
-<div class='checkbox blue checked'><input type="checkbox" checked="checked"/>
-            <p>蓝色 + 默认选中</p>
-            </div>
-<div class='checkbox plus green checked'><input type="checkbox" checked="checked"/>
-            <p>增加</p>
-            </div>
-<div class='checkbox minus yellow checked'><input type="checkbox" checked="checked"/>
-            <p>减少</p>
-            </div>
-<div class='checkbox times red checked'><input type="checkbox" checked="checked"/>
-            <p>叉</p>
-            </div>
-
-<hr>
-<div class='checkbox'><input type="radio" />
-            <p>纯文本测试</p>
-            </div>
-<div class='checkbox checked'><input type="radio" checked="checked"/>
-            <p>支持简单的 <a href="https://guides.github.com/features/mastering-markdown/" target="_blank" rel="noopener">markdown</a> 语法</p>
-            </div>
-<div class='checkbox red'><input type="radio" />
-            <p>支持自定义颜色</p>
-            </div>
-<div class='checkbox green'><input type="radio" />
-            <p>绿色</p>
-            </div>
-<div class='checkbox yellow'><input type="radio" />
-            <p>黄色</p>
-            </div>
-<div class='checkbox cyan'><input type="radio" />
-            <p>青色</p>
-            </div>
-<div class='checkbox blue'><input type="radio" />
-            <p>蓝色</p>
-            </div>
-
-<hr>
-<p>不设置任何参数的 <span class='btn'><a href='/' title='按钮'>按钮</a></span> 适合融入段落中。</p>
-<p>regular 按钮适合独立于段落之外：</p>
-<span class='btn regular'><a href='http://www.baidu.com' target="_blank" rel="noopener" title='示例博客'><i class='fas fa-play-circle'></i>示例博客</a></span>
-
-<p>large 按钮更具有强调作用，建议搭配 center 使用：</p>
-<span class='btn center large'><a href='http://www.baidu.com' target="_blank" rel="noopener" title='开始使用'><i class='fas fa-download'></i>开始使用</a></span>
-
-<hr>
-<div class="btns circle grid5">
-            <a href='https://xaoxuu.com' target="_blank" rel="noopener" title='xaoxuu'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png'>xaoxuu</a>
-<a href='https://xaoxuu.com' target="_blank" rel="noopener" title='xaoxuu'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png'>xaoxuu</a>
-<a href='https://xaoxuu.com' target="_blank" rel="noopener" title='xaoxuu'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png'>xaoxuu</a>
-<a href='https://xaoxuu.com' target="_blank" rel="noopener" title='xaoxuu'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png'>xaoxuu</a>
-<a href='https://xaoxuu.com' target="_blank" rel="noopener" title='xaoxuu'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png'>xaoxuu</a>
-          </div>
-
-<hr>
-<div class="btns rounded grid5">
-            <a href='/' title='下载源码'><i class='fas fa-download'></i>下载源码</a>
-<a href='/' title='查看文档'><i class='fas fa-book-open'></i>查看文档</a>
-          </div>
-
-<hr>
-<div class="btns circle center grid5">
-            <a href='https://apps.apple.com/cn/app/heart-mate-pro-hrm-utility/id1463348922?ls=1' target="_blank" rel="noopener">
-  <i class='fab fa-apple'></i>
-  <b>心率管家</b>
-  <p class='p red'>专业版</p>
-  <img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/heartmate_pro.png'>
-</a>
-<a href='https://apps.apple.com/cn/app/heart-mate-lite-hrm-utility/id1475747930?ls=1' target="_blank" rel="noopener">
-  <i class='fab fa-apple'></i>
-  <b>心率管家</b>
-  <p class='p green'>免费版</p>
-  <img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/heartmate_lite.png'>
-</a>
-          </div>
-
-<hr>
-<div class='dropmenu'>
-              <span>下拉菜单</span>
-              <i class='fas fa-caret-down'></i>
-              <ul class='list-v'>
-                <li>
-                <a href='https://github.com/xaoxuu/hexo-theme-volantis/' target="_blank" rel="noopener" title='主题源码'>
-                  <i class='fas fa-file-code fa-fw'></i>
-                  主题源码
-                </a>
-              </li>
-<li>
-                <a href='https://github.com/xaoxuu/hexo-theme-volantis/releases/' target="_blank" rel="noopener" title='更新日志'>
-                  <i class='fas fa-clipboard-list fa-fw'></i>
-                  更新日志
-                </a>
-              </li>
-<hr>
-<li>
-              <a>
-                <i class=' fas fa-question-circle fa-fw'></i>
-                有疑问？
-              </a>
-              <ul class='list-v'>
-                <li>
-                <a href='/faqs/' title='看 FAQ'>
-                  看 FAQ
-                </a>
-              </li>
-<li>
-                <a href='https://github.com/xaoxuu/volantis-docs/' target="_blank" rel="noopener" title='看 本站源码'>
-                  看 本站源码
-                </a>
-              </li>
-<li>
-                <a href='https://github.com/xaoxuu/hexo-theme-volantis/issues/' target="_blank" rel="noopener" title='提 Issue'>
-                  提 Issue
-                </a>
-              </li>
-              </ul>
-            </li>
-              </ul>
-            </div>
-
-<hr>
-<div class="tabs" id="tab-id"><ul class="nav-tabs"><li class="tab active"><a href="#tab-id-1">tab-name</a></li><li class="tab"><a href="#tab-id-2">tab-name</a></li></ul><div class="tab-content"><div class="tab-pane active" id="tab-id-1"><p><img src="https://i.loli.net/2020/03/18/f5PQlWisvm9zbgK.jpg" alt=""></p></div><div class="tab-pane" id="tab-id-2"><p>这里面写内容，支持的语法格式有限，请尽量<u>不要</u>写太过复杂的东西。</p></div></div></div>
-
-<hr>
-<details ><summary> <p>查看图片测试</p> </summary>
-              <div class='content'>
-              <p><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg" alt=""></p>
-              </div>
-            </details>
-
-<details cyan open><summary> <p>查看默认打开的折叠框</p> </summary>
-              <div class='content'>
-              <p>这是一个默认打开的折叠框。</p>
-              </div>
-            </details>
-
-<details green><summary> <p>查看代码测试</p> </summary>
-              <div class='content'>
-              
-              </div>
-            </details>
-
-<details yellow><summary> <p>查看列表测试</p> </summary>
-              <div class='content'>
-              <ul><li>haha</li><li>hehe</li></ul>
-              </div>
-            </details>
-
-<details red><summary> <p>查看嵌套测试</p> </summary>
-              <div class='content'>
-              <details blue><summary> <p>查看嵌套测试2</p> </summary>              <div class='content'>              <details ><summary> <p>查看嵌套测试3</p> </summary>              <div class='content'>              <p>hahaha <span><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/tieba/%E6%BB%91%E7%A8%BD.png' style='height:24px'></span></p>              </div>            </details>              </div>            </details>
-              </div>
-            </details>
-
-<hr>
-<p>添加描述：</p>
-<img src='https://i.loli.net/2020/04/06/zdeQiOY9rBCjhDR.jpg' alt='每天下课回宿舍的路，承载了太多记忆。'>
-
-<p>指定宽度：</p>
-<img src='https://i.loli.net/2020/04/06/zdeQiOY9rBCjhDR.jpg' style='width:300px'>
-
-<p>指定宽度并添加描述：</p>
-<img src='https://i.loli.net/2020/04/06/zdeQiOY9rBCjhDR.jpg' alt='每天下课回宿舍的路，承载了太多记忆。' style='width:300px'>
-
-
-<hr>
-<div class="gallery ">
-              <p><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg" alt="图片描述"></p>
-            </div>
-
-<div class="gallery ">
-              <p><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg" alt="图片描述"><br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/67239FBB-E15D-4F4F-8EE8-0F1C9F3C4E7C.jpeg" alt="图片描述"><br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/00E0F0ED-9F1C-407A-9AA6-545649D919F4.jpeg" alt="图片描述"></p>
-            </div>
-
-<div class="gallery stretch" col='4'>
-              <p><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B951AE18-D431-417F-B3FE-A382403FF21B.jpeg" alt=""><br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/AEB33F9D-7294-4CF1-B8C5-3020748A9D45.jpeg" alt=""><br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/250662D4-5A21-4AAA-BB63-CD25CF97CFF1.jpeg" alt=""><br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/10A0FCE5-36A1-4AD0-8CF0-019259A89E03.jpeg" alt=""><br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B951AE18-D431-417F-B3FE-A382403FF21B.jpeg" alt=""><br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/AEB33F9D-7294-4CF1-B8C5-3020748A9D45.jpeg" alt=""><br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/250662D4-5A21-4AAA-BB63-CD25CF97CFF1.jpeg" alt=""><br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/10A0FCE5-36A1-4AD0-8CF0-019259A89E03.jpeg" alt=""></p>
-            </div>
-
-<hr>
-<div class="audio"><audio controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/Lumia1020.mp3' type='audio/mp3'>Your browser does not support the audio tag.</audio></div>
-
-
-<hr>
-<div class="videos" col='2'><div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
-<div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
-<div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
-<div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div></div>
-
-<div class="videos" col='4'><div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
-<div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
-<div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
-<div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
-<div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
-<div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
-<div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
-<div class="video"><video controls preload><source src='https://github.com/xaoxuu/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div></div>
-
-<hr>
-<pre><code>code snippet</code></pre>
-
-<pre><code>[rectangle setX: 10 y: 10 width: 20 height: 20];</code></pre>
-
-
-<pre><code>array.map(callback[, thisArg])</code></pre>
-
-<hr>
-<pre><code>n&#x3D;eval(input())
-if n&#x3D;&#x3D;0:
-   print(&quot;Hello World&quot;)
-elif n&gt;0:
-   print(&quot;He\nll\no \nWo\nrl\nd&quot;)
-else:
-   for c in &quot;Hello World&quot;:
-   print(c)</code></pre>
-
-<hr>
-<blockquote class="pullquote [class]"><p>content</p>
-</blockquote>
-
-<hr>
-<iframe scrolling="no" width="[width]" height="[height]" src="https://jsfiddle.net/shorttag/embedded/[tabs]/[skin]" frameborder="0" loading="lazy" allowfullscreen></iframe>
-
-<hr>
-<!-- <script src="//gist.github.com/gist_id.js?file=[filename]"></script> -->
-
-<hr>
-]]></content>
-      <categories>
-        <category>测试</category>
-        <category>测试A</category>
-      </categories>
-      <tags>
-        <tag>测试</tag>
       </tags>
   </entry>
 </search>
