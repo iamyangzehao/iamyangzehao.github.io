@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamyangzehao.github.io/"/>
-  <updated>2020-06-25T14:17:41.143Z</updated>
+  <updated>2020-07-19T00:48:30.151Z</updated>
   <id>https://iamyangzehao.github.io/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>virtualbox桥接模式下如何实现静态IP访问内外网</title>
+    <link href="https://iamyangzehao.github.io/2020/07/19/linux/virtualbox-qiao-jie-mo-shi-xia-ru-he-shi-xian-jing-tai-ip-fang-wen-nei-wai-wang/"/>
+    <id>https://iamyangzehao.github.io/2020/07/19/linux/virtualbox-qiao-jie-mo-shi-xia-ru-he-shi-xian-jing-tai-ip-fang-wen-nei-wai-wang/</id>
+    <published>2020-07-18T23:41:06.000Z</published>
+    <updated>2020-07-19T00:48:30.151Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;之前想要设置静态IP, 是因为设置了桥接网卡, 导致有时使用Xshell连接CentOS时IP发生了变化, 不得不查看IP重新连接, 所以想要设置静态IP, 解决连接问题, 一劳永逸.&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="CentOS" scheme="https://iamyangzehao.github.io/categories/CentOS/"/>
+    
+    
+      <category term="Linux" scheme="https://iamyangzehao.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ASM入门</title>
+    <link href="https://iamyangzehao.github.io/2020/07/11/jvm/asm-ru-men/"/>
+    <id>https://iamyangzehao.github.io/2020/07/11/jvm/asm-ru-men/</id>
+    <published>2020-07-11T08:32:47.000Z</published>
+    <updated>2020-07-18T23:40:54.915Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;ASM概述&quot;&gt;&lt;a href=&quot;#ASM概述&quot; class=&quot;headerlink&quot; title=&quot;ASM概述&quot;&gt;&lt;/a&gt;ASM概述&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;ASM 是一个Java字节码操纵框架, 它能被用来动态生成类或者增强既有类的功能。&lt;/li&gt;
+&lt;li&gt;ASM可以直接产生二进制Class文件, 也可以在类被加载入虚拟机之前动态改变类的行为, ASM从类文件中读入信息后, 能够改变类行为、分析类信息, 甚至能根据要求生成新类。&lt;/li&gt;
+&lt;li&gt;目前许多框架如cglib、Hibernate、Spring都直接或者间接地使用ASM操作字节码。&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="JDK" scheme="https://iamyangzehao.github.io/categories/JDK/"/>
+    
+      <category term="JVM" scheme="https://iamyangzehao.github.io/categories/JDK/JVM/"/>
+    
+    
+      <category term="JVM" scheme="https://iamyangzehao.github.io/tags/JVM/"/>
+    
+      <category term="ASM" scheme="https://iamyangzehao.github.io/tags/ASM/"/>
+    
+  </entry>
   
   <entry>
     <title>Jenkins配置主题</title>

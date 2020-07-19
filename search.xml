@@ -1,43 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>JDK体系结构</title>
-    <url>/2020/05/24/jvm/jdk-ti-xi-jie-gou/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这是摘要</p>
+    <title>ASM入门</title>
+    <url>/2020/07/11/jvm/asm-ru-men/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="ASM概述"><a href="#ASM概述" class="headerlink" title="ASM概述"></a>ASM概述</h3><ul>
+<li>ASM 是一个Java字节码操纵框架, 它能被用来动态生成类或者增强既有类的功能。</li>
+<li>ASM可以直接产生二进制Class文件, 也可以在类被加载入虚拟机之前动态改变类的行为, ASM从类文件中读入信息后, 能够改变类行为、分析类信息, 甚至能根据要求生成新类。</li>
+<li>目前许多框架如cglib、Hibernate、Spring都直接或者间接地使用ASM操作字节码。</li>
+</ul>
 <a id="more"></a>
 
-<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h1 id="主题配置修改到-Next主题进阶优化配置-部分了"><a href="#主题配置修改到-Next主题进阶优化配置-部分了" class="headerlink" title="主题配置修改到 Next主题进阶优化配置 部分了"></a>主题配置修改到 Next主题进阶优化配置 部分了</h1><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-<blockquote>
-<p>Deploy to remote sites</p>
-</blockquote>
+<h3 id="ASM编程模型"><a href="#ASM编程模型" class="headerlink" title="ASM编程模型"></a>ASM编程模型</h3><ul>
+<li>==Core API==: 提供了基于事件形式的编程模型。该模型不需要一次性地将整个类的结构读取到内存中，因此这种方式更快，需要更少的内存。但这种编程形式难度更大。</li>
+<li>==Tree API==: 提供了基于树形的编程模型。该模型需要一次性将一个类的完整结构全部读取到内存当中。所以这种方法需要更多的内存。这种编程方式比较简单。</li>
+</ul>
+<h4 id="ASM的Core-API-1"><a href="#ASM的Core-API-1" class="headerlink" title="ASM的Core API-1"></a>ASM的Core API-1</h4><ul>
+<li>ASM Core API中操纵字节码的功能基于ClassVisitor 接口。这个接口中的每个方法对应了Class文件中的每一项。</li>
+<li>ASM提供了三个基于ClassVisitor接口的类来实现Class文件的生成和转换。<ol>
+<li>ClassReader：ClassReader解析一个类的Class字节码。</li>
+<li>ClassAdapter：ClassAdapter是ClassVisitor的实现类，实现要变化的功能。</li>
+<li>ClassWriter：ClassWriter也是ClassVisitor的实现类，可以用来输出变化后的字节码。</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>ASM给我们提供了ASMifier工具来帮助开发，可使用ASMifier工具生成ASM结构来对比。</li>
+</ul>
 ]]></content>
       <categories>
-        <category>Java</category>
         <category>JDK</category>
+        <category>JVM</category>
       </categories>
       <tags>
         <tag>JVM</tag>
+        <tag>ASM</tag>
       </tags>
   </entry>
   <entry>
-    <title>Java并发--Thread&amp;&amp;Runnable详细讲解</title>
-    <url>/2020/05/31/bing-fa-bian-cheng/java-bing-fa-thread-runnable-xiang-xi-jiang-jie/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>关于Thread和Runnable的一些理解</p>
-<a id="more"></a>]]></content>
+    <title>virtualbox桥接模式下如何实现静态IP访问内外网</title>
+    <url>/2020/07/19/linux/virtualbox-qiao-jie-mo-shi-xia-ru-he-shi-xian-jing-tai-ip-fang-wen-nei-wai-wang/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>之前想要设置静态IP, 是因为设置了桥接网卡, 导致有时使用Xshell连接CentOS时IP发生了变化, 不得不查看IP重新连接, 所以想要设置静态IP, 解决连接问题, 一劳永逸.</p>
+</blockquote>
+<a id="more"></a>
+
+<ol>
+<li><p>首先, 在virtualbox中配置网卡, 选择桥接网卡模式</p>
+</li>
+<li><p>正常启动虚拟机, 通过 <code>ip addr</code>命令, 查看当前虚拟机的IP地址</p>
+</li>
+<li><p>修改网卡配置文件. <code>vi /etc/sysconfig/network-scripts/ifcfg-enp0s3</code>命令(我的网卡配置文件就是ifcfg-enp0s3文件)</p>
+</li>
+<li><p>将第四行的<code>BOOTPROTO=&quot;dhcp&quot;</code>改为<code>BOOTPROTO=&quot;static&quot;</code>,最后一行改成<code>ONBOOT=&quot;yes&quot;</code></p>
+</li>
+<li><p>查询物理主机的网卡信息, 通过ipconfig命令, 确认需要的IPv4地址、子网掩码、默认网关等信息</p>
+<pre class=" language-shell"><code class="language-shell">IPv4 地址 . . . . . . . . . . . . : 192.168.155.4
+子网掩码  . . . . . . . . . . . . : 255.255.255.0
+默认网关. . . . . . . . . . . . . : 192.168.155.1</code></pre>
+</li>
+<li><p>修改ifcfg-enp0s3配置文件, 实现内网外互通(PS:在配置文件最低行添加以下代码)</p>
+<pre><code>IPADDR=192.168.155.x        --- x可为2-255的任意数字, 这里我设置x为12
+NETMASK=255.255.255.0
+GATEWAY=192.168.155.1
+DNS1=114.114.114.114</code></pre></li>
+<li><p>修改完成后保存退出, 使用<code>systemctl start network.service</code>或<code>service network restart</code>重启网卡服务</p>
+</li>
+<li><p>验证结果: 以下验证步骤全部成功说明设置完成</p>
+<ul>
+<li>先进入虚拟机钟查询修改后的ip是否为设置的静态ip(命令: ip addr)</li>
+<li>检查主机与虚拟机的互通性(在主机上ping虚拟机的ip, 然后在虚拟机上ping主机的ip)</li>
+<li>检查虚拟机是否能连接网络(ping <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a>)</li>
+</ul>
+</li>
+</ol>
+]]></content>
       <categories>
-        <category>Java并发</category>
-        <category>多线程</category>
+        <category>CentOS</category>
       </categories>
       <tags>
-        <tag>并发编程</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL对于千万级的大表要怎么优化?</title>
+    <url>/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><!-- <div style='padding-left:30px'> -->
+<!-- &nbsp;&nbsp; -->
+<p>首先采用MySQL存储千亿级别的数据，确实是一项非常大的挑战。MySQL单表确实可以存储10亿级的数据，只是这个时候性能非常差，项目钟大量的实验证明，MySQL单表容量在500万左右，性能处于最佳状态。</p>
+<!-- </div> -->
+<a id="more"></a>
+
+<p>针对大表的优化，主要是通过数据库分库分表来解决，目前比较普遍的方案有三个：分区、分库分表、NoSQL/NewSQL。实际项目中，这三种方案是结合的，目前绝大部分系统的核心数据都是以RDBMS存储为主，NoSQL/NewSQL存储为辅。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><p class='p subtitle'>分区</p></h2><p>首先来了解一下分区方案。<br>分区表是由多个相关的底层表实现的。这些底层表也是由句柄对象表示，所以我们可以直接访问各个分区，存储引擎管理分区的各个底层表和管理普通表一样(所有的底层表都必须使用相同的存储引擎)，分区表的索引只是在各个底层表上各自加上一个相同的索引。这个方案对用户屏蔽了sharding的细节，即使查询条件没有sharding column，它也能正常工作(只是这个时候性能一般)。<br><br></p>
+<p><strong>不过它的缺点很明显:</strong>很多的资源都受到单机的限制，例如连接数、网络吞吐等。如何进行分区，在实际应用中是一个非常关键的要素之一。</p>
+<hr>
+<p>下面开始举例:</p>
+<blockquote>
+<p> 以客户信息为例，客户数据量5000万+，项目背景要求保存客户的银行卡绑定关系，客户的证件绑定关系，以及客户绑定的业务信息。</p>
+</blockquote>
+<p>此业务背景下，如何设计数据库呢？项目一期的时候，我们建立了一张客户业务绑定关系表，里面冗余了每一位客户绑定的业务信息。</p>
+]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>分库分表</tag>
+        <tag>性能优化</tag>
       </tags>
   </entry>
   <entry>
@@ -68,17 +136,94 @@
       </tags>
   </entry>
   <entry>
-    <title>渲染公式（MathJax）</title>
-    <url>/2020/02/23/ce-shi-wen-dang/example-md/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>more：</p>
+    <title>JDK体系结构</title>
+    <url>/2020/05/24/jvm/jdk-ti-xi-jie-gou/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这是摘要</p>
 <a id="more"></a>
 
-<p>$$t+1=2$$</p>
-<p>$$<br>\mbox{积累因子}=\begin{cases}<br>1+ni &amp; \mbox{单利}\\<br>(1+i)^n &amp; \mbox{复利}<br>\end{cases}<br>$$</p>
-<p>$$<br>\begin{equation}<br>\sum_{i=0}^n F_i \cdot \phi (H, p_i) - \sum_{i=1}^n a_i \cdot ( \tilde{x_i}, \tilde{y_i}) + b_i \cdot ( \tilde{x_i}^2 , \tilde{y_i}^2 )<br>\end{equation}<br>$$<br>$$<br>\begin{equation}<br>\beta^*(D) = \mathop{argmin} \limits_{\beta} \lambda {||\beta||}^2 + \sum_{i=1}^n max(0, 1 - y_i f_{\beta}(x_i))<br>\end{equation}<br>$$</p>
+<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h1 id="主题配置修改到-Next主题进阶优化配置-部分了"><a href="#主题配置修改到-Next主题进阶优化配置-部分了" class="headerlink" title="主题配置修改到 Next主题进阶优化配置 部分了"></a>主题配置修改到 Next主题进阶优化配置 部分了</h1><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<blockquote>
+<p>Deploy to remote sites</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Java</category>
+        <category>JDK</category>
+      </categories>
+      <tags>
+        <tag>JVM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS安装Kafka</title>
+    <url>/2020/06/21/kafka/centos-an-zhuang-kafka/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>最近刚开始学习Kafka，第一步肯定是学会怎么安装Kafka，现在我来讲解一下</p>
+<a id="more"></a>
+
+<h3 id="第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装"><a href="#第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装" class="headerlink" title="第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装"></a>第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装</h3><h3 id="第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper-安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper"><a href="#第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper-安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper" class="headerlink" title="第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper,安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper"></a>第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper,安装和启动Zookeeper的步骤参考<a href="https://segmentfault.com/a/1190000022199813" target="_blank" rel="noopener">CentOS安装ZooKeeper</a></h3><h3 id="第三步：-安装Kafka。"><a href="#第三步：-安装Kafka。" class="headerlink" title="第三步： 安装Kafka。"></a>第三步： 安装Kafka。</h3><p>安装Kafka分为:</p>
+<ul>
+<li>先下载Kafka并解压出来</li>
+<li>修改config/server.properties文件, 主要修改listeners、advertised.listeners配置(将host.name修改成kafka安装的主机的ip)和log.dirs(主要存放kafka的日志，可以在kafka根目录下创建一个logs文件夹，并将log.dirs设置成该文件夹的路径)和zookeeper.connect（设置连接的Zookeeper所在主机的ip，如果kafka和Zookeeper在同一台机器上，该配置不用改，默认为localhost）</li>
+<li>最后，在kafka的根目录下，执行bin/kafka-server-start.sh config/server.properties &amp; 命令，让kafka以后台方式启动<blockquote>
+<p>注意事项:kafka启动时，报cannot allocate memory错误，即内存不足，因为学生机内存较小，1G，所以需要更改kafka启动时的内存，解决方法: 进入bin目录，修改kafka-server-start.sh文件，将export KAFKA_HEAP_OPTS=”-Xmx1G -Xms1G”改成export KAFKA_HEAP_OPTS=”-Xmx256M -Xms128M” ，改小点，确保能启动</p>
+</blockquote>
+</li>
+</ul>
+<p>Kafka的基本命令:</p>
+<ul>
+<li>bin/kafka-server-stop.sh  – 停止Kafka</li>
+<li>bin/kafka-topics.sh –create –zookeeper localhost:2181 –replication-factor 1 –partitions 1 –topic test-topic 创建名为test-topic的Topic，localhost可更换为zookeeper所在的机器的ip</li>
+<li>bin/kafka-topics.sh –list –zookeeper localhost:2181 – 查看已经创建的Topic信息</li>
+<li>bin/kafka-console-producer.sh –broker-list localhost:9092 –topic test-topic – 发送消息</li>
+<li>bin/kafka-console-consumer.sh –bootstrap-server localhost:9092 –topic test-topic –from-beginning   – 接收消息</li>
+</ul>
+<blockquote>
+<p>如何安装Kafka图形界面工具Kafka-Center?</p>
+</blockquote>
+<ol>
+<li>网址: <a href="https://github.com/xaecbd/KafkaCenter" target="_blank" rel="noopener">https://github.com/xaecbd/KafkaCenter</a> 到github上下载table_script.sql和application.properties，并上传到服务器中(我传到了/usr/local/workspace/projects/gitproject/others目录中)</li>
+<li>将table_script.sql导入到数据库中</li>
+<li>修改application.properties配置文件，注意主要修改数据库地址和ElasticSearch地址(ES没有的话可不改)</li>
+<li>进入到/usr/local/workspace/projects/gitproject/others目录中，执行docker run -d -p 8240:8240 –name KafkaCenter -v ${PWD}/application.properties:/opt/app/kafka-center/config/application.properties xaecbd/kafka-center:2.1.0 命令</li>
+<li>在安全组中开放8240端口号(因为在上一步中指定了Kafka-Center的端口号为8240，不放开该端口号就无法访问)</li>
+<li>访问<a href="http://ip:8240，我的机器的ip是129.204.22.23，">http://ip:8240，我的机器的ip是129.204.22.23，</a> 所以通过<a href="http://129.204.22.23:8240/访问，访问账号密码是admin/admin" target="_blank" rel="noopener">http://129.204.22.23:8240/访问，访问账号密码是admin/admin</a></li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>test2</title>
+    <url>/2020/05/31/ce-shi-wen-dang/test2/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这是摘要</p>
+<a id="more"></a>
+
+<p>这是正文</p>
+<blockquote>
+<p>注意： <code>&lt;!-- more --&gt;</code>前后一定要有空行，不然可能导致显示错位。</p>
+</blockquote>
 ]]></content>
       <tags>
         <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java并发--Thread&amp;&amp;Runnable详细讲解</title>
+    <url>/2020/05/31/bing-fa-bian-cheng/java-bing-fa-thread-runnable-xiang-xi-jiang-jie/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>关于Thread和Runnable的一些理解</p>
+<a id="more"></a>]]></content>
+      <categories>
+        <category>Java并发</category>
+        <category>多线程</category>
+      </categories>
+      <tags>
+        <tag>并发编程</tag>
       </tags>
   </entry>
   <entry>
@@ -102,24 +247,14 @@
       </tags>
   </entry>
   <entry>
-    <title>test3</title>
-    <url>/2020/05/31/ce-shi-wen-dang/test3/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>由于支持多作者共同维护一个博客，所以可以设置单独一篇文章的作者：</p>
-<a id="more"></a>]]></content>
-      <tags>
-        <tag>测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>test2</title>
-    <url>/2020/05/31/ce-shi-wen-dang/test2/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这是摘要</p>
+    <title>渲染公式（MathJax）</title>
+    <url>/2020/02/23/ce-shi-wen-dang/example-md/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>more：</p>
 <a id="more"></a>
 
-<p>这是正文</p>
-<blockquote>
-<p>注意： <code>&lt;!-- more --&gt;</code>前后一定要有空行，不然可能导致显示错位。</p>
-</blockquote>
+<p>$$t+1=2$$</p>
+<p>$$<br>\mbox{积累因子}=\begin{cases}<br>1+ni &amp; \mbox{单利}\\<br>(1+i)^n &amp; \mbox{复利}<br>\end{cases}<br>$$</p>
+<p>$$<br>\begin{equation}<br>\sum_{i=0}^n F_i \cdot \phi (H, p_i) - \sum_{i=1}^n a_i \cdot ( \tilde{x_i}, \tilde{y_i}) + b_i \cdot ( \tilde{x_i}^2 , \tilde{y_i}^2 )<br>\end{equation}<br>$$<br>$$<br>\begin{equation}<br>\beta^*(D) = \mathop{argmin} \limits_{\beta} \lambda {||\beta||}^2 + \sum_{i=1}^n max(0, 1 - y_i f_{\beta}(x_i))<br>\end{equation}<br>$$</p>
 ]]></content>
       <tags>
         <tag>测试</tag>
@@ -141,9 +276,27 @@
       </tags>
   </entry>
   <entry>
+    <title>test3</title>
+    <url>/2020/05/31/ce-shi-wen-dang/test3/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>由于支持多作者共同维护一个博客，所以可以设置单独一篇文章的作者：</p>
+<a id="more"></a>]]></content>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>test5</title>
     <url>/2020/05/31/ce-shi-wen-dang/test5/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>如果标题居中且下方不想显示任何 meta 信息，可以这样设置：</p>
+<a id="more"></a>]]></content>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test4</title>
+    <url>/2020/05/31/ce-shi-wen-dang/test4/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>标题右边显示迷你音乐播放器，支持的字段有：server、type、id</p>
 <a id="more"></a>]]></content>
       <tags>
         <tag>测试</tag>
@@ -424,78 +577,6 @@ else:
       <tags>
         <tag>测试</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>test4</title>
-    <url>/2020/05/31/ce-shi-wen-dang/test4/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>标题右边显示迷你音乐播放器，支持的字段有：server、type、id</p>
-<a id="more"></a>]]></content>
-      <tags>
-        <tag>测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MySQL对于千万级的大表要怎么优化?</title>
-    <url>/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><!-- <div style='padding-left:30px'> -->
-<!-- &nbsp;&nbsp; -->
-<p>首先采用MySQL存储千亿级别的数据，确实是一项非常大的挑战。MySQL单表确实可以存储10亿级的数据，只是这个时候性能非常差，项目钟大量的实验证明，MySQL单表容量在500万左右，性能处于最佳状态。</p>
-<!-- </div> -->
-<a id="more"></a>
-
-<p>针对大表的优化，主要是通过数据库分库分表来解决，目前比较普遍的方案有三个：分区、分库分表、NoSQL/NewSQL。实际项目中，这三种方案是结合的，目前绝大部分系统的核心数据都是以RDBMS存储为主，NoSQL/NewSQL存储为辅。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><p class='p subtitle'>分区</p></h2><p>首先来了解一下分区方案。<br>分区表是由多个相关的底层表实现的。这些底层表也是由句柄对象表示，所以我们可以直接访问各个分区，存储引擎管理分区的各个底层表和管理普通表一样(所有的底层表都必须使用相同的存储引擎)，分区表的索引只是在各个底层表上各自加上一个相同的索引。这个方案对用户屏蔽了sharding的细节，即使查询条件没有sharding column，它也能正常工作(只是这个时候性能一般)。<br><br></p>
-<p><strong>不过它的缺点很明显:</strong>很多的资源都受到单机的限制，例如连接数、网络吞吐等。如何进行分区，在实际应用中是一个非常关键的要素之一。</p>
-<hr>
-<p>下面开始举例:</p>
-<blockquote>
-<p> 以客户信息为例，客户数据量5000万+，项目背景要求保存客户的银行卡绑定关系，客户的证件绑定关系，以及客户绑定的业务信息。</p>
-</blockquote>
-<p>此业务背景下，如何设计数据库呢？项目一期的时候，我们建立了一张客户业务绑定关系表，里面冗余了每一位客户绑定的业务信息。</p>
-]]></content>
-      <categories>
-        <category>MySQL</category>
-      </categories>
-      <tags>
-        <tag>分库分表</tag>
-        <tag>性能优化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CentOS安装Kafka</title>
-    <url>/2020/06/21/kafka/centos-an-zhuang-kafka/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>最近刚开始学习Kafka，第一步肯定是学会怎么安装Kafka，现在我来讲解一下</p>
-<a id="more"></a>
-
-<h3 id="第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装"><a href="#第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装" class="headerlink" title="第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装"></a>第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装</h3><h3 id="第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper-安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper"><a href="#第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper-安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper" class="headerlink" title="第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper,安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper"></a>第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper,安装和启动Zookeeper的步骤参考<a href="https://segmentfault.com/a/1190000022199813" target="_blank" rel="noopener">CentOS安装ZooKeeper</a></h3><h3 id="第三步：-安装Kafka。"><a href="#第三步：-安装Kafka。" class="headerlink" title="第三步： 安装Kafka。"></a>第三步： 安装Kafka。</h3><p>安装Kafka分为:</p>
-<ul>
-<li>先下载Kafka并解压出来</li>
-<li>修改config/server.properties文件, 主要修改listeners、advertised.listeners配置(将host.name修改成kafka安装的主机的ip)和log.dirs(主要存放kafka的日志，可以在kafka根目录下创建一个logs文件夹，并将log.dirs设置成该文件夹的路径)和zookeeper.connect（设置连接的Zookeeper所在主机的ip，如果kafka和Zookeeper在同一台机器上，该配置不用改，默认为localhost）</li>
-<li>最后，在kafka的根目录下，执行bin/kafka-server-start.sh config/server.properties &amp; 命令，让kafka以后台方式启动<blockquote>
-<p>注意事项:kafka启动时，报cannot allocate memory错误，即内存不足，因为学生机内存较小，1G，所以需要更改kafka启动时的内存，解决方法: 进入bin目录，修改kafka-server-start.sh文件，将export KAFKA_HEAP_OPTS=”-Xmx1G -Xms1G”改成export KAFKA_HEAP_OPTS=”-Xmx256M -Xms128M” ，改小点，确保能启动</p>
-</blockquote>
-</li>
-</ul>
-<p>Kafka的基本命令:</p>
-<ul>
-<li>bin/kafka-server-stop.sh  – 停止Kafka</li>
-<li>bin/kafka-topics.sh –create –zookeeper localhost:2181 –replication-factor 1 –partitions 1 –topic test-topic 创建名为test-topic的Topic，localhost可更换为zookeeper所在的机器的ip</li>
-<li>bin/kafka-topics.sh –list –zookeeper localhost:2181 – 查看已经创建的Topic信息</li>
-<li>bin/kafka-console-producer.sh –broker-list localhost:9092 –topic test-topic – 发送消息</li>
-<li>bin/kafka-console-consumer.sh –bootstrap-server localhost:9092 –topic test-topic –from-beginning   – 接收消息</li>
-</ul>
-<blockquote>
-<p>如何安装Kafka图形界面工具Kafka-Center?</p>
-</blockquote>
-<ol>
-<li>网址: <a href="https://github.com/xaecbd/KafkaCenter" target="_blank" rel="noopener">https://github.com/xaecbd/KafkaCenter</a> 到github上下载table_script.sql和application.properties，并上传到服务器中(我传到了/usr/local/workspace/projects/gitproject/others目录中)</li>
-<li>将table_script.sql导入到数据库中</li>
-<li>修改application.properties配置文件，注意主要修改数据库地址和ElasticSearch地址(ES没有的话可不改)</li>
-<li>进入到/usr/local/workspace/projects/gitproject/others目录中，执行docker run -d -p 8240:8240 –name KafkaCenter -v ${PWD}/application.properties:/opt/app/kafka-center/config/application.properties xaecbd/kafka-center:2.1.0 命令</li>
-<li>在安全组中开放8240端口号(因为在上一步中指定了Kafka-Center的端口号为8240，不放开该端口号就无法访问)</li>
-<li>访问<a href="http://ip:8240，我的机器的ip是129.204.22.23，">http://ip:8240，我的机器的ip是129.204.22.23，</a> 所以通过<a href="http://129.204.22.23:8240/访问，访问账号密码是admin/admin" target="_blank" rel="noopener">http://129.204.22.23:8240/访问，访问账号密码是admin/admin</a></li>
-</ol>
-]]></content>
   </entry>
   <entry>
     <title>nacos_gateway</title>
