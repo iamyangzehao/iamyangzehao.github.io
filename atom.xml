@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>iamyangzehao</title>
+  <title>iamyzh</title>
   
   <subtitle>今日事, 今日毕</subtitle>
   <link href="/atom.xml" rel="self"/>
@@ -10,7 +10,7 @@
   <id>https://iamyangzehao.github.io/</id>
   
   <author>
-    <name>iamyangzehao</name>
+    <name>iamyzh</name>
     
   </author>
   
@@ -173,29 +173,6 @@
     
     
       <category term="并发编程" scheme="https://iamyangzehao.github.io/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何搭建基于Hexo的独立博客</title>
-    <link href="https://iamyangzehao.github.io/2020/05/31/ce-shi-wen-dang/ce-shi-6/"/>
-    <id>https://iamyangzehao.github.io/2020/05/31/ce-shi-wen-dang/ce-shi-6/</id>
-    <published>2020-05-31T09:26:14.000Z</published>
-    <updated>2020-05-31T09:59:33.565Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;文本设置&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="测试" scheme="https://iamyangzehao.github.io/categories/%E6%B5%8B%E8%AF%95/"/>
-    
-      <category term="测试A" scheme="https://iamyangzehao.github.io/categories/%E6%B5%8B%E8%AF%95/%E6%B5%8B%E8%AF%95A/"/>
-    
-    
-      <category term="测试" scheme="https://iamyangzehao.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
     
   </entry>
   
