@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -18,9 +16,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>标签：性能优化 - iamyzh</title>
+  <title>WebMvcConfigurer接口详解 - iamyzh</title>
+  
+    <meta name="keywords" content="SpringBoot,SpringMVC">
   
 
+  
+    <meta name="description" content="SpringBoot确实为我们做了很多事情, 但有时候我们想要自己定义一些Handler、Interceptor、ViewResolver、MessageConverter时该怎么做呢？在SpringBoot 1.5版本都是靠重写WebMvcConfigurerAdapter的方法来添加自定义拦截器，消息转换器等...">
   
 
   <!-- feed -->
@@ -107,7 +109,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover ' style="display: none;">
+    <cover class='cover post' style="display: none;">
       <div class='cover-body'>
   <div class='a'>
     
@@ -417,10 +419,10 @@
 
 
 <div id="pjax-data" style="display: none">
-  <div id="pjax-ispage">false</div>
-  <div id="pjax-pageTitle"></div>
+  <div id="pjax-ispage">true</div>
+  <div id="pjax-pageTitle">WebMvcConfigurer接口详解</div>
   <div id="pjax-enable-cover">true</div>
-  <div id="pjax-permalink"></div>
+  <div id="pjax-permalink">https://iamyangzehao.github.io/2020/08/23/springboot/webmvcconfigurer-jie-kou-xiang-jie/</div>
   
   <div id="valine-path">none</div>
   <div id="valine-placeholder">none</div>
@@ -454,25 +456,12 @@
       
       
 
-
 <div class='l_main'>
   
-    
-      
-  <section class="post-list ">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+
   
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -482,11 +471,11 @@
       <div class="meta" id="header-meta">
         
           
-  <h2 class="title">
-    <a href="/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/">
-      MySQL对于千万级的大表要怎么优化?
+  <h1 class="title">
+    <a href="/2020/08/23/springboot/webmvcconfigurer-jie-kou-xiang-jie/">
+      WebMvcConfigurer接口详解
     </a>
-  </h2>
+  </h1>
 
 
         
@@ -509,9 +498,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/MySQL/' rel="nofollow">
+    <a href='/categories/SpringBoot/SpringMVC/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>MySQL</p>
+      <p>SpringBoot/SpringMVC</p>
     </a>
   </div>
 
@@ -522,45 +511,9 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年6月14日</p>
+    <p>发布于：2020年8月23日</p>
   </a>
 </div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-  <div class="new-meta-item browse valine">
-    <a class='notlink'>
-      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-      
-      <span id="/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/" class="leancloud_visitors" data-flag-title="MySQL对于千万级的大表要怎么优化?">
-      <p>
-        <span class="leancloud-visitors-count"></span>
-      </p>
-      </span>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-<div class="new-meta-item comments-count">
-  
-  <a href="/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/#comments">
-    <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/">0</span>
-    <span class="leancloud-comments-count">&nbsp;</span>
-  </a>
-</div>
-
 
             
           
@@ -578,103 +531,51 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- <div style='padding-left:30px'> -->
-<!-- &nbsp;&nbsp; -->
-<p>首先采用MySQL存储千亿级别的数据，确实是一项非常大的挑战。MySQL单表确实可以存储10亿级的数据，只是这个时候性能非常差，项目钟大量的实验证明，MySQL单表容量在500万左右，性能处于最佳状态。</p>
-<!-- </div> -->
-      
-    </div>
-    
-      
-        <a class= "readmore" href="/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
-
-  
-
-
-    
-  
-</div>
-<aside class='l_side'>
-  
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <p>SpringBoot确实为我们做了很多事情, 但有时候我们想要自己定义一些Handler、Interceptor、ViewResolver、MessageConverter时该怎么做呢？在SpringBoot 1.5版本都是靠重写WebMvcConfigurerAdapter的方法来添加自定义拦截器，消息转换器等。SpringBoot2.0后, 该类被标记为@Deprecated。因此我们只能靠实现WebMvcConfigurer接口来实现。接下来让我们看看这个接口类吧!</p>
+<a id="more"></a>
+          
+            <div class='article_footer'>
+              
+                
   
     
     
 
-<section class="widget blogger shadow desktop mobile">
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
   <div class='content'>
     
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://i.loli.net/2020/07/22/Xw9pZTkyhSPOY8M.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">iamyzh</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
+      <blockquote>
         
           
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
           
         
           
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>本文永久链接是：<a href=https://iamyangzehao.github.io/2020/08/23/springboot/webmvcconfigurer-jie-kou-xiang-jie/>https://iamyangzehao.github.io/2020/08/23/springboot/webmvcconfigurer-jie-kou-xiang-jie/</a></p>
           
         
-          
-            <a href="https://github.com/xaoxuu"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://music.163.com/#/user/home?id=63035382"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
+      </blockquote>
     
   </div>
 </section>
@@ -684,119 +585,166 @@
   
     
     
+
+<section class="widget qrcode  desktop mobile">
   
 
-  <section class="widget category shadow desktop">
+  <div class='content article-entry'>
     
-  <header>
+      
+        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></div>
+      
     
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      
+        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></div>
+      
     
-  </header>
+  </div>
+</section>
+
+  
 
 
-    <div class='content'>
-      <ul class="entry navigation">
+              
+            </div>
+          
+        </div>
         
-          <li><a class="flat-box"
-            title="/categories/CentOS/" href="/categories/CentOS/"
-            id="categoriesCentOS"
-            ><div class='name'>CentOS</div><div class='badge'>(1)</div></a></li>
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
         
-          <li><a class="flat-box"
-            title="/categories/JDK/" href="/categories/JDK/"
-            id="categoriesJDK"
-            ><div class='name'>JDK</div><div class='badge'>(1)</div></a></li>
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-23T11:43:55+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年8月23日</p>
+  </a>
+</div>
+
         
-          <li><a class="flat-box child"
-            title="/categories/JDK/JVM/" href="/categories/JDK/JVM/"
-            id="categoriesJDKJVM"
-            ><div class='name'>JVM</div><div class='badge'>(1)</div></a></li>
+      
         
-          <li><a class="flat-box"
-            title="/categories/Java/" href="/categories/Java/"
-            id="categoriesJava"
-            ><div class='name'>Java</div><div class='badge'>(1)</div></a></li>
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/SpringBoot/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>SpringBoot</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/SpringMVC/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>SpringMVC</p></a></div>
+
+
         
-          <li><a class="flat-box child"
-            title="/categories/Java/JDK/" href="/categories/Java/JDK/"
-            id="categoriesJavaJDK"
-            ><div class='name'>JDK</div><div class='badge'>(1)</div></a></li>
+      
         
-          <li><a class="flat-box"
-            title="/categories/Java%E5%B9%B6%E5%8F%91/" href="/categories/Java%E5%B9%B6%E5%8F%91/"
-            id="categoriesJavaE5B9B6E58F91"
-            ><div class='name'>Java并发</div><div class='badge'>(1)</div></a></li>
+          
+
         
-          <li><a class="flat-box child"
-            title="/categories/Java%E5%B9%B6%E5%8F%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" href="/categories/Java%E5%B9%B6%E5%8F%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"
-            id="categoriesJavaE5B9B6E58F91E5A49AE7BABFE7A88B"
-            ><div class='name'>多线程</div><div class='badge'>(1)</div></a></li>
+      
         
-          <li><a class="flat-box"
-            title="/categories/MySQL/" href="/categories/MySQL/"
-            id="categoriesMySQL"
-            ><div class='name'>MySQL</div><div class='badge'>(1)</div></a></li>
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://iamyangzehao.github.io/2020/08/23/springboot/webmvcconfigurer-jie-kou-xiang-jie/&title=WebMvcConfigurer接口详解 - iamyzh&summary=SpringBoot确实为我们做了很多事情, 但有时候我们想要自己定义一些Handler、Interceptor、ViewResolver、MessageConverter时该怎么做呢？在SpringBoot 1.5版本都是靠重写WebMvcConfigurerAdapter的方法来添加自定义拦截器，消息转换器等。SpringBoot2.0后, 该类被标记为@Deprecated。因此我们只能靠实现WebMvcConfigurer接口来实现。接下来让我们看看这个接口类吧!"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://iamyangzehao.github.io/2020/08/23/springboot/webmvcconfigurer-jie-kou-xiang-jie/&title=WebMvcConfigurer接口详解 - iamyzh&summary=SpringBoot确实为我们做了很多事情, 但有时候我们想要自己定义一些Handler、Interceptor、ViewResolver、MessageConverter时该怎么做呢？在SpringBoot 1.5版本都是靠重写WebMvcConfigurerAdapter的方法来添加自定义拦截器，消息转换器等。SpringBoot2.0后, 该类被标记为@Deprecated。因此我们只能靠实现WebMvcConfigurer接口来实现。接下来让我们看看这个接口类吧!"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://iamyangzehao.github.io/2020/08/23/springboot/webmvcconfigurer-jie-kou-xiang-jie/&title=WebMvcConfigurer接口详解 - iamyzh&summary=SpringBoot确实为我们做了很多事情, 但有时候我们想要自己定义一些Handler、Interceptor、ViewResolver、MessageConverter时该怎么做呢？在SpringBoot 1.5版本都是靠重写WebMvcConfigurerAdapter的方法来添加自定义拦截器，消息转换器等。SpringBoot2.0后, 该类被标记为@Deprecated。因此我们只能靠实现WebMvcConfigurer接口来实现。接下来让我们看看这个接口类吧!"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
         
-          <li><a class="flat-box"
-            title="/categories/SpringBoot/" href="/categories/SpringBoot/"
-            id="categoriesSpringBoot"
-            ><div class='name'>SpringBoot</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/SpringBoot/SpringMVC/" href="/categories/SpringBoot/SpringMVC/"
-            id="categoriesSpringBootSpringMVC"
-            ><div class='name'>SpringMVC</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/nacos/" href="/categories/nacos/"
-            id="categoriesnacos"
-            ><div class='name'>nacos</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/nacos/gateway/" href="/categories/nacos/gateway/"
-            id="categoriesnacosgateway"
-            ><div class='name'>gateway</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%B5%8B%E8%AF%95/" href="/categories/%E6%B5%8B%E8%AF%95/"
-            id="categoriesE6B58BE8AF95"
-            ><div class='name'>测试</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E6%B5%8B%E8%AF%95/%E6%B5%8B%E8%AF%95A/" href="/categories/%E6%B5%8B%E8%AF%95/%E6%B5%8B%E8%AF%95A/"
-            id="categoriesE6B58BE8AF95E6B58BE8AF95A"
-            ><div class='name'>测试A</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
+      
     </div>
   </section>
 
 
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/2020/07/19/linux/virtualbox-qiao-jie-mo-shi-xia-ru-he-shi-xian-jing-tai-ip-fang-wen-nei-wai-wang/'>
+                <p class='title'>virtualbox桥接模式下如何实现静态IP访问内外网<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>
+之前想要设置静态IP, 是因为设置了桥接网卡, 导致有时使用Xshell连接CentOS时IP发生了变化, 不得不查看IP重新连接, 所以想要设置静态IP, 解决连接问题, 一劳永逸.
+
+
+
+...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
   
 
   
     
-    
-  
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
 
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/ASM/" style="font-size: 14px; color: #999">ASM</a> <a href="/tags/JVM/" style="font-size: 19px; color: #777">JVM</a> <a href="/tags/Jenkins/" style="font-size: 14px; color: #999">Jenkins</a> <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/SpringBoot/" style="font-size: 14px; color: #999">SpringBoot</a> <a href="/tags/SpringMVC/" style="font-size: 14px; color: #999">SpringMVC</a> <a href="/tags/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/" style="font-size: 14px; color: #999">分库分表</a> <a href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" style="font-size: 14px; color: #999">并发编程</a> <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" style="font-size: 14px; color: #999">性能优化</a> <a href="/tags/%E6%AF%92%E9%B8%A1%E6%B1%A4/" style="font-size: 14px; color: #999">毒鸡汤</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 24px; color: #555">测试</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3/" style="font-size: 14px; color: #999">项目文档</a>
-    </div>
-  </section>
+      </section>
+    </section>
+  </article>
 
 
   
 
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
   
     
     
@@ -822,8 +770,18 @@
 
   
 
+  
+    
+    
+
+
+
+
+  
+
 
 </aside>
+
 
 
     </div>

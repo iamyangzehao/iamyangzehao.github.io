@@ -18,7 +18,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>标签：性能优化 - iamyzh</title>
+  <title>归档：2020/8 - iamyzh</title>
   
 
   
@@ -408,7 +408,7 @@
   
 
 
-  <div class="l_body nocover">
+  <div class="l_body">
     <div class='body-wrapper' id="pjax-container">
       
         <!--此文件用来存放一些不方便取值的变量-->
@@ -431,16 +431,16 @@
 
 <script>
   // 处理封面 此时 jquery 还没加载
-  if ("none" == "none") { // 移除封面
+  if ("blog" == "none") { // 移除封面
     document.getElementsByClassName('cover')[0].style.display = "none";
     document.getElementsByClassName('l_body')[0].classList.add("nocover");
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show");
   } else {
-    if ("none" == "blog") { // 半屏
+    if ("blog" == "blog") { // 半屏
       document.getElementsByClassName('cover')[0].classList.remove("full");
       document.getElementsByClassName('cover')[0].classList.add("half");
       document.getElementsByClassName('scroll-down')[0].style.display = "none";
-    } else if ("none" == "docs") { // 全屏
+    } else if ("blog" == "docs") { // 全屏
       document.getElementsByClassName('cover')[0].classList.remove("half");
       document.getElementsByClassName('cover')[0].classList.add("full");
       document.getElementsByClassName('scroll-down')[0].style.display = "";
@@ -454,11 +454,9 @@
       
       
 
-
 <div class='l_main'>
-  
-    
-      
+	
+		
   <section class="post-list ">
     
       
@@ -483,8 +481,8 @@
         
           
   <h2 class="title">
-    <a href="/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/">
-      MySQL对于千万级的大表要怎么优化?
+    <a href="/2020/08/23/springboot/webmvcconfigurer-jie-kou-xiang-jie/">
+      WebMvcConfigurer接口详解
     </a>
   </h2>
 
@@ -509,9 +507,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/MySQL/' rel="nofollow">
+    <a href='/categories/SpringBoot/SpringMVC/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>MySQL</p>
+      <p>SpringBoot/SpringMVC</p>
     </a>
   </div>
 
@@ -522,7 +520,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年6月14日</p>
+    <p>发布于：2020年8月23日</p>
   </a>
 </div>
 
@@ -539,7 +537,7 @@
     <a class='notlink'>
       <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
       
-      <span id="/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/" class="leancloud_visitors" data-flag-title="MySQL对于千万级的大表要怎么优化?">
+      <span id="/2020/08/23/springboot/webmvcconfigurer-jie-kou-xiang-jie/" class="leancloud_visitors" data-flag-title="WebMvcConfigurer接口详解">
       <p>
         <span class="leancloud-visitors-count"></span>
       </p>
@@ -554,9 +552,9 @@
               
 <div class="new-meta-item comments-count">
   
-  <a href="/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/#comments">
+  <a href="/2020/08/23/springboot/webmvcconfigurer-jie-kou-xiang-jie/#comments">
     <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/">0</span>
+    <span class="valine-comment-count" data-xid="/2020/08/23/springboot/webmvcconfigurer-jie-kou-xiang-jie/">0</span>
     <span class="leancloud-comments-count">&nbsp;</span>
   </a>
 </div>
@@ -581,15 +579,12 @@
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
       
-        <!-- <div style='padding-left:30px'> -->
-<!-- &nbsp;&nbsp; -->
-<p>首先采用MySQL存储千亿级别的数据，确实是一项非常大的挑战。MySQL单表确实可以存储10亿级的数据，只是这个时候性能非常差，项目钟大量的实验证明，MySQL单表容量在500万左右，性能处于最佳状态。</p>
-<!-- </div> -->
+        <p>SpringBoot确实为我们做了很多事情, 但有时候我们想要自己定义一些Handler、Interceptor、ViewResolver、MessageConverter时该怎么做呢？在SpringBoot 1.5版本都是靠重写WebMvcConfigurerAdapter的方法来添加自定义拦截器，消息转换器等。SpringBoot2.0后, 该类被标记为@Deprecated。因此我们只能靠实现WebMvcConfigurer接口来实现。接下来让我们看看这个接口类吧!</p>
       
     </div>
     
       
-        <a class= "readmore" href="/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/">
+        <a class= "readmore" href="/2020/08/23/springboot/webmvcconfigurer-jie-kou-xiang-jie/">
           阅读全文 <i class="fas fa-chevron-right"></i>
         </a>
       
@@ -611,8 +606,7 @@
   
 
 
-    
-  
+	
 </div>
 <aside class='l_side'>
   
@@ -824,6 +818,15 @@
 
 
 </aside>
+
+
+
+
+
+	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+	
+
+	
 
 
     </div>

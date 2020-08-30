@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamyangzehao.github.io/"/>
-  <updated>2020-07-19T00:48:30.151Z</updated>
+  <updated>2020-08-23T03:43:55.817Z</updated>
   <id>https://iamyangzehao.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WebMvcConfigurer接口详解</title>
+    <link href="https://iamyangzehao.github.io/2020/08/23/springboot/webmvcconfigurer-jie-kou-xiang-jie/"/>
+    <id>https://iamyangzehao.github.io/2020/08/23/springboot/webmvcconfigurer-jie-kou-xiang-jie/</id>
+    <published>2020-08-23T03:35:50.000Z</published>
+    <updated>2020-08-23T03:43:55.817Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;SpringBoot确实为我们做了很多事情, 但有时候我们想要自己定义一些Handler、Interceptor、ViewResolver、MessageConverter时该怎么做呢？在SpringBoot 1.5版本都是靠重写WebMvcConfigurerAdapter的方法来添加自定义拦截器，消息转换器等。SpringBoot2.0后, 该类被标记为@Deprecated。因此我们只能靠实现WebMvcConfigurer接口来实现。接下来让我们看看这个接口类吧!&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="SpringBoot" scheme="https://iamyangzehao.github.io/categories/SpringBoot/"/>
+    
+      <category term="SpringMVC" scheme="https://iamyangzehao.github.io/categories/SpringBoot/SpringMVC/"/>
+    
+    
+      <category term="SpringBoot" scheme="https://iamyangzehao.github.io/tags/SpringBoot/"/>
+    
+      <category term="SpringMVC" scheme="https://iamyangzehao.github.io/tags/SpringMVC/"/>
+    
+  </entry>
   
   <entry>
     <title>virtualbox桥接模式下如何实现静态IP访问内外网</title>
