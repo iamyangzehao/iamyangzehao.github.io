@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamyangzehao.github.io/"/>
-  <updated>2020-09-26T02:17:19.318Z</updated>
+  <updated>2020-09-26T02:18:20.303Z</updated>
   <id>https://iamyangzehao.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://iamyangzehao.github.io/2020/09/26/vue/guan-yu-an-zhuang-liao-vue-dan-vue-ming-ling-bu-sheng-xiao-de-wen-ti/"/>
     <id>https://iamyangzehao.github.io/2020/09/26/vue/guan-yu-an-zhuang-liao-vue-dan-vue-ming-ling-bu-sheng-xiao-de-wen-ti/</id>
     <published>2020-09-26T02:05:44.000Z</published>
-    <updated>2020-09-26T02:17:19.318Z</updated>
+    <updated>2020-09-26T02:18:20.303Z</updated>
     
     <summary type="html">
     
@@ -35,6 +35,8 @@
     
     </summary>
     
+    
+      <category term="vue" scheme="https://iamyangzehao.github.io/categories/vue/"/>
     
     
       <category term="vue" scheme="https://iamyangzehao.github.io/tags/vue/"/>

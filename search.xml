@@ -11,6 +11,12 @@
         <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>通过npm命令成功安装Vue和vue-cli, 但想调用vue命令查看安装的版本时却提示<code>vue -V 不是内部或外部命令，也不是可运行的程序或批处理文件解决方案</code></p><h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>对于上面出现的工具命令行不生效问题, 一般而言，就是环境变量没有配置好。由于我使用yarn命令安装vue, 因此需要找到yarn存放vue所在目录。</p><blockquote><p>yarn: C:\Users\hasee\AppData\Local\Yarn\bin<br>npm: C:\Users\hasee\AppData\Roaming\npm</p></blockquote><p>以上两个是yarn和npm下载的包所在路径, 只要把这两个路径添加到环境变量的Path中, 然后重启, 运行vue -V即可生效。</p>]]></content>
       
       
+      <categories>
+          
+          <category> vue </category>
+          
+      </categories>
+      
       
         <tags>
             
