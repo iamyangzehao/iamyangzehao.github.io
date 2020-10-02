@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -18,7 +16,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>标签：性能优化 - iamyzh</title>
+  <title>如何在CentOS中安装Gitlab - iamyzh</title>
+  
+    <meta name="keywords" content="CentOS,Gitlab">
   
 
   
@@ -107,7 +107,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover ' style="display: none;">
+    <cover class='cover post' style="display: none;">
       <div class='cover-body'>
   <div class='a'>
     
@@ -417,10 +417,10 @@
 
 
 <div id="pjax-data" style="display: none">
-  <div id="pjax-ispage">false</div>
-  <div id="pjax-pageTitle"></div>
+  <div id="pjax-ispage">true</div>
+  <div id="pjax-pageTitle">如何在CentOS中安装Gitlab</div>
   <div id="pjax-enable-cover">true</div>
-  <div id="pjax-permalink"></div>
+  <div id="pjax-permalink">https://iamyangzehao.github.io/2020/10/02/an-zhuang-jiao-cheng/ru-he-zai-centos-zhong-an-zhuang-gitlab/</div>
   
   <div id="valine-path">none</div>
   <div id="valine-placeholder">none</div>
@@ -454,25 +454,12 @@
       
       
 
-
 <div class='l_main'>
   
-    
-      
-  <section class="post-list ">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+
   
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -482,11 +469,11 @@
       <div class="meta" id="header-meta">
         
           
-  <h2 class="title">
-    <a href="/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/">
-      MySQL对于千万级的大表要怎么优化?
+  <h1 class="title">
+    <a href="/2020/10/02/an-zhuang-jiao-cheng/ru-he-zai-centos-zhong-an-zhuang-gitlab/">
+      如何在CentOS中安装Gitlab
     </a>
-  </h2>
+  </h1>
 
 
         
@@ -509,9 +496,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/MySQL/' rel="nofollow">
+    <a href='/categories/Gitlab/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>MySQL</p>
+      <p>Gitlab</p>
     </a>
   </div>
 
@@ -522,45 +509,9 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年6月14日</p>
+    <p>发布于：2020年10月2日</p>
   </a>
 </div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-  <div class="new-meta-item browse valine">
-    <a class='notlink'>
-      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-      
-      <span id="/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/" class="leancloud_visitors" data-flag-title="MySQL对于千万级的大表要怎么优化?">
-      <p>
-        <span class="leancloud-visitors-count"></span>
-      </p>
-      </span>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-<div class="new-meta-item comments-count">
-  
-  <a href="/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/#comments">
-    <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/">0</span>
-    <span class="leancloud-comments-count">&nbsp;</span>
-  </a>
-</div>
-
 
             
           
@@ -578,103 +529,130 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- <div style='padding-left:30px'> -->
-<!-- &nbsp;&nbsp; -->
-<p>首先采用MySQL存储千亿级别的数据，确实是一项非常大的挑战。MySQL单表确实可以存储10亿级的数据，只是这个时候性能非常差，项目钟大量的实验证明，MySQL单表容量在500万左右，性能处于最佳状态。</p>
-<!-- </div> -->
-      
-    </div>
-    
-      
-        <a class= "readmore" href="/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          <blockquote>
+<p>前言: Gitlab对机器的要求比较高, 如果仅用于学习, 建议在本地跑虚拟机安装Gitlab; 如果用云服务器的话, 最好给服务器分配至少4G内存</p>
+</blockquote>
+<h2 id="以下是Gitlab的安装步骤"><a href="#以下是Gitlab的安装步骤" class="headerlink" title="以下是Gitlab的安装步骤"></a>以下是Gitlab的安装步骤</h2><h3 id="1-先检查依赖-sshd"><a href="#1-先检查依赖-sshd" class="headerlink" title="1. 先检查依赖: sshd"></a>1. 先检查依赖: sshd</h3><pre class=" language-shell"><code class="language-shell">[root@localhost download]# rpm -qa|grep openssh-server
+openssh-server-7.4p1-21.el7.x86_64
 
-          </div>
-        
-      
-    
-  </section>
+[root@localhost download]# ps -e|grep sshd
+  695 ?        00:00:00 sshd
+ 3013 ?        00:00:00 sshd
+ 3016 ?        00:00:00 sshd
+</code></pre>
+<br>
+如果没有的话, 需要安装该依赖:
+
+<pre class=" language-shell"><code class="language-shell">yum install -y curl policycoreutils-python openssh-server
+systemctl enable sshd
+systemctl start sshd
+firewall-cmd --permanent --add-service=http
+systemctl reload firewalld</code></pre>
+<blockquote>
+<p>PS: 因为我是root账号, 所以每行命令前不加sudo, 否则就要把sudo加上</p>
+</blockquote>
+<hr>
+<h3 id="2-检查postfix是否安装"><a href="#2-检查postfix是否安装" class="headerlink" title="2. 检查postfix是否安装"></a>2. 检查postfix是否安装</h3><pre class=" language-shell"><code class="language-shell">[root@localhost download]# rpm -qa|grep postfix
+postfix-2.10.1-9.el7.x86_64
+
+[root@localhost download]# ps -e|grep postfix</code></pre>
+<p>如果没有一样要先手动安装：</p>
+<pre class=" language-shell"><code class="language-shell">yum install postfix
+systemctl enable postfix
+systemctl start postfix</code></pre>
+<hr>
+<p>做完以上准备工作后, 开始准备下载安装Gitlab</p>
+<blockquote>
+<p>Gitlab下载地址: <a href="https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/</a></p>
+</blockquote>
+<blockquote>
+<p>由于我是用vagrant安装CentOS, 所以可以通过在Vagrantfile添加一下配置让服务器内存增加到4G:</p>
+</blockquote>
+<pre class=" language-shell"><code class="language-shell">  config.vm.provider "virtualbox" do |v|
+    v.memory = 4096
+    v.cpus = 2
+  end</code></pre>
+<hr>
+<h3 id="3-找到你要存放的软件的目录"><a href="#3-找到你要存放的软件的目录" class="headerlink" title="3. 找到你要存放的软件的目录"></a>3. 找到你要存放的软件的目录</h3><pre class=" language-shell"><code class="language-shell">(1) mkdir /usr/local/download   # 创建download目录
+
+(2) cd /usr/local/download
+
+(3) wget https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/gitlab-ce-13.4.0-ce.0.el7.x86_64.rpm</code></pre>
+<p>通过以上步骤把Gitlab安装包下载下来</p>
+<blockquote>
+<p>如果wget不能使用, 先通过yum install wget安装</p>
+</blockquote>
+<hr>
+<h3 id="4-安装并配置GItlab"><a href="#4-安装并配置GItlab" class="headerlink" title="4. 安装并配置GItlab"></a>4. 安装并配置GItlab</h3><pre class=" language-shell"><code class="language-shell">[root@localhost download]# (1) rpm -ivh https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/gitlab-ce-13.4.0-ce.0.el7.x86_64.rpm  #安装Gitlab
+
+(2) vi /etc/gitlab/gitlab.rb  # 编辑gitlab.rb文件
+
+(3) external_url 'http://192.168.56.10'     #找到external_url， 并配置成本机的ip地址
+
+(4) gitlab-ctl reconfigure      # 然后运行该命令, 这步执行时间比较久，如果最后执行失败，一般是机器配置不够</code></pre>
+<hr>
+<h3 id="5-安装成功之后重启"><a href="#5-安装成功之后重启" class="headerlink" title="5. 安装成功之后重启"></a>5. 安装成功之后重启</h3><pre class=" language-shell"><code class="language-shell">gitlab-ctl restart</code></pre>
+<hr>
+<h3 id="6-检查是否安装成功"><a href="#6-检查是否安装成功" class="headerlink" title="6. 检查是否安装成功"></a>6. 检查是否安装成功</h3><pre class=" language-shell"><code class="language-shell">netstat -tunlp  # 查看端口占用
+
+firewall-cmd --zone=public --list-ports     # 查看防火墙
+firewall-cmd --zone=public --add-port=80/tcp --permanent
+firewall-cmd --reload</code></pre>
+<hr>
+<h3 id="7-访问Gitlab-http-192-168-56-10-刚登登录时会让你重置密码-用户名是root-密码则是你设置的那个-至此-Gitlab就可以使用了"><a href="#7-访问Gitlab-http-192-168-56-10-刚登登录时会让你重置密码-用户名是root-密码则是你设置的那个-至此-Gitlab就可以使用了" class="headerlink" title="7. 访问Gitlab: http://192.168.56.10, 刚登登录时会让你重置密码, 用户名是root, 密码则是你设置的那个, 至此, Gitlab就可以使用了."></a>7. 访问Gitlab: <a href="http://192.168.56.10" target="_blank" rel="noopener">http://192.168.56.10</a>, 刚登登录时会让你重置密码, 用户名是root, 密码则是你设置的那个, 至此, Gitlab就可以使用了.</h3><hr>
+<h2 id="有些人可能因为某些步骤导致gitlab安装不成功-那么该如何删除"><a href="#有些人可能因为某些步骤导致gitlab安装不成功-那么该如何删除" class="headerlink" title="有些人可能因为某些步骤导致gitlab安装不成功, 那么该如何删除?"></a>有些人可能因为某些步骤导致gitlab安装不成功, 那么该如何删除?</h2><h3 id="1-停止gitlab"><a href="#1-停止gitlab" class="headerlink" title="1. 停止gitlab"></a>1. 停止gitlab</h3><pre><code>gitlab-ctl stop</code></pre><h3 id="2-卸载gitlab"><a href="#2-卸载gitlab" class="headerlink" title="2. 卸载gitlab"></a>2. 卸载gitlab</h3><pre><code> rpm -e gitlab-ce</code></pre><h3 id="3-查看gitlab进程"><a href="#3-查看gitlab进程" class="headerlink" title="3. 查看gitlab进程"></a>3. 查看gitlab进程</h3><pre><code>ps -ef|grep gitlab  # 杀掉第一个守护进程, 即: /opt/gitlab/service log
+kill -9 4473    # 杀掉该进程, 4473是该进程的pid, 杀掉后需要查看gitlab进程是否还存在</code></pre><h3 id="4-删除gitlab文件"><a href="#4-删除gitlab文件" class="headerlink" title="4. 删除gitlab文件"></a>4. 删除gitlab文件</h3><pre><code>find / -name *gitlab*|xargs rm -rf  # 删除所有包含gitlab的文件及目录
+find / -name gitlab |xargs rm -rf   # 删除gitlab-ctl uninstall时自动在root下备份的配置文件
+ls /root/gitlab*                    # 看看有没有，有也删除</code></pre><p>通过以上几步就可以彻底卸载gitlab</p>
+<p>用到的文档资料:</p>
+<ul>
+<li>修改vagrant虚拟机内存配置: <a href="https://www.vagrantup.com/docs/providers/virtualbox/configuration.html" target="_blank" rel="noopener">https://www.vagrantup.com/docs/providers/virtualbox/configuration.html</a></li>
+<li>安装wget命令: <a href="https://www.php.cn/linux-419500.html" target="_blank" rel="noopener">https://www.php.cn/linux-419500.html</a></li>
+</ul>
+
+          
+            <div class='article_footer'>
+              
+                
   
     
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
     
-    
+
+
 
   
 
-
-    
-  
-</div>
-<aside class='l_side'>
-  
   
     
     
 
-<section class="widget blogger shadow desktop mobile">
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
   <div class='content'>
     
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://i.loli.net/2020/07/22/Xw9pZTkyhSPOY8M.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">iamyzh</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
+      <blockquote>
         
           
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
           
         
           
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>本文永久链接是：<a href=https://iamyangzehao.github.io/2020/10/02/an-zhuang-jiao-cheng/ru-he-zai-centos-zhong-an-zhuang-gitlab/>https://iamyangzehao.github.io/2020/10/02/an-zhuang-jiao-cheng/ru-he-zai-centos-zhong-an-zhuang-gitlab/</a></p>
           
         
-          
-            <a href="https://github.com/xaoxuu"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://music.163.com/#/user/home?id=63035382"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
+      </blockquote>
     
   </div>
 </section>
@@ -684,129 +662,162 @@
   
     
     
+
+<section class="widget qrcode  desktop mobile">
   
 
-  <section class="widget category shadow desktop">
+  <div class='content article-entry'>
     
-  <header>
+      
+        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></div>
+      
     
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      
+        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></div>
+      
     
-  </header>
+  </div>
+</section>
+
+  
 
 
-    <div class='content'>
-      <ul class="entry navigation">
+              
+            </div>
+          
+        </div>
         
-          <li><a class="flat-box"
-            title="/categories/CentOS/" href="/categories/CentOS/"
-            id="categoriesCentOS"
-            ><div class='name'>CentOS</div><div class='badge'>(1)</div></a></li>
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
         
-          <li><a class="flat-box"
-            title="/categories/Gitlab/" href="/categories/Gitlab/"
-            id="categoriesGitlab"
-            ><div class='name'>Gitlab</div><div class='badge'>(1)</div></a></li>
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T18:54:04+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年10月2日</p>
+  </a>
+</div>
+
         
-          <li><a class="flat-box"
-            title="/categories/JDK/" href="/categories/JDK/"
-            id="categoriesJDK"
-            ><div class='name'>JDK</div><div class='badge'>(1)</div></a></li>
+      
         
-          <li><a class="flat-box child"
-            title="/categories/JDK/JVM/" href="/categories/JDK/JVM/"
-            id="categoriesJDKJVM"
-            ><div class='name'>JVM</div><div class='badge'>(1)</div></a></li>
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/CentOS/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>CentOS</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Gitlab/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Gitlab</p></a></div>
+
+
         
-          <li><a class="flat-box"
-            title="/categories/Java/" href="/categories/Java/"
-            id="categoriesJava"
-            ><div class='name'>Java</div><div class='badge'>(1)</div></a></li>
+      
         
-          <li><a class="flat-box child"
-            title="/categories/Java/JDK/" href="/categories/Java/JDK/"
-            id="categoriesJavaJDK"
-            ><div class='name'>JDK</div><div class='badge'>(1)</div></a></li>
+          
+
         
-          <li><a class="flat-box"
-            title="/categories/Java%E5%B9%B6%E5%8F%91/" href="/categories/Java%E5%B9%B6%E5%8F%91/"
-            id="categoriesJavaE5B9B6E58F91"
-            ><div class='name'>Java并发</div><div class='badge'>(1)</div></a></li>
+      
         
-          <li><a class="flat-box child"
-            title="/categories/Java%E5%B9%B6%E5%8F%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" href="/categories/Java%E5%B9%B6%E5%8F%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"
-            id="categoriesJavaE5B9B6E58F91E5A49AE7BABFE7A88B"
-            ><div class='name'>多线程</div><div class='badge'>(1)</div></a></li>
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://iamyangzehao.github.io/2020/10/02/an-zhuang-jiao-cheng/ru-he-zai-centos-zhong-an-zhuang-gitlab/&title=如何在CentOS中安装Gitlab - iamyzh&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://iamyangzehao.github.io/2020/10/02/an-zhuang-jiao-cheng/ru-he-zai-centos-zhong-an-zhuang-gitlab/&title=如何在CentOS中安装Gitlab - iamyzh&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://iamyangzehao.github.io/2020/10/02/an-zhuang-jiao-cheng/ru-he-zai-centos-zhong-an-zhuang-gitlab/&title=如何在CentOS中安装Gitlab - iamyzh&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
         
-          <li><a class="flat-box"
-            title="/categories/MySQL/" href="/categories/MySQL/"
-            id="categoriesMySQL"
-            ><div class='name'>MySQL</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/SpringBoot/" href="/categories/SpringBoot/"
-            id="categoriesSpringBoot"
-            ><div class='name'>SpringBoot</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/SpringBoot/SpringMVC/" href="/categories/SpringBoot/SpringMVC/"
-            id="categoriesSpringBootSpringMVC"
-            ><div class='name'>SpringMVC</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/nacos/" href="/categories/nacos/"
-            id="categoriesnacos"
-            ><div class='name'>nacos</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/nacos/gateway/" href="/categories/nacos/gateway/"
-            id="categoriesnacosgateway"
-            ><div class='name'>gateway</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/vue/" href="/categories/vue/"
-            id="categoriesvue"
-            ><div class='name'>vue</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%B5%8B%E8%AF%95/" href="/categories/%E6%B5%8B%E8%AF%95/"
-            id="categoriesE6B58BE8AF95"
-            ><div class='name'>测试</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E6%B5%8B%E8%AF%95/%E6%B5%8B%E8%AF%95A/" href="/categories/%E6%B5%8B%E8%AF%95/%E6%B5%8B%E8%AF%95A/"
-            id="categoriesE6B58BE8AF95E6B58BE8AF95A"
-            ><div class='name'>测试A</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
+      
     </div>
   </section>
 
 
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/2020/09/26/vue/guan-yu-an-zhuang-liao-vue-dan-vue-ming-ling-bu-sheng-xiao-de-wen-ti/'>
+                <p class='title'>关于安装了Vue但vue命令不生效的问题<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>问题通过npm命令成功安装Vue和vue-cli, 但想调用vue命令查看安装的版本时却提示vue -V 不是内部或外部命令，也不是可运行的程序或批处理文件解决方案
+解决方案对于上面出现的工具命...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
   
 
   
     
-    
-  
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
 
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/ASM/" style="font-size: 14px; color: #999">ASM</a> <a href="/tags/CentOS/" style="font-size: 14px; color: #999">CentOS</a> <a href="/tags/Gitlab/" style="font-size: 14px; color: #999">Gitlab</a> <a href="/tags/JVM/" style="font-size: 19px; color: #777">JVM</a> <a href="/tags/Jenkins/" style="font-size: 14px; color: #999">Jenkins</a> <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/SpringBoot/" style="font-size: 14px; color: #999">SpringBoot</a> <a href="/tags/SpringMVC/" style="font-size: 14px; color: #999">SpringMVC</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/" style="font-size: 14px; color: #999">分库分表</a> <a href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" style="font-size: 14px; color: #999">并发编程</a> <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" style="font-size: 14px; color: #999">性能优化</a> <a href="/tags/%E6%AF%92%E9%B8%A1%E6%B1%A4/" style="font-size: 14px; color: #999">毒鸡汤</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 24px; color: #555">测试</a> <a href="/tags/%E9%97%AE%E9%A2%98%E7%BA%A0%E9%94%99/" style="font-size: 14px; color: #999">问题纠错</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3/" style="font-size: 14px; color: #999">项目文档</a>
-    </div>
-  </section>
+      </section>
+    </section>
+  </article>
 
 
   
 
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+</div>
+<aside class='l_side'>
+  
   
     
     
@@ -832,8 +843,32 @@
 
   
 
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#以下是Gitlab的安装步骤"><span class="toc-text">以下是Gitlab的安装步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-先检查依赖-sshd"><span class="toc-text">1. 先检查依赖: sshd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-检查postfix是否安装"><span class="toc-text">2. 检查postfix是否安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-找到你要存放的软件的目录"><span class="toc-text">3. 找到你要存放的软件的目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-安装并配置GItlab"><span class="toc-text">4. 安装并配置GItlab</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-安装成功之后重启"><span class="toc-text">5. 安装成功之后重启</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-检查是否安装成功"><span class="toc-text">6. 检查是否安装成功</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-访问Gitlab-http-192-168-56-10-刚登登录时会让你重置密码-用户名是root-密码则是你设置的那个-至此-Gitlab就可以使用了"><span class="toc-text">7. 访问Gitlab: http:&#x2F;&#x2F;192.168.56.10, 刚登登录时会让你重置密码, 用户名是root, 密码则是你设置的那个, 至此, Gitlab就可以使用了.</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有些人可能因为某些步骤导致gitlab安装不成功-那么该如何删除"><span class="toc-text">有些人可能因为某些步骤导致gitlab安装不成功, 那么该如何删除?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-停止gitlab"><span class="toc-text">1. 停止gitlab</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-卸载gitlab"><span class="toc-text">2. 卸载gitlab</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-查看gitlab进程"><span class="toc-text">3. 查看gitlab进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-删除gitlab文件"><span class="toc-text">4. 删除gitlab文件</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
 
 </aside>
+
 
 
     </div>

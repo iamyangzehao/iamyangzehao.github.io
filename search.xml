@@ -1,398 +1,1056 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>关于安装了Vue但vue命令不生效的问题</title>
-      <link href="/2020/09/26/vue/guan-yu-an-zhuang-liao-vue-dan-vue-ming-ling-bu-sheng-xiao-de-wen-ti/"/>
-      <url>/2020/09/26/vue/guan-yu-an-zhuang-liao-vue-dan-vue-ming-ling-bu-sheng-xiao-de-wen-ti/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>通过npm命令成功安装Vue和vue-cli, 但想调用vue命令查看安装的版本时却提示<code>vue -V 不是内部或外部命令，也不是可运行的程序或批处理文件解决方案</code></p><h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>对于上面出现的工具命令行不生效问题, 一般而言，就是环境变量没有配置好。由于我使用yarn命令安装vue, 因此需要找到yarn存放vue所在目录。</p><blockquote><p>yarn: C:\Users\hasee\AppData\Local\Yarn\bin<br>npm: C:\Users\hasee\AppData\Roaming\npm</p></blockquote><p>以上两个是yarn和npm下载的包所在路径, 只要把这两个路径添加到环境变量的Path中, 然后重启, 运行vue -V即可生效。</p>]]></content>
-      
-      
+<search>
+  <entry>
+    <title>ASM入门</title>
+    <url>/2020/07/11/jvm/asm-ru-men/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="ASM概述"><a href="#ASM概述" class="headerlink" title="ASM概述"></a>ASM概述</h3><ul>
+<li>ASM 是一个Java字节码操纵框架, 它能被用来动态生成类或者增强既有类的功能。</li>
+<li>ASM可以直接产生二进制Class文件, 也可以在类被加载入虚拟机之前动态改变类的行为, ASM从类文件中读入信息后, 能够改变类行为、分析类信息, 甚至能根据要求生成新类。</li>
+<li>目前许多框架如cglib、Hibernate、Spring都直接或者间接地使用ASM操作字节码。</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="ASM编程模型"><a href="#ASM编程模型" class="headerlink" title="ASM编程模型"></a>ASM编程模型</h3><ul>
+<li>==Core API==: 提供了基于事件形式的编程模型。该模型不需要一次性地将整个类的结构读取到内存中，因此这种方式更快，需要更少的内存。但这种编程形式难度更大。</li>
+<li>==Tree API==: 提供了基于树形的编程模型。该模型需要一次性将一个类的完整结构全部读取到内存当中。所以这种方法需要更多的内存。这种编程方式比较简单。</li>
+</ul>
+<h4 id="ASM的Core-API-1"><a href="#ASM的Core-API-1" class="headerlink" title="ASM的Core API-1"></a>ASM的Core API-1</h4><ul>
+<li>ASM Core API中操纵字节码的功能基于ClassVisitor 接口。这个接口中的每个方法对应了Class文件中的每一项。</li>
+<li>ASM提供了三个基于ClassVisitor接口的类来实现Class文件的生成和转换。<ol>
+<li>ClassReader：ClassReader解析一个类的Class字节码。</li>
+<li>ClassAdapter：ClassAdapter是ClassVisitor的实现类，实现要变化的功能。</li>
+<li>ClassWriter：ClassWriter也是ClassVisitor的实现类，可以用来输出变化后的字节码。</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>ASM给我们提供了ASMifier工具来帮助开发，可使用ASMifier工具生成ASM结构来对比。</li>
+</ul>
+]]></content>
       <categories>
-          
-          <category> vue </category>
-          
+        <category>JDK</category>
+        <category>JVM</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> vue </tag>
-            
-            <tag> 问题纠错 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>WebMvcConfigurer接口详解</title>
-      <link href="/2020/08/23/springboot/webmvcconfigurer-jie-kou-xiang-jie/"/>
-      <url>/2020/08/23/springboot/webmvcconfigurer-jie-kou-xiang-jie/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>SpringBoot确实为我们做了很多事情, 但有时候我们想要自己定义一些Handler、Interceptor、ViewResolver、MessageConverter时该怎么做呢？在SpringBoot 1.5版本都是靠重写WebMvcConfigurerAdapter的方法来添加自定义拦截器，消息转换器等。SpringBoot2.0后, 该类被标记为@Deprecated。因此我们只能靠实现WebMvcConfigurer接口来实现。接下来让我们看看这个接口类吧!</p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>JVM</tag>
+        <tag>ASM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JDK体系结构</title>
+    <url>/2020/05/24/jvm/jdk-ti-xi-jie-gou/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这是摘要</p>
+<a id="more"></a>
+
+<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h1 id="主题配置修改到-Next主题进阶优化配置-部分了"><a href="#主题配置修改到-Next主题进阶优化配置-部分了" class="headerlink" title="主题配置修改到 Next主题进阶优化配置 部分了"></a>主题配置修改到 Next主题进阶优化配置 部分了</h1><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<blockquote>
+<p>Deploy to remote sites</p>
+</blockquote>
+]]></content>
       <categories>
-          
-          <category> SpringBoot </category>
-          
-          <category> SpringMVC </category>
-          
+        <category>Java</category>
+        <category>JDK</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> SpringBoot </tag>
-            
-            <tag> SpringMVC </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>virtualbox桥接模式下如何实现静态IP访问内外网</title>
-      <link href="/2020/07/19/linux/virtualbox-qiao-jie-mo-shi-xia-ru-he-shi-xian-jing-tai-ip-fang-wen-nei-wai-wang/"/>
-      <url>/2020/07/19/linux/virtualbox-qiao-jie-mo-shi-xia-ru-he-shi-xian-jing-tai-ip-fang-wen-nei-wai-wang/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p>之前想要设置静态IP, 是因为设置了桥接网卡, 导致有时使用Xshell连接CentOS时IP发生了变化, 不得不查看IP重新连接, 所以想要设置静态IP, 解决连接问题, 一劳永逸.</p></blockquote><a id="more"></a><ol><li><p>首先, 在virtualbox中配置网卡, 选择桥接网卡模式</p></li><li><p>正常启动虚拟机, 通过 <code>ip addr</code>命令, 查看当前虚拟机的IP地址</p></li><li><p>修改网卡配置文件. <code>vi /etc/sysconfig/network-scripts/ifcfg-enp0s3</code>命令(我的网卡配置文件就是ifcfg-enp0s3文件)</p></li><li><p>将第四行的<code>BOOTPROTO=&quot;dhcp&quot;</code>改为<code>BOOTPROTO=&quot;static&quot;</code>,最后一行改成<code>ONBOOT=&quot;yes&quot;</code></p></li><li><p>查询物理主机的网卡信息, 通过ipconfig命令, 确认需要的IPv4地址、子网掩码、默认网关等信息</p><pre class=" language-shell"><code class="language-shell">IPv4 地址 . . . . . . . . . . . . : 192.168.155.4子网掩码  . . . . . . . . . . . . : 255.255.255.0默认网关. . . . . . . . . . . . . : 192.168.155.1</code></pre></li><li><p>修改ifcfg-enp0s3配置文件, 实现内网外互通(PS:在配置文件最低行添加以下代码)</p><pre><code>IPADDR=192.168.155.x        --- x可为2-255的任意数字, 这里我设置x为12NETMASK=255.255.255.0GATEWAY=192.168.155.1DNS1=114.114.114.114</code></pre></li><li><p>修改完成后保存退出, 使用<code>systemctl start network.service</code>或<code>service network restart</code>重启网卡服务</p></li><li><p>验证结果: 以下验证步骤全部成功说明设置完成</p><ul><li>先进入虚拟机钟查询修改后的ip是否为设置的静态ip(命令: ip addr)</li><li>检查主机与虚拟机的互通性(在主机上ping虚拟机的ip, 然后在虚拟机上ping主机的ip)</li><li>检查虚拟机是否能连接网络(ping <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a>)</li></ul></li></ol>]]></content>
-      
-      
+      <tags>
+        <tag>JVM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Jenkins配置主题</title>
+    <url>/2020/06/25/jenkins/jenkins-pei-zhi-zhu-ti/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Jenkins默认的主题实在是太丑了,所以简单配置了一下主题, 现在舒服多了</p>
+<a id="more"></a>
+
+<p>Jenkins主题的配置步骤:</p>
+<ul>
+<li>首先进入配置Jenkins主题的网站: <a href="http://afonsof.com/jenkins-material-theme/" target="_blank" rel="noopener">http://afonsof.com/jenkins-material-theme/</a></li>
+<li><ol>
+<li>选择你喜欢的颜色，这里我选teal, 2. 然后上传logo，logo最好是透明背景的，要不然会很丑. 3.下载主题</li>
+</ol>
+</li>
+<li>将该主题上传到服务器中。因为我是用docker安装Jenkins的，然后Jenkins指向的实际目录是/home/jenkins_home,，所以进入 /home/jenkins_home下的useContent目录，然后新建layout目录，然后上传该主题到layout目录下</li>
+<li>进入Jenkins管理界面, 点击Manage Jenkins，然后点击Manage Plugins，在可选插件项的搜索框中搜索Simple Theme并安装，安装成功后点击Manage Jenkins，然后点击Configure System，找到Theme一栏，新增CSS URL，填入主题所在位置的路径(<a href="http://192.168.155.4:9090/userContent/layout/主题名称.css" target="_blank" rel="noopener">http://192.168.155.4:9090/userContent/layout/主题名称.css</a> PS：192.168.155.4:9090是访问Jenkins的路径，主题名称填具体的主题名称)</li>
+<li>保存<blockquote>
+<p>具体参考： <a href="https://blog.csdn.net/DynastyRumble/article/details/103910441" target="_blank" rel="noopener">https://blog.csdn.net/DynastyRumble/article/details/103910441</a></p>
+</blockquote>
+</li>
+</ul>
+<p>Jenkins的登录账号密码<br>账号: admin<br>密码: wsyzhstbms</p>
+<p>/** <a href="https://jenkins-zh.cn/" target="_blank" rel="noopener">https://jenkins-zh.cn/</a> */</p>
+]]></content>
+      <tags>
+        <tag>Jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WebMvcConfigurer接口详解</title>
+    <url>/2020/08/23/springboot/webmvcconfigurer-jie-kou-xiang-jie/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>SpringBoot确实为我们做了很多事情, 但有时候我们想要自己定义一些Handler、Interceptor、ViewResolver、MessageConverter时该怎么做呢？在SpringBoot 1.5版本都是靠重写WebMvcConfigurerAdapter的方法来添加自定义拦截器，消息转换器等。SpringBoot2.0后, 该类被标记为@Deprecated。因此我们只能靠实现WebMvcConfigurer接口来实现。接下来让我们看看这个接口类吧!</p>
+<a id="more"></a>]]></content>
       <categories>
-          
-          <category> CentOS </category>
-          
+        <category>SpringBoot</category>
+        <category>SpringMVC</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Linux </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>ASM入门</title>
-      <link href="/2020/07/11/jvm/asm-ru-men/"/>
-      <url>/2020/07/11/jvm/asm-ru-men/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="ASM概述"><a href="#ASM概述" class="headerlink" title="ASM概述"></a>ASM概述</h3><ul><li>ASM 是一个Java字节码操纵框架, 它能被用来动态生成类或者增强既有类的功能。</li><li>ASM可以直接产生二进制Class文件, 也可以在类被加载入虚拟机之前动态改变类的行为, ASM从类文件中读入信息后, 能够改变类行为、分析类信息, 甚至能根据要求生成新类。</li><li>目前许多框架如cglib、Hibernate、Spring都直接或者间接地使用ASM操作字节码。</li></ul><a id="more"></a><h3 id="ASM编程模型"><a href="#ASM编程模型" class="headerlink" title="ASM编程模型"></a>ASM编程模型</h3><ul><li>==Core API==: 提供了基于事件形式的编程模型。该模型不需要一次性地将整个类的结构读取到内存中，因此这种方式更快，需要更少的内存。但这种编程形式难度更大。</li><li>==Tree API==: 提供了基于树形的编程模型。该模型需要一次性将一个类的完整结构全部读取到内存当中。所以这种方法需要更多的内存。这种编程方式比较简单。</li></ul><h4 id="ASM的Core-API-1"><a href="#ASM的Core-API-1" class="headerlink" title="ASM的Core API-1"></a>ASM的Core API-1</h4><ul><li>ASM Core API中操纵字节码的功能基于ClassVisitor 接口。这个接口中的每个方法对应了Class文件中的每一项。</li><li>ASM提供了三个基于ClassVisitor接口的类来实现Class文件的生成和转换。<ol><li>ClassReader：ClassReader解析一个类的Class字节码。</li><li>ClassAdapter：ClassAdapter是ClassVisitor的实现类，实现要变化的功能。</li><li>ClassWriter：ClassWriter也是ClassVisitor的实现类，可以用来输出变化后的字节码。</li></ol></li></ul><ul><li>ASM给我们提供了ASMifier工具来帮助开发，可使用ASMifier工具生成ASM结构来对比。</li></ul>]]></content>
-      
-      
+      <tags>
+        <tag>SpringBoot</tag>
+        <tag>SpringMVC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于安装了Vue但vue命令不生效的问题</title>
+    <url>/2020/09/26/vue/guan-yu-an-zhuang-liao-vue-dan-vue-ming-ling-bu-sheng-xiao-de-wen-ti/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>通过npm命令成功安装Vue和vue-cli, 但想调用vue命令查看安装的版本时却提示<code>vue -V 不是内部或外部命令，也不是可运行的程序或批处理文件解决方案</code></p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>对于上面出现的工具命令行不生效问题, 一般而言，就是环境变量没有配置好。由于我使用yarn命令安装vue, 因此需要找到yarn存放vue所在目录。</p>
+<blockquote>
+<p>yarn: C:\Users\hasee\AppData\Local\Yarn\bin<br>npm: C:\Users\hasee\AppData\Roaming\npm</p>
+</blockquote>
+<p>以上两个是yarn和npm下载的包所在路径, 只要把这两个路径添加到环境变量的Path中, 然后重启, 运行vue -V即可生效。</p>
+]]></content>
       <categories>
-          
-          <category> JDK </category>
-          
-          <category> JVM </category>
-          
+        <category>vue</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> JVM </tag>
-            
-            <tag> ASM </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Jenkins配置主题</title>
-      <link href="/2020/06/25/jenkins/jenkins-pei-zhi-zhu-ti/"/>
-      <url>/2020/06/25/jenkins/jenkins-pei-zhi-zhu-ti/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Jenkins默认的主题实在是太丑了,所以简单配置了一下主题, 现在舒服多了</p><a id="more"></a><p>Jenkins主题的配置步骤:</p><ul><li>首先进入配置Jenkins主题的网站: <a href="http://afonsof.com/jenkins-material-theme/" target="_blank" rel="noopener">http://afonsof.com/jenkins-material-theme/</a></li><li><ol><li>选择你喜欢的颜色，这里我选teal, 2. 然后上传logo，logo最好是透明背景的，要不然会很丑. 3.下载主题</li></ol></li><li>将该主题上传到服务器中。因为我是用docker安装Jenkins的，然后Jenkins指向的实际目录是/home/jenkins_home,，所以进入 /home/jenkins_home下的useContent目录，然后新建layout目录，然后上传该主题到layout目录下</li><li>进入Jenkins管理界面, 点击Manage Jenkins，然后点击Manage Plugins，在可选插件项的搜索框中搜索Simple Theme并安装，安装成功后点击Manage Jenkins，然后点击Configure System，找到Theme一栏，新增CSS URL，填入主题所在位置的路径(<a href="http://192.168.155.4:9090/userContent/layout/主题名称.css" target="_blank" rel="noopener">http://192.168.155.4:9090/userContent/layout/主题名称.css</a> PS：192.168.155.4:9090是访问Jenkins的路径，主题名称填具体的主题名称)</li><li>保存<blockquote><p>具体参考： <a href="https://blog.csdn.net/DynastyRumble/article/details/103910441" target="_blank" rel="noopener">https://blog.csdn.net/DynastyRumble/article/details/103910441</a></p></blockquote></li></ul><p>Jenkins的登录账号密码<br>账号: admin<br>密码: wsyzhstbms</p><p>/** <a href="https://jenkins-zh.cn/" target="_blank" rel="noopener">https://jenkins-zh.cn/</a> */</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> Jenkins </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>CentOS安装Kafka</title>
-      <link href="/2020/06/21/kafka/centos-an-zhuang-kafka/"/>
-      <url>/2020/06/21/kafka/centos-an-zhuang-kafka/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>最近刚开始学习Kafka，第一步肯定是学会怎么安装Kafka，现在我来讲解一下</p><a id="more"></a><h3 id="第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装"><a href="#第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装" class="headerlink" title="第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装"></a>第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装</h3><h3 id="第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper-安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper"><a href="#第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper-安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper" class="headerlink" title="第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper,安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper"></a>第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper,安装和启动Zookeeper的步骤参考<a href="https://segmentfault.com/a/1190000022199813" target="_blank" rel="noopener">CentOS安装ZooKeeper</a></h3><h3 id="第三步：-安装Kafka。"><a href="#第三步：-安装Kafka。" class="headerlink" title="第三步： 安装Kafka。"></a>第三步： 安装Kafka。</h3><p>安装Kafka分为:</p><ul><li>先下载Kafka并解压出来</li><li>修改config/server.properties文件, 主要修改listeners、advertised.listeners配置(将host.name修改成kafka安装的主机的ip)和log.dirs(主要存放kafka的日志，可以在kafka根目录下创建一个logs文件夹，并将log.dirs设置成该文件夹的路径)和zookeeper.connect（设置连接的Zookeeper所在主机的ip，如果kafka和Zookeeper在同一台机器上，该配置不用改，默认为localhost）</li><li>最后，在kafka的根目录下，执行bin/kafka-server-start.sh config/server.properties &amp; 命令，让kafka以后台方式启动<blockquote><p>注意事项:kafka启动时，报cannot allocate memory错误，即内存不足，因为学生机内存较小，1G，所以需要更改kafka启动时的内存，解决方法: 进入bin目录，修改kafka-server-start.sh文件，将export KAFKA_HEAP_OPTS=”-Xmx1G -Xms1G”改成export KAFKA_HEAP_OPTS=”-Xmx256M -Xms128M” ，改小点，确保能启动</p></blockquote></li></ul><p>Kafka的基本命令:</p><ul><li>bin/kafka-server-stop.sh  – 停止Kafka</li><li>bin/kafka-topics.sh –create –zookeeper localhost:2181 –replication-factor 1 –partitions 1 –topic test-topic 创建名为test-topic的Topic，localhost可更换为zookeeper所在的机器的ip</li><li>bin/kafka-topics.sh –list –zookeeper localhost:2181 – 查看已经创建的Topic信息</li><li>bin/kafka-console-producer.sh –broker-list localhost:9092 –topic test-topic – 发送消息</li><li>bin/kafka-console-consumer.sh –bootstrap-server localhost:9092 –topic test-topic –from-beginning   – 接收消息</li></ul><blockquote><p>如何安装Kafka图形界面工具Kafka-Center?</p></blockquote><ol><li>网址: <a href="https://github.com/xaecbd/KafkaCenter" target="_blank" rel="noopener">https://github.com/xaecbd/KafkaCenter</a> 到github上下载table_script.sql和application.properties，并上传到服务器中(我传到了/usr/local/workspace/projects/gitproject/others目录中)</li><li>将table_script.sql导入到数据库中</li><li>修改application.properties配置文件，注意主要修改数据库地址和ElasticSearch地址(ES没有的话可不改)</li><li>进入到/usr/local/workspace/projects/gitproject/others目录中，执行docker run -d -p 8240:8240 –name KafkaCenter -v ${PWD}/application.properties:/opt/app/kafka-center/config/application.properties xaecbd/kafka-center:2.1.0 命令</li><li>在安全组中开放8240端口号(因为在上一步中指定了Kafka-Center的端口号为8240，不放开该端口号就无法访问)</li><li>访问<a href="http://ip:8240，我的机器的ip是129.204.22.23，">http://ip:8240，我的机器的ip是129.204.22.23，</a> 所以通过<a href="http://129.204.22.23:8240/访问，访问账号密码是admin/admin" target="_blank" rel="noopener">http://129.204.22.23:8240/访问，访问账号密码是admin/admin</a></li></ol>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>MySQL对于千万级的大表要怎么优化?</title>
-      <link href="/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/"/>
-      <url>/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><!-- <div style='padding-left:30px'> --><!-- &nbsp;&nbsp; --><p>首先采用MySQL存储千亿级别的数据，确实是一项非常大的挑战。MySQL单表确实可以存储10亿级的数据，只是这个时候性能非常差，项目钟大量的实验证明，MySQL单表容量在500万左右，性能处于最佳状态。</p><!-- </div> --><a id="more"></a><p>针对大表的优化，主要是通过数据库分库分表来解决，目前比较普遍的方案有三个：分区、分库分表、NoSQL/NewSQL。实际项目中，这三种方案是结合的，目前绝大部分系统的核心数据都是以RDBMS存储为主，NoSQL/NewSQL存储为辅。</p><h2 id=""><a href="#" class="headerlink" title=""></a><p class='p subtitle'>分区</p></h2><p>首先来了解一下分区方案。<br>分区表是由多个相关的底层表实现的。这些底层表也是由句柄对象表示，所以我们可以直接访问各个分区，存储引擎管理分区的各个底层表和管理普通表一样(所有的底层表都必须使用相同的存储引擎)，分区表的索引只是在各个底层表上各自加上一个相同的索引。这个方案对用户屏蔽了sharding的细节，即使查询条件没有sharding column，它也能正常工作(只是这个时候性能一般)。<br><br></p><p><strong>不过它的缺点很明显:</strong>很多的资源都受到单机的限制，例如连接数、网络吞吐等。如何进行分区，在实际应用中是一个非常关键的要素之一。</p><hr><p>下面开始举例:</p><blockquote><p> 以客户信息为例，客户数据量5000万+，项目背景要求保存客户的银行卡绑定关系，客户的证件绑定关系，以及客户绑定的业务信息。</p></blockquote><p>此业务背景下，如何设计数据库呢？项目一期的时候，我们建立了一张客户业务绑定关系表，里面冗余了每一位客户绑定的业务信息。</p>]]></content>
-      
-      
+      <tags>
+        <tag>vue</tag>
+        <tag>问题纠错</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>virtualbox桥接模式下如何实现静态IP访问内外网</title>
+    <url>/2020/07/19/linux/virtualbox-qiao-jie-mo-shi-xia-ru-he-shi-xian-jing-tai-ip-fang-wen-nei-wai-wang/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>之前想要设置静态IP, 是因为设置了桥接网卡, 导致有时使用Xshell连接CentOS时IP发生了变化, 不得不查看IP重新连接, 所以想要设置静态IP, 解决连接问题, 一劳永逸.</p>
+</blockquote>
+<a id="more"></a>
+
+<ol>
+<li><p>首先, 在virtualbox中配置网卡, 选择桥接网卡模式</p>
+</li>
+<li><p>正常启动虚拟机, 通过 <code>ip addr</code>命令, 查看当前虚拟机的IP地址</p>
+</li>
+<li><p>修改网卡配置文件. <code>vi /etc/sysconfig/network-scripts/ifcfg-enp0s3</code>命令(我的网卡配置文件就是ifcfg-enp0s3文件)</p>
+</li>
+<li><p>将第四行的<code>BOOTPROTO=&quot;dhcp&quot;</code>改为<code>BOOTPROTO=&quot;static&quot;</code>,最后一行改成<code>ONBOOT=&quot;yes&quot;</code></p>
+</li>
+<li><p>查询物理主机的网卡信息, 通过ipconfig命令, 确认需要的IPv4地址、子网掩码、默认网关等信息</p>
+<pre class=" language-shell"><code class="language-shell">IPv4 地址 . . . . . . . . . . . . : 192.168.155.4
+子网掩码  . . . . . . . . . . . . : 255.255.255.0
+默认网关. . . . . . . . . . . . . : 192.168.155.1</code></pre>
+</li>
+<li><p>修改ifcfg-enp0s3配置文件, 实现内网外互通(PS:在配置文件最低行添加以下代码)</p>
+<pre><code>IPADDR=192.168.155.x        --- x可为2-255的任意数字, 这里我设置x为12
+NETMASK=255.255.255.0
+GATEWAY=192.168.155.1
+DNS1=114.114.114.114</code></pre></li>
+<li><p>修改完成后保存退出, 使用<code>systemctl start network.service</code>或<code>service network restart</code>重启网卡服务</p>
+</li>
+<li><p>验证结果: 以下验证步骤全部成功说明设置完成</p>
+<ul>
+<li>先进入虚拟机钟查询修改后的ip是否为设置的静态ip(命令: ip addr)</li>
+<li>检查主机与虚拟机的互通性(在主机上ping虚拟机的ip, 然后在虚拟机上ping主机的ip)</li>
+<li>检查虚拟机是否能连接网络(ping <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a>)</li>
+</ul>
+</li>
+</ol>
+]]></content>
       <categories>
-          
-          <category> MySQL </category>
-          
+        <category>CentOS</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 分库分表 </tag>
-            
-            <tag> 性能优化 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>nacos_gateway</title>
-      <link href="/2020/06/13/gu-li-shang-cheng-xiang-mu-fang-dang/nacos-gateway/"/>
-      <url>/2020/06/13/gu-li-shang-cheng-xiang-mu-fang-dang/nacos-gateway/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>谷粒商城项目文档第一篇: nacos&amp;&amp;gateway</p><a id="more"></a><h1 id="1-Nacos概述"><a href="#1-Nacos概述" class="headerlink" title="1. Nacos概述"></a>1. Nacos概述</h1><p>官方地址：<a href="https://nacos.io" target="_blank" rel="noopener">https://nacos.io</a></p><p>github地址：<a href="https://github.com/alibaba/nacos" target="_blank" rel="noopener">https://github.com/alibaba/nacos</a></p><p>面试题：微服务间远程交互的过程？</p><ol><li>先去注册中心查询服务的服务器地址</li><li>调用方给对方发送http请求</li></ol><h2 id="1-1-什么是-Nacos"><a href="#1-1-什么是-Nacos" class="headerlink" title="1.1.   什么是 Nacos"></a>1.1.   什么是 Nacos</h2><p>Nacos 是阿里巴巴推出来的一个新开源项目，这是一个更易于构建云原生应用的动态服务发现、配置管理和服务管理平台。</p><p>Nacos 致力于帮助您发现、配置和管理微服务。Nacos 提供了一组简单易用的特性集，帮助您快速实现动态服务发现、服务配置、服务元数据及流量管理。</p><p>Nacos 帮助您更敏捷和容易地构建、交付和管理微服务平台。 Nacos 是构建以“服务”为中心的现代应用架构 (例如微服务范式、云原生范式) 的服务基础设施。</p><h2 id="1-2-为什么是Nacos"><a href="#1-2-为什么是Nacos" class="headerlink" title="1.2.   为什么是Nacos"></a>1.2.   为什么是Nacos</h2><p>常见的注册中心：</p><ol><li>Eureka（原生，2.0遇到性能瓶颈，停止维护）</li><li>Zookeeper（支持，专业的独立产品。例如：dubbo）</li><li>Consul（原生，GO语言开发）</li><li>Nacos</li></ol><p>相对于 Spring Cloud Eureka 来说，Nacos 更强大。</p><p><strong>Nacos = Spring Cloud Eureka + Spring Cloud Config</strong></p><p>Nacos 可以与 Spring, Spring Boot, Spring Cloud 集成，并能代替 Spring Cloud Eureka, Spring Cloud Config。</p><ul><li><p>通过 Nacos Server 和 spring-cloud-starter-alibaba-nacos-config 实现配置的动态变更。</p></li><li><p>通过 Nacos Server 和 spring-cloud-starter-alibaba-nacos-discovery 实现服务的注册与发现。</p></li></ul><h2 id="1-3-可以干什么"><a href="#1-3-可以干什么" class="headerlink" title="1.3.   可以干什么"></a>1.3.   可以干什么</h2><p>Nacos是以服务为主要服务对象的中间件，Nacos支持所有主流的服务发现、配置和管理。</p><p>Nacos主要提供以下四大功能：</p><ol><li>服务发现和服务健康监测</li><li>动态配置服务</li><li>动态DNS服务</li><li>服务及其元数据管理</li></ol><h1 id="2-Nacos快速开始"><a href="#2-Nacos快速开始" class="headerlink" title="2.  Nacos快速开始"></a>2.  Nacos快速开始</h1><p>结构图：</p><p><img src="assets/1542119181336-b6dc0fc1-ed46-43a7-9e5f-68c9ca344d60.png" alt="echo service"></p><p>Nacos 依赖 Java 环境来运行。如果您是从代码开始构建并运行Nacos，还需要为此配置 Maven环境，请确保是在以下版本环境中安装使用:</p><ol><li>64 bit OS，支持 Linux/Unix/Mac/Windows，推荐选用 Linux/Unix/Mac。</li><li>64 bit JDK 1.8+</li><li>Maven 3.2.x+</li></ol><h2 id="2-1-下载及安装"><a href="#2-1-下载及安装" class="headerlink" title="2.1.   下载及安装"></a>2.1.   下载及安装</h2><p>你可以通过源码和发行包两种方式来获取 Nacos。</p><ol><li>从 Github 上下载源码方式</li></ol><pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/alibaba/nacos.git<span class="token function">cd</span> nacos/<span class="token comment" spellcheck="true"># 切换到nacos根目录，执行下列命令</span>mvn -Prelease-nacos clean <span class="token function">install</span> -U  <span class="token comment" spellcheck="true"># 要下载很多依赖 会比较慢</span><span class="token function">ls</span> -al distribution/target/ <span class="token comment" spellcheck="true"># 切换目录</span><span class="token comment" spellcheck="true"># change the $version to your actual path</span><span class="token function">cd</span> distribution/target/nacos-server-<span class="token variable">$version</span>/nacos/bin</code></pre><p> <img src="assets/1565845455301.png" alt="1565845455301"></p><ol start="2"><li>下载源码压缩包方式</li></ol><p>您可以从 <a href="https://github.com/alibaba/nacos/releases" target="_blank" rel="noopener">最新稳定版本</a> 下载 <code>nacos-server-$version.zip</code> 包。</p><pre class=" language-bash"><code class="language-bash">  unzip nacos-server-<span class="token variable">$version</span>.zip 或者 <span class="token function">tar</span> -xvf nacos-server-<span class="token variable">$version</span>.tar.gz  <span class="token function">cd</span> nacos/bin</code></pre><h2 id="2-2-启动nacos服务"><a href="#2-2-启动nacos服务" class="headerlink" title="2.2.   启动nacos服务"></a>2.2.   启动nacos服务</h2><p><strong>Linux/Unix/Mac</strong></p><p>启动命令(standalone代表着单机模式运行，非集群模式):</p><pre><code>sh startup.sh -m standalone</code></pre><p><strong>Windows</strong></p><p>启动命令：</p><pre><code>cmd startup.cmd</code></pre><p>或者双击startup.cmd运行文件。</p><p>访问：<a href="http://localhost:8848/nacos" target="_blank" rel="noopener">http://localhost:8848/nacos</a></p><p>用户名密码：nacos/nacos</p><p><img src="assets/1565850935295.png" alt="1565850935295"></p><h2 id="2-3-注册中心"><a href="#2-3-注册中心" class="headerlink" title="2.3.   注册中心"></a>2.3.   注册中心</h2><p>首先创建两个工程：nacos-provider、nacos-consumer</p><p><img src="assets/1565852100033.png" alt="1565852100033"></p><p><img src="assets/1565852168387.png" alt="1565852168387"></p><p>创建生产者：</p><p><img src="assets/1565852279616.png" alt="1565852279616"></p><p><img src="assets/1565852355522.png" alt="1565852355522"></p><p><img src="assets/1565852477523.png" alt="1565852477523"></p><p>创建消费者：</p><p><img src="assets/1565852617198.png" alt="1565852617198"></p><p><img src="assets/1567250727696.png" alt="1567250727696"></p><p><img src="assets/1565852777390.png" alt="1565852777390"></p><p>然后，一路下一步或者ok。效果如下：</p><p><img src="assets/1565852929136.png" alt="1565852929136"></p><h3 id="2-3-1-生产者基本代码"><a href="#2-3-1-生产者基本代码" class="headerlink" title="2.3.1.   生产者基本代码"></a>2.3.1.   生产者基本代码</h3><p> <img src="assets/1565854507349.png" alt="1565854507349"></p><p>ProviderController代码如下：</p><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ProviderController</span> <span class="token punctuation">{</span>    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${myName}"</span><span class="token punctuation">)</span>    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span>    <span class="token keyword">public</span> String <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>        <span class="token keyword">return</span> <span class="token string">"hello "</span> <span class="token operator">+</span> name<span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><p>application.properties配置如下：</p><pre class=" language-properties"><code class="language-properties"><span class="token attr-name">server.port</span><span class="token punctuation">=</span><span class="token attr-value">8070</span><span class="token comment" spellcheck="true"># 自定义参数</span><span class="token attr-name">myName</span><span class="token punctuation">=</span><span class="token attr-value">nacos</span></code></pre><h3 id="2-3-2-生产者注册到nacos"><a href="#2-3-2-生产者注册到nacos" class="headerlink" title="2.3.2.   生产者注册到nacos"></a>2.3.2.   生产者注册到nacos</h3><p>生产者注册到nacos注册中心，步骤：</p><ol><li><p>添加依赖：spring-cloud-starter-alibaba-nacos-discovery及springCloud</p><pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-web<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-starter-alibaba-nacos-discovery<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>0.2.2.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span><span class="token comment" spellcheck="true">&lt;!-- SpringCloud的依赖 --></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencyManagement</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-dependencies<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>Greenwich.SR2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>type</span><span class="token punctuation">></span></span>pom<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>type</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>import<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencyManagement</span><span class="token punctuation">></span></span></code></pre><p><strong>注意</strong>：版本 0.2.x.RELEASE 对应的是 Spring Boot 2.x 版本，版本 0.1.x.RELEASE 对应的是 Spring Boot 1.x 版本。</p></li><li><p>在 <code>application.properties</code> 中配置nacos服务地址和应用名</p><pre class=" language-properties"><code class="language-properties"><span class="token attr-name">server.port</span><span class="token punctuation">=</span><span class="token attr-value">8070</span><span class="token attr-name">spring.application.name</span><span class="token punctuation">=</span><span class="token attr-value">nacos-provider</span><span class="token comment" spellcheck="true"># nacos服务地址</span><span class="token attr-name">spring.cloud.nacos.discovery.server-addr</span><span class="token punctuation">=</span><span class="token attr-value">127.0.0.1:8848</span><span class="token comment" spellcheck="true"># 自定义参数</span><span class="token attr-name">myName</span><span class="token punctuation">=</span><span class="token attr-value">nacos</span></code></pre></li><li><p>通过Spring Cloud原生注解 <code>@EnableDiscoveryClient</code> 开启服务注册发现功能</p><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span><span class="token annotation punctuation">@EnableDiscoveryClient</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NacosProviderApplication</span> <span class="token punctuation">{</span>    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>        SpringApplication<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>NacosProviderApplication<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre></li></ol><p>效果：</p><p><img src="assets/1567251987453.png" alt="1567251987453"></p><h3 id="2-3-3-消费端基本代码"><a href="#2-3-3-消费端基本代码" class="headerlink" title="2.3.3.   消费端基本代码"></a>2.3.3.   消费端基本代码</h3><p> <img src="assets/1567253090953.png" alt="1567253090953"></p><p>ConsumerController代码：</p><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ConsumerController</span> <span class="token punctuation">{</span>    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"hi"</span><span class="token punctuation">)</span>    <span class="token keyword">public</span> String <span class="token function">hi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">return</span> <span class="token string">"hi provider!"</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><p>application.properties:</p><pre class=" language-properties"><code class="language-properties"><span class="token attr-name">server.port</span><span class="token punctuation">=</span><span class="token attr-value">8080</span></code></pre><h3 id="2-3-4-消费者注册到nacos"><a href="#2-3-4-消费者注册到nacos" class="headerlink" title="2.3.4.   消费者注册到nacos"></a>2.3.4.   消费者注册到nacos</h3><p>消费者注册到nacos跟生产者差不多，也分3步：</p><ol><li><p>添加依赖：同生产者</p></li><li><p>在application.properties中配置nacos的服务名及服务地址：同生产者</p></li><li><p>在引导类（NacosConsumerApplication.java）中添加@EnableDiscoveryClient注解：同生产者</p></li></ol><p>效果：</p><p><img src="assets/1567254178699.png" alt="1567254178699"></p><h3 id="2-3-5-使用feign调用服务"><a href="#2-3-5-使用feign调用服务" class="headerlink" title="2.3.5.   使用feign调用服务"></a>2.3.5.   使用feign调用服务</h3><p> <img src="assets/1567254545445.png" alt="1567254545445"></p><p>以前我们使用feign来远程调用，这里也一样。引入feign的依赖：</p><pre class=" language-xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-web<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-starter-alibaba-nacos-discovery<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>0.2.2.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-starter-openfeign<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>    <span class="token comment" spellcheck="true">&lt;!-- SpringCloud的依赖 --></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencyManagement</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-dependencies<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>Greenwich.SR2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>type</span><span class="token punctuation">></span></span>pom<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>type</span><span class="token punctuation">></span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>import<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencyManagement</span><span class="token punctuation">></span></span></code></pre><p>在NacosConsumerApplication类上添加@EnableFeignClients注解：</p><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span><span class="token annotation punctuation">@EnableDiscoveryClient</span><span class="token annotation punctuation">@EnableFeignClients</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NacosConsumerApplication</span> <span class="token punctuation">{</span>    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>        SpringApplication<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>NacosConsumerApplication<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><p>编写feignClient：</p><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@FeignClient</span><span class="token punctuation">(</span><span class="token string">"nacos-provider"</span><span class="token punctuation">)</span><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ProviderFeign</span> <span class="token punctuation">{</span>    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span>    <span class="token keyword">public</span> String <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre><p>在Controller中使用feignClient：</p><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ConsumerController</span> <span class="token punctuation">{</span>    <span class="token annotation punctuation">@Autowired</span>    <span class="token keyword">private</span> ProviderFeign providerFeign<span class="token punctuation">;</span>    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"hi"</span><span class="token punctuation">)</span>    <span class="token keyword">public</span> String <span class="token function">hi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>providerFeign<span class="token punctuation">.</span><span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><p>测试访问：</p><p><img src="assets/1567255443076.png" alt="1567255443076"></p><h2 id="2-4-配置中心"><a href="#2-4-配置中心" class="headerlink" title="2.4.   配置中心"></a>2.4.   配置中心</h2><p>​        在系统开发过程中，开发者通常会将一些需要变更的参数、变量等从代码中分离出来独立管理，以独立的配置文件的形式存在。目的是让静态的系统工件或者交付物（如 WAR，JAR 包等）更好地和实际的物理运行环境进行适配。配置管理一般包含在系统部署的过程中，由系统管理员或者运维人员完成。配置变更是调整系统运行时的行为的有效手段。</p><p>如果微服务架构中没有使用统一配置中心时，所存在的问题：</p><ul><li>配置文件分散在各个项目里，不方便维护</li><li>配置内容安全与权限</li><li>更新配置后，项目需要重启</li></ul><p>nacos配置中心：<strong>系统配置的集中管理</strong>（编辑、存储、分发）、<strong>动态更新不重启</strong>、<strong>回滚配置</strong>（变更管理、历史版本管理、变更审计）等所有与配置相关的活动。</p><p>案例：改造生产者中的动态配置项，由配置中心统一管理。</p><p><img src="assets/1567261900469.png" alt="1567261900469"></p><h3 id="2-4-1-nacos中创建统一配置"><a href="#2-4-1-nacos中创建统一配置" class="headerlink" title="2.4.1.   nacos中创建统一配置"></a>2.4.1.   nacos中创建统一配置</h3><p><img src="assets/1567262976093.png" alt="1567262976093"></p><p><img src="assets/1567263334245.png" alt="1567263334245"></p><ol><li><p><code>dataId</code> 的完整格式如下：</p><pre><code>${prefix}-${spring.profile.active}.${file-extension}</code></pre><ul><li><code>prefix</code> 默认为所属工程配置<code>spring.application.name</code> 的值（即：nacos-provider），也可以通过配置项 <code>spring.cloud.nacos.config.prefix</code>来配置。</li><li><code>spring.profile.active</code> 即为当前环境对应的 profile，详情可以参考 <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-profiles.html#boot-features-profiles" target="_blank" rel="noopener">Spring Boot文档</a>。 <strong>注意：当 spring.profile.active 为空时，对应的连接符 - 也将不存在，dataId 的拼接格式变成 <code>${prefix}.${file-extension}</code></strong></li><li><code>file-exetension</code> 为配置内容的数据格式，可以通过配置项 <code>spring.cloud.nacos.config.file-extension</code> 来配置。<strong>目前只支持 <code>properties</code> 和 <code>yaml</code> 类型。</strong></li></ul><p>总结：配置所属工程的spring.application.name的值 + “.” + properties/yml</p></li><li><p>配置内容：</p><p>项目中易变的内容。例如：myName</p></li></ol><p><strong>当前案例中，nacos-provider工程的spring.application.name=nacos-provider，没有配置spring.profiles.active。所以这里的dataId填写的是nacos-provider.properties</strong></p><h3 id="2-4-2-从配置中心读取配置"><a href="#2-4-2-从配置中心读取配置" class="headerlink" title="2.4.2.   从配置中心读取配置"></a>2.4.2.   从配置中心读取配置</h3><p>从配置中心读取配置，分以下3步：</p><ol><li><p>引入依赖</p><p>在生产者中引入依赖：</p><pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-starter-alibaba-nacos-config<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>0.2.2.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre><p><strong>注意</strong>：版本 <a href="https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-alibaba-nacos-config" target="_blank" rel="noopener">0.2.x.RELEASE</a> 对应的是 Spring Boot 2.x 版本，版本 <a href="https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-alibaba-nacos-config" target="_blank" rel="noopener">0.1.x.RELEASE</a> 对应的是 Spring Boot 1.x 版本。</p></li><li><p>在 <strong><code>bootstrap.properties</code></strong> 中配置 Nacos server 的地址和应用名</p><pre class=" language-properties"><code class="language-properties"><span class="token attr-name">spring.cloud.nacos.config.server-addr</span><span class="token punctuation">=</span><span class="token attr-value">127.0.0.1:8848</span><span class="token comment" spellcheck="true"># 该配置影响统一配置中心中的dataId，之前已经配置过</span><span class="token attr-name">spring.application.name</span><span class="token punctuation">=</span><span class="token attr-value">nacos-provider</span></code></pre><p>说明：之所以需要配置 <code>spring.application.name</code> ，是因为它是构成 Nacos 配置管理 <code>dataId</code>字段的一部分。</p><p>在springboot工程中，bootstrap.properties的加载优先级更高。</p></li><li><p>通过 Spring Cloud 原生注解 <code>@RefreshScope</code> 实现配置自动更新：</p><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span><span class="token annotation punctuation">@RefreshScope</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ProviderController</span> <span class="token punctuation">{</span>    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${myName}"</span><span class="token punctuation">)</span>    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span>    <span class="token keyword">public</span> String <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>        <span class="token keyword">return</span> <span class="token string">"hello "</span> <span class="token operator">+</span> name<span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre></li></ol><h3 id="2-4-3-名称空间切换环境"><a href="#2-4-3-名称空间切换环境" class="headerlink" title="2.4.3.   名称空间切换环境"></a>2.4.3.   名称空间切换环境</h3><p>在实际开发中，通常有多套不同的环境（默认只有public），那么这个时候可以根据指定的环境来创建不同的 namespce，例如，开发、测试和生产三个不同的环境，那么使用一套 nacos 集群可以分别建以下三个不同的 namespace。以此来实现多环境的隔离。</p><p><img src="assets/1567300201637.png" alt="1567300201637"></p><p>切换到配置列表：</p><p><img src="assets/nacos-namespace.gif" alt="1567300201637"></p><p>可以发现有四个名称空间：public（默认）以及我们自己添加的3个名称空间（prod、dev、test），可以点击查看每个名称空间下的配置文件，当然现在只有public下有一个配置。</p><p>默认情况下，项目会到public下找 <code>服务名.properties</code>文件。</p><p>接下来，在dev名称空间中也添加一个nacos-provider.properties配置。这时有两种方式：</p><ol><li>切换到dev名称空间，添加一个新的配置文件。缺点：每个环境都要重复配置类似的项目</li><li><strong>直接通过clone方式添加配置，并修改即可。推荐</strong></li></ol><p><img src="assets/1567301645987.png" alt="1567301645987"></p><p><img src="assets/1567301689032.png" alt="1567301689032"></p><p><img src="assets/1567301731019.png" alt="1567301731019"></p><p>点击编辑：修改配置内容，以作区分</p><p><img src="assets/1567301779793.png" alt="1567301779793"></p><p>在服务提供方nacos-provider中切换命名空间，修改bootstrap.properties添加如下配置</p><pre class=" language-properties"><code class="language-properties"><span class="token attr-name">spring.cloud.nacos.config.namespace</span><span class="token punctuation">=</span><span class="token attr-value">7fd7e137-21c4-4723-a042-d527149e63e0</span></code></pre><p>namespace的值为：</p><p><img src="assets/1567302053790.png" alt="1567302053790"></p><p>重启服务提供方服务，在浏览器中访问测试：</p><p><img src="assets/1567302261494.png" alt="1567302261494"></p><h3 id="2-4-4-回滚配置（了解）"><a href="#2-4-4-回滚配置（了解）" class="headerlink" title="2.4.4.   回滚配置（了解）"></a>2.4.4.   回滚配置（了解）</h3><p><strong>目前版本该功能有bug，回滚之后配置消失。</strong></p><p>回滚配置只需要两步：</p><ol><li>查看历史版本</li><li>回滚到某个历史版本</li></ol><p><img src="assets/1567303117328.png" alt="1567303117328"></p><p><img src="assets/1567303168315.png" alt="1567303168315"></p><h3 id="2-4-5-加载多配置文件"><a href="#2-4-5-加载多配置文件" class="headerlink" title="2.4.5.   加载多配置文件"></a>2.4.5.   加载多配置文件</h3><p>偶尔情况下需要加载多个配置文件。假如现在dev名称空间下有三个配置文件：nacos-provider.properties、redis.properties、jdbc.properties。</p><p><img src="assets/1567305611637.png" alt="1567305611637"></p><p>nacos-provider.properties默认加载，怎么加载另外两个配置文件？</p><p>在bootstrap.properties文件中添加如下配置：</p><pre class=" language-properties"><code class="language-properties"><span class="token attr-name">spring.cloud.nacos.config.ext-config[0].data-id</span><span class="token punctuation">=</span><span class="token attr-value">redis.properties</span><span class="token comment" spellcheck="true"># 开启动态刷新配置，否则配置文件修改，工程无法感知</span><span class="token attr-name">spring.cloud.nacos.config.ext-config[0].refresh</span><span class="token punctuation">=</span><span class="token attr-value">true</span><span class="token attr-name">spring.cloud.nacos.config.ext-config[1].data-id</span><span class="token punctuation">=</span><span class="token attr-value">jdbc.properties</span><span class="token attr-name">spring.cloud.nacos.config.ext-config[1].refresh</span><span class="token punctuation">=</span><span class="token attr-value">true</span></code></pre><p>修改ProviderController使用redis.properties和jdbc.properties配置文件中的参数：</p><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span><span class="token annotation punctuation">@RefreshScope</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ProviderController</span> <span class="token punctuation">{</span>    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${myName}"</span><span class="token punctuation">)</span>    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${jdbc.url}"</span><span class="token punctuation">)</span>    <span class="token keyword">private</span> String jdbcUrl<span class="token punctuation">;</span>    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${redis.url}"</span><span class="token punctuation">)</span>    <span class="token keyword">private</span> String redisUrl<span class="token punctuation">;</span>    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span>    <span class="token keyword">public</span> String <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>        <span class="token keyword">return</span> <span class="token string">"hello "</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">", redis-url="</span> <span class="token operator">+</span> redisUrl <span class="token operator">+</span> <span class="token string">", jdbc-url="</span> <span class="token operator">+</span> jdbcUrl<span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><p>测试效果：</p><p><img src="assets/1567306296896.png" alt="1567306296896"></p><p>问题：</p><p>​    修改一下配置中心中redis.properties中的配置，不重启服务。能否加载配置信息</p><p>​    删掉<code>spring.cloud.nacos.config.ext-config[0].refresh=true</code>，再修改redis.properties中的配置试试</p><h3 id="2-4-6-配置的分组"><a href="#2-4-6-配置的分组" class="headerlink" title="2.4.6.   配置的分组"></a>2.4.6.   配置的分组</h3><p>在实际开发中，除了不同的环境外。不同的微服务或者业务功能，可能有不同的redis及mysql数据库。</p><p>区分不同的环境我们使用名称空间（namespace），区分不同的微服务或功能，使用分组（group）。</p><p>当然，你也可以反过来使用，名称空间和分组只是为了更好的区分配置，提供的两个维度而已。</p><p>新增一个redis.properties，所属分组为provider：</p><p><img src="assets/1567307163038.png" alt="1567307163038"></p><p>现在开发环境中有两个redis.propertis配置文件，一个是默认分组（DEFAULT_GROUP），一个是provider组</p><p>默认情况下从DEFAULT_GROUP分组中读取redis.properties，如果要切换到provider分组下的redis.properties，需要添加如下配置：</p><pre class=" language-properties"><code class="language-properties"><span class="token comment" spellcheck="true"># 指定分组</span><span class="token attr-name">spring.cloud.nacos.config.ext-config[0].group</span><span class="token punctuation">=</span><span class="token attr-value">provider</span></code></pre><p>缺点：</p><p>​        将来每个分组下会有太多的配置文件，不利于维护。</p><p>最佳实践：</p><p>​        <strong>命名空间区分业务功能，分组区分环境。</strong></p><h1 id="3-服务网关Gateway"><a href="#3-服务网关Gateway" class="headerlink" title="3. 服务网关Gateway"></a>3. 服务网关Gateway</h1><p>API 网关出现的原因是微服务架构的出现，不同的微服务一般会有不同的网络地址，而外部客户端可能需要调用多个服务的接口才能完成一个业务需求，如果让客户端直接与各个微服务通信，会有以下的问题：</p><ol><li><p>破坏了服务无状态特点。</p><p>为了保证对外服务的安全性，我们需要实现对服务访问的权限控制，而开放服务的权限控制机制将会贯穿并污染整个开放服务的业务逻辑，这会带来的最直接问题是，破坏了服务集群中REST API无状态的特点。</p><pre><code>  从具体开发和测试的角度来说，在工作中除了要考虑实际的业务逻辑之外，还需要额外考虑对接口访问的控制处理。</code></pre></li><li><p>无法直接复用既有接口。</p><p>当我们需要对一个即有的集群内访问接口，实现外部服务访问时，我们不得不通过在原有接口上增加校验逻辑，或增加一个代理调用来实现权限控制，无法直接复用原有的接口。</p></li></ol><p>以上这些问题可以借助 API 网关解决。API 网关是介于客户端和服务器端之间的中间层，所有的外部请求都会先经过 API 网关这一层。也就是说，API 的实现方面更多的考虑业务逻辑，而安全、性能、监控可以交由 API 网关来做，这样既提高业务灵活性又不缺安全性，典型的架构图如图所示：</p><p> <img src="assets/1567310156296.png" alt="1567310156296"></p><h2 id="3-1-快速开始"><a href="#3-1-快速开始" class="headerlink" title="3.1.   快速开始"></a>3.1.   快速开始</h2><p>创建网关module：</p><p><img src="assets/1567310403942.png" alt="1567310403942"></p><p><img src="assets/1567310497409.png" alt="1567310497409"></p><p>完成后：</p><p> <img src="assets/1567310618844.png" alt="1567310618844"></p><h3 id="3-1-1-引入依赖"><a href="#3-1-1-引入依赖" class="headerlink" title="3.1.1.   引入依赖"></a>3.1.1.   引入依赖</h3><p>已引入，如下。pom.xml中的依赖：</p><pre class=" language-xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-starter-gateway<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencyManagement</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-dependencies<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>${spring-cloud.version}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>type</span><span class="token punctuation">></span></span>pom<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>type</span><span class="token punctuation">></span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>import<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencyManagement</span><span class="token punctuation">></span></span></code></pre><h3 id="3-1-2-编写路由规则"><a href="#3-1-2-编写路由规则" class="headerlink" title="3.1.2.   编写路由规则"></a>3.1.2.   编写路由规则</h3><p>为了演示路由到不同服务，这里把消费者和生产者都配置在网关中</p><p>application.yml</p><pre class=" language-yml"><code class="language-yml">server:  port: 8090spring:  cloud:    gateway:      routes:        - id: nacos-consumer          uri: http://127.0.0.1:8080          predicates:            - Path=/hi        - id: nacos-provider          uri: http://127.0.0.1:8070          predicates:            - Path=/hello</code></pre><h3 id="3-1-3-启动测试"><a href="#3-1-3-启动测试" class="headerlink" title="3.1.3.   启动测试"></a>3.1.3.   启动测试</h3><p>通过网关路径访问消费者或者生产者。</p><p><img src="assets/1567318777833.png" alt="1567318777833"></p><h2 id="3-2-路由规则详解"><a href="#3-2-路由规则详解" class="headerlink" title="3.2.   路由规则详解"></a>3.2.   路由规则详解</h2><p><img src="assets/1568906267000.png" alt="1568906267000"></p><p>基本概念：</p><ul><li><strong>Route</strong>：路由网关的基本构建块。它由ID，目的URI，断言（Predicate）集合和过滤器（filter）集合组成。如果断言聚合为真，则匹配该路由。</li><li><strong>Predicate</strong>：这是一个 Java 8函数式断言。允许开发人员匹配来自HTTP请求的任何内容，例如请求头或参数。</li><li><strong>过滤器</strong>：可以在发送下游请求之前或之后修改请求和响应。</li></ul><p><strong>路由根据断言进行匹配，匹配成功就会转发请求给URI，在转发请求之前或者之后可以添加过滤器。</strong><img src="%5Bhttps://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.2.RELEASE/reference/html/#gateway-request-predicates-factories%5D" alt="Spring Cloud Gateway网址"></p><h3 id="3-2-1-断言工厂"><a href="#3-2-1-断言工厂" class="headerlink" title="3.2.1.   断言工厂"></a>3.2.1.   断言工厂</h3><p>Spring Cloud Gateway包含许多内置的Route Predicate工厂。所有这些断言都匹配HTTP请求的不同属性。多路由断言工厂通过<code>and</code>组合。</p><p>官方提供的路由工厂：</p><p> <img src="assets/1567318676724.png" alt="1567318676724"></p><p>这些断言工厂的配置方式，参照官方文档：<a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.1.0.RELEASE/single/spring-cloud-gateway.html" target="_blank" rel="noopener">https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.1.0.RELEASE/single/spring-cloud-gateway.html</a></p><p><img src="assets/1567318580097.png" alt="1567318580097"></p><p><img src="assets/20190502120932678.png" alt="img"></p><p>这里重点掌握请求路径路由断言的配置方式：</p><p><img src="assets/1567318968400.png" alt="1567318968400"></p><pre class=" language-yml"><code class="language-yml">spring:  cloud:    gateway:      routes:      - id: host_route        uri: http://example.org        predicates:        - Path=/foo/{segment},/bar/{segment}</code></pre><p>这个路由匹配以/foo或者/bar开头的路径，转发到http:example.org。例如 <code>/foo/1</code> or <code>/foo/bar</code> or <code>/bar/baz</code>.</p><h3 id="3-2-2-过滤器工厂"><a href="#3-2-2-过滤器工厂" class="headerlink" title="3.2.2.   过滤器工厂"></a>3.2.2.   过滤器工厂</h3><p>路由过滤器允许以某种方式修改传入的HTTP请求或传出的HTTP响应。路径过滤器的范围限定为特定路由。Spring Cloud Gateway包含许多内置的GatewayFilter工厂。</p><p> <img src="assets/1567323105648.png" alt="1567323105648"></p><p>这些过滤器工厂的配置方式，同样参照官方文档：<a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.1.0.RELEASE/single/spring-cloud-gateway.html" target="_blank" rel="noopener">https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.1.0.RELEASE/single/spring-cloud-gateway.html</a></p><p> <img src="assets/1567323164745.png" alt="1567323164745"></p><p>过滤器 有 20 多个 实现类,根据过滤器工厂的用途来划分，可以分为以下几种：Header、Parameter、Path、Body、Status、Session、Redirect、Retry、RateLimiter和Hystrix</p><p><img src="assets/20181202154250869.png" alt="img"></p><p>这里重点掌握PrefixPath GatewayFilter Factory</p><p><img src="assets/1567325859435.png" alt="1567325859435"></p><p>上面的配置中，所有的<code>/foo/**</code>开始的路径都会命中配置的router，并执行过滤器的逻辑，在本案例中配置了RewritePath过滤器工厂，此工厂将/foo/(?.*)重写为{segment}，然后转发到<a href="http://example.org。比如在网页上请求localhost:8090/foo/forezp，此时会将请求转发到http://example.org/forezp的页面" target="_blank" rel="noopener">http://example.org。比如在网页上请求localhost:8090/foo/forezp，此时会将请求转发到http://example.org/forezp的页面</a></p><p>​        在开发中由于所有微服务的访问都要经过网关，为了区分不同的微服务，通常会在路径前加上一个标识，例如：访问服务提供方：<code>http://localhost:8090/provider/hello</code> ；访问服务消费方：<code>http://localhost:8090/consumer/hi</code>  如果不重写地址，直接转发的话，转发后的路径为：<code>http://localhost:8070/provider/hello</code>和<code>http://localhost:8080/consumer/hi</code>明显多了一个provider或者consumer，导致转发失败。</p><p>这时，我们就用上了路径重写，配置如下：</p><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8090</span><span class="token key atrule">spring</span><span class="token punctuation">:</span>  <span class="token key atrule">cloud</span><span class="token punctuation">:</span>    <span class="token key atrule">gateway</span><span class="token punctuation">:</span>      <span class="token key atrule">routes</span><span class="token punctuation">:</span>        <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> nacos<span class="token punctuation">-</span>consumer          <span class="token key atrule">uri</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//127.0.0.1<span class="token punctuation">:</span><span class="token number">8080</span>          <span class="token key atrule">predicates</span><span class="token punctuation">:</span>            <span class="token punctuation">-</span> Path=/consumer/**          <span class="token key atrule">filters</span><span class="token punctuation">:</span>            <span class="token punctuation">-</span> RewritePath=/consumer/(<span class="token punctuation">?</span>&lt;segment<span class="token punctuation">></span>.*)<span class="token punctuation">,</span>/$\<span class="token punctuation">{</span>segment<span class="token punctuation">}</span>        <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> nacos<span class="token punctuation">-</span>provider          <span class="token key atrule">uri</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//127.0.0.1<span class="token punctuation">:</span><span class="token number">8070</span>          <span class="token key atrule">predicates</span><span class="token punctuation">:</span>            <span class="token punctuation">-</span> Path=/provider/**          <span class="token key atrule">filters</span><span class="token punctuation">:</span>            <span class="token punctuation">-</span> RewritePath=/provider/(<span class="token punctuation">?</span>&lt;segment<span class="token punctuation">></span>.*)<span class="token punctuation">,</span>/$\<span class="token punctuation">{</span>segment<span class="token punctuation">}</span></code></pre><p><strong>注意</strong>：<code>Path=/consumer/**</code>及<code>Path=/provider/**</code>的变化</p><p>测试：</p><p><img src="assets/1567325669010.png" alt="1567325669010"></p><h2 id="3-3-面向服务的路由"><a href="#3-3-面向服务的路由" class="headerlink" title="3.3.   面向服务的路由"></a>3.3.   面向服务的路由</h2><p><img src="assets/1568908873341.png" alt="1568908873341"></p><p>如果要做到负载均衡，则必须把网关工程注册到nacos注册中心，然后通过服务名访问。</p><h3 id="3-3-1-把网关服务注册到nacos"><a href="#3-3-1-把网关服务注册到nacos" class="headerlink" title="3.3.1.   把网关服务注册到nacos"></a>3.3.1.   把网关服务注册到nacos</h3><ol><li><p>引入nacos的相关依赖：</p><pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-starter-alibaba-nacos-discovery<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>0.2.2.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-starter-alibaba-nacos-config<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>0.2.2.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre></li><li><p>配置nacos服务地址及服务名：</p><p>   <img src="assets/1567316026329.png" alt="1567316026329"></p><p>bootstrap.yml中的配置：</p><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>  <span class="token key atrule">application</span><span class="token punctuation">:</span>    <span class="token key atrule">name</span><span class="token punctuation">:</span> gateway<span class="token punctuation">-</span>demo  <span class="token key atrule">cloud</span><span class="token punctuation">:</span>    <span class="token key atrule">nacos</span><span class="token punctuation">:</span>      <span class="token key atrule">config</span><span class="token punctuation">:</span>        <span class="token key atrule">server-addr</span><span class="token punctuation">:</span> 127.0.0.1<span class="token punctuation">:</span><span class="token number">8848</span></code></pre><p>application.yml中的配置：</p><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8090</span><span class="token key atrule">spring</span><span class="token punctuation">:</span>  <span class="token key atrule">cloud</span><span class="token punctuation">:</span>    <span class="token key atrule">nacos</span><span class="token punctuation">:</span>      <span class="token key atrule">discovery</span><span class="token punctuation">:</span>        <span class="token key atrule">server-addr</span><span class="token punctuation">:</span> 127.0.0.1<span class="token punctuation">:</span><span class="token number">8848</span>    <span class="token key atrule">gateway</span><span class="token punctuation">:</span>      <span class="token key atrule">routes</span><span class="token punctuation">:</span>        <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> nacos<span class="token punctuation">-</span>consumer          <span class="token key atrule">uri</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//127.0.0.1<span class="token punctuation">:</span><span class="token number">8080</span>          <span class="token key atrule">predicates</span><span class="token punctuation">:</span>            <span class="token punctuation">-</span> Path=/consumer/**          <span class="token key atrule">filters</span><span class="token punctuation">:</span>            <span class="token punctuation">-</span> RewritePath=/consumer/(<span class="token punctuation">?</span>&lt;segment<span class="token punctuation">></span>.*)<span class="token punctuation">,</span>/$\<span class="token punctuation">{</span>segment<span class="token punctuation">}</span>        <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> nacos<span class="token punctuation">-</span>provider          <span class="token key atrule">uri</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//127.0.0.1<span class="token punctuation">:</span><span class="token number">8070</span>          <span class="token key atrule">predicates</span><span class="token punctuation">:</span>            <span class="token punctuation">-</span> Path=/provider/**          <span class="token key atrule">filters</span><span class="token punctuation">:</span>            <span class="token punctuation">-</span> RewritePath=/provider/(<span class="token punctuation">?</span>&lt;segment<span class="token punctuation">></span>.*)<span class="token punctuation">,</span>/$\<span class="token punctuation">{</span>segment<span class="token punctuation">}</span></code></pre></li><li><p>把网关注入到nacos</p><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span><span class="token annotation punctuation">@EnableDiscoveryClient</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GatewayDemoApplication</span> <span class="token punctuation">{</span>    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>        SpringApplication<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>GatewayDemoApplication<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre></li></ol><h3 id="3-3-2-修改配置，通过服务名路由"><a href="#3-3-2-修改配置，通过服务名路由" class="headerlink" title="3.3.2.   修改配置，通过服务名路由"></a>3.3.2.   修改配置，通过服务名路由</h3><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8090</span><span class="token key atrule">spring</span><span class="token punctuation">:</span>  <span class="token key atrule">cloud</span><span class="token punctuation">:</span>    <span class="token key atrule">nacos</span><span class="token punctuation">:</span>      <span class="token key atrule">discovery</span><span class="token punctuation">:</span>        <span class="token key atrule">server-addr</span><span class="token punctuation">:</span> 127.0.0.1<span class="token punctuation">:</span><span class="token number">8848</span>    <span class="token key atrule">gateway</span><span class="token punctuation">:</span>      <span class="token key atrule">routes</span><span class="token punctuation">:</span>        <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> nacos<span class="token punctuation">-</span>consumer          <span class="token key atrule">uri</span><span class="token punctuation">:</span> lb<span class="token punctuation">:</span>//nacos<span class="token punctuation">-</span>consumer          <span class="token key atrule">predicates</span><span class="token punctuation">:</span>            <span class="token punctuation">-</span> Path=/consumer/**          <span class="token key atrule">filters</span><span class="token punctuation">:</span>            <span class="token punctuation">-</span> RewritePath=/consumer/(<span class="token punctuation">?</span>&lt;segment<span class="token punctuation">></span>.*)<span class="token punctuation">,</span>/$\<span class="token punctuation">{</span>segment<span class="token punctuation">}</span>        <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> nacos<span class="token punctuation">-</span>provider          <span class="token key atrule">uri</span><span class="token punctuation">:</span> lb<span class="token punctuation">:</span>//nacos<span class="token punctuation">-</span>provider          <span class="token key atrule">predicates</span><span class="token punctuation">:</span>            <span class="token punctuation">-</span> Path=/provider/**          <span class="token key atrule">filters</span><span class="token punctuation">:</span>            <span class="token punctuation">-</span> RewritePath=/provider/(<span class="token punctuation">?</span>&lt;segment<span class="token punctuation">></span>.*)<span class="token punctuation">,</span>/$\<span class="token punctuation">{</span>segment<span class="token punctuation">}</span></code></pre><p>语法：lb://服务名</p><p>lb：LoadBalance，代表负载均衡的方式</p><p>服务名取决于nacos的服务列表中的服务名</p><p><img src="assets/1567322529258.png" alt="1567322529258"></p><h2 id="3-4-路由的java代码配置方式（了解）"><a href="#3-4-路由的java代码配置方式（了解）" class="headerlink" title="3.4.   路由的java代码配置方式（了解）"></a>3.4.   路由的java代码配置方式（了解）</h2><p>参见官方文档：</p><p><img src="assets/1567328302375.png" alt="1567328302375"></p><p>代码如下：</p><pre><code>@Beanpublic RouteLocator customRouteLocator(RouteLocatorBuilder builder, ThrottleGatewayFilterFactory throttle) {    return builder.routes()            .route(r -&gt; r.host(&quot;**.abc.org&quot;).and().path(&quot;/image/png&quot;)                .filters(f -&gt;                        f.addResponseHeader(&quot;X-TestHeader&quot;, &quot;foobar&quot;))                .uri(&quot;http://httpbin.org:80&quot;)            )            .route(r -&gt; r.path(&quot;/image/webp&quot;)                .filters(f -&gt;                        f.addResponseHeader(&quot;X-AnotherHeader&quot;, &quot;baz&quot;))                .uri(&quot;http://httpbin.org:80&quot;)            )            .route(r -&gt; r.order(-1)                .host(&quot;**.throttle.org&quot;).and().path(&quot;/get&quot;)                .filters(f -&gt; f.filter(throttle.apply(1,                        1,                        10,                        TimeUnit.SECONDS)))                .uri(&quot;http://httpbin.org:80&quot;)            )            .build();}</code></pre>]]></content>
-      
-      
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL对于千万级的大表要怎么优化?</title>
+    <url>/2020/06/14/mysql/mysql-dui-yu-qian-wan-ji-de-da-biao-yao-zen-me-you-hua/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><!-- <div style='padding-left:30px'> -->
+<!-- &nbsp;&nbsp; -->
+<p>首先采用MySQL存储千亿级别的数据，确实是一项非常大的挑战。MySQL单表确实可以存储10亿级的数据，只是这个时候性能非常差，项目钟大量的实验证明，MySQL单表容量在500万左右，性能处于最佳状态。</p>
+<!-- </div> -->
+<a id="more"></a>
+
+<p>针对大表的优化，主要是通过数据库分库分表来解决，目前比较普遍的方案有三个：分区、分库分表、NoSQL/NewSQL。实际项目中，这三种方案是结合的，目前绝大部分系统的核心数据都是以RDBMS存储为主，NoSQL/NewSQL存储为辅。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><p class='p subtitle'>分区</p></h2><p>首先来了解一下分区方案。<br>分区表是由多个相关的底层表实现的。这些底层表也是由句柄对象表示，所以我们可以直接访问各个分区，存储引擎管理分区的各个底层表和管理普通表一样(所有的底层表都必须使用相同的存储引擎)，分区表的索引只是在各个底层表上各自加上一个相同的索引。这个方案对用户屏蔽了sharding的细节，即使查询条件没有sharding column，它也能正常工作(只是这个时候性能一般)。<br><br></p>
+<p><strong>不过它的缺点很明显:</strong>很多的资源都受到单机的限制，例如连接数、网络吞吐等。如何进行分区，在实际应用中是一个非常关键的要素之一。</p>
+<hr>
+<p>下面开始举例:</p>
+<blockquote>
+<p> 以客户信息为例，客户数据量5000万+，项目背景要求保存客户的银行卡绑定关系，客户的证件绑定关系，以及客户绑定的业务信息。</p>
+</blockquote>
+<p>此业务背景下，如何设计数据库呢？项目一期的时候，我们建立了一张客户业务绑定关系表，里面冗余了每一位客户绑定的业务信息。</p>
+]]></content>
       <categories>
-          
-          <category> nacos </category>
-          
-          <category> gateway </category>
-          
+        <category>MySQL</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 项目文档 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Java并发--Thread&amp;&amp;Runnable详细讲解</title>
-      <link href="/2020/05/31/bing-fa-bian-cheng/java-bing-fa-thread-runnable-xiang-xi-jiang-jie/"/>
-      <url>/2020/05/31/bing-fa-bian-cheng/java-bing-fa-thread-runnable-xiang-xi-jiang-jie/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>关于Thread和Runnable的一些理解</p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>分库分表</tag>
+        <tag>性能优化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/05/03/ce-shi-wen-dang/hello-world/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>meta 区域显示外链按钮</p>
+<p>这是摘要</p>
+<a id="more"></a>
+<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h1 id="主题配置修改到-Next主题进阶优化配置-部分了"><a href="#主题配置修改到-Next主题进阶优化配置-部分了" class="headerlink" title="主题配置修改到 Next主题进阶优化配置 部分了"></a>主题配置修改到 Next主题进阶优化配置 部分了</h1><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS安装Kafka</title>
+    <url>/2020/06/21/kafka/centos-an-zhuang-kafka/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>最近刚开始学习Kafka，第一步肯定是学会怎么安装Kafka，现在我来讲解一下</p>
+<a id="more"></a>
+
+<h3 id="第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装"><a href="#第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装" class="headerlink" title="第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装"></a>第一步：安装JDK。安装JDK的步骤比较简单，这里可以直接在网上找教程学习怎么安装</h3><h3 id="第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper-安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper"><a href="#第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper-安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper" class="headerlink" title="第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper,安装和启动Zookeeper的步骤参考CentOS安装ZooKeeper"></a>第二步：安装Zookeeper。除了安装JDK，还需要安装Zookeeper,安装和启动Zookeeper的步骤参考<a href="https://segmentfault.com/a/1190000022199813" target="_blank" rel="noopener">CentOS安装ZooKeeper</a></h3><h3 id="第三步：-安装Kafka。"><a href="#第三步：-安装Kafka。" class="headerlink" title="第三步： 安装Kafka。"></a>第三步： 安装Kafka。</h3><p>安装Kafka分为:</p>
+<ul>
+<li>先下载Kafka并解压出来</li>
+<li>修改config/server.properties文件, 主要修改listeners、advertised.listeners配置(将host.name修改成kafka安装的主机的ip)和log.dirs(主要存放kafka的日志，可以在kafka根目录下创建一个logs文件夹，并将log.dirs设置成该文件夹的路径)和zookeeper.connect（设置连接的Zookeeper所在主机的ip，如果kafka和Zookeeper在同一台机器上，该配置不用改，默认为localhost）</li>
+<li>最后，在kafka的根目录下，执行bin/kafka-server-start.sh config/server.properties &amp; 命令，让kafka以后台方式启动<blockquote>
+<p>注意事项:kafka启动时，报cannot allocate memory错误，即内存不足，因为学生机内存较小，1G，所以需要更改kafka启动时的内存，解决方法: 进入bin目录，修改kafka-server-start.sh文件，将export KAFKA_HEAP_OPTS=”-Xmx1G -Xms1G”改成export KAFKA_HEAP_OPTS=”-Xmx256M -Xms128M” ，改小点，确保能启动</p>
+</blockquote>
+</li>
+</ul>
+<p>Kafka的基本命令:</p>
+<ul>
+<li>bin/kafka-server-stop.sh  – 停止Kafka</li>
+<li>bin/kafka-topics.sh –create –zookeeper localhost:2181 –replication-factor 1 –partitions 1 –topic test-topic 创建名为test-topic的Topic，localhost可更换为zookeeper所在的机器的ip</li>
+<li>bin/kafka-topics.sh –list –zookeeper localhost:2181 – 查看已经创建的Topic信息</li>
+<li>bin/kafka-console-producer.sh –broker-list localhost:9092 –topic test-topic – 发送消息</li>
+<li>bin/kafka-console-consumer.sh –bootstrap-server localhost:9092 –topic test-topic –from-beginning   – 接收消息</li>
+</ul>
+<blockquote>
+<p>如何安装Kafka图形界面工具Kafka-Center?</p>
+</blockquote>
+<ol>
+<li>网址: <a href="https://github.com/xaecbd/KafkaCenter" target="_blank" rel="noopener">https://github.com/xaecbd/KafkaCenter</a> 到github上下载table_script.sql和application.properties，并上传到服务器中(我传到了/usr/local/workspace/projects/gitproject/others目录中)</li>
+<li>将table_script.sql导入到数据库中</li>
+<li>修改application.properties配置文件，注意主要修改数据库地址和ElasticSearch地址(ES没有的话可不改)</li>
+<li>进入到/usr/local/workspace/projects/gitproject/others目录中，执行docker run -d -p 8240:8240 –name KafkaCenter -v ${PWD}/application.properties:/opt/app/kafka-center/config/application.properties xaecbd/kafka-center:2.1.0 命令</li>
+<li>在安全组中开放8240端口号(因为在上一步中指定了Kafka-Center的端口号为8240，不放开该端口号就无法访问)</li>
+<li>访问<a href="http://ip:8240，我的机器的ip是129.204.22.23，">http://ip:8240，我的机器的ip是129.204.22.23，</a> 所以通过<a href="http://129.204.22.23:8240/访问，访问账号密码是admin/admin" target="_blank" rel="noopener">http://129.204.22.23:8240/访问，访问账号密码是admin/admin</a></li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>渲染公式（MathJax）</title>
+    <url>/2020/02/23/ce-shi-wen-dang/example-md/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>more：</p>
+<a id="more"></a>
+
+<p>$$t+1=2$$</p>
+<p>$$<br>\mbox{积累因子}=\begin{cases}<br>1+ni &amp; \mbox{单利}\\<br>(1+i)^n &amp; \mbox{复利}<br>\end{cases}<br>$$</p>
+<p>$$<br>\begin{equation}<br>\sum_{i=0}^n F_i \cdot \phi (H, p_i) - \sum_{i=1}^n a_i \cdot ( \tilde{x_i}, \tilde{y_i}) + b_i \cdot ( \tilde{x_i}^2 , \tilde{y_i}^2 )<br>\end{equation}<br>$$<br>$$<br>\begin{equation}<br>\beta^*(D) = \mathop{argmin} \limits_{\beta} \lambda {||\beta||}^2 + \sum_{i=1}^n max(0, 1 - y_i f_{\beta}(x_i))<br>\end{equation}<br>$$</p>
+]]></content>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test4</title>
+    <url>/2020/05/31/ce-shi-wen-dang/test4/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>标题右边显示迷你音乐播放器，支持的字段有：server、type、id</p>
+<a id="more"></a>]]></content>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test3</title>
+    <url>/2020/05/31/ce-shi-wen-dang/test3/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>由于支持多作者共同维护一个博客，所以可以设置单独一篇文章的作者：</p>
+<a id="more"></a>]]></content>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java并发--Thread&amp;&amp;Runnable详细讲解</title>
+    <url>/2020/05/31/bing-fa-bian-cheng/java-bing-fa-thread-runnable-xiang-xi-jiang-jie/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>关于Thread和Runnable的一些理解</p>
+<a id="more"></a>]]></content>
       <categories>
-          
-          <category> Java并发 </category>
-          
-          <category> 多线程 </category>
-          
+        <category>Java并发</category>
+        <category>多线程</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 并发编程 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>test5</title>
-      <link href="/2020/05/31/ce-shi-wen-dang/test5/"/>
-      <url>/2020/05/31/ce-shi-wen-dang/test5/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>如果标题居中且下方不想显示任何 meta 信息，可以这样设置：</p><a id="more"></a>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> 测试 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>test4</title>
-      <link href="/2020/05/31/ce-shi-wen-dang/test4/"/>
-      <url>/2020/05/31/ce-shi-wen-dang/test4/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>标题右边显示迷你音乐播放器，支持的字段有：server、type、id</p><a id="more"></a>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> 测试 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>test3</title>
-      <link href="/2020/05/31/ce-shi-wen-dang/test3/"/>
-      <url>/2020/05/31/ce-shi-wen-dang/test3/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>由于支持多作者共同维护一个博客，所以可以设置单独一篇文章的作者：</p><a id="more"></a>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> 测试 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>test2</title>
-      <link href="/2020/05/31/ce-shi-wen-dang/test2/"/>
-      <url>/2020/05/31/ce-shi-wen-dang/test2/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这是摘要</p><a id="more"></a><p>这是正文</p><blockquote><p>注意： <code>&lt;!-- more --&gt;</code>前后一定要有空行，不然可能导致显示错位。</p></blockquote>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> 测试 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>test1</title>
-      <link href="/2020/05/31/ce-shi-wen-dang/test1/"/>
-      <url>/2020/05/31/ce-shi-wen-dang/test1/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这是摘要</p><a id="more"></a><h3 id="一、摸不清世间的方向，看不清未来的道路，与其在黑暗中摸索匍匐前进，不如学会静得其心。以“静”的姿态铸就人性的优雅；以“静”的淡然锤炼心的明镜；以“静”的倩影折射出世间的温暖。"><a href="#一、摸不清世间的方向，看不清未来的道路，与其在黑暗中摸索匍匐前进，不如学会静得其心。以“静”的姿态铸就人性的优雅；以“静”的淡然锤炼心的明镜；以“静”的倩影折射出世间的温暖。" class="headerlink" title="一、摸不清世间的方向，看不清未来的道路，与其在黑暗中摸索匍匐前进，不如学会静得其心。以“静”的姿态铸就人性的优雅；以“静”的淡然锤炼心的明镜；以“静”的倩影折射出世间的温暖。"></a>一、摸不清世间的方向，看不清未来的道路，与其在黑暗中摸索匍匐前进，不如学会静得其心。以“静”的姿态铸就人性的优雅；以“静”的淡然锤炼心的明镜；以“静”的倩影折射出世间的温暖。</h3><h3 id="二、走出一段路程，回头一望，也是生动着、美丽着；有着你爱的人和爱你的人，有着你喜欢的事和需要你做的事，有着牵挂你的人和你牵挂着的人；人这一辈子是短暂的，所以要让自己幸福着。"><a href="#二、走出一段路程，回头一望，也是生动着、美丽着；有着你爱的人和爱你的人，有着你喜欢的事和需要你做的事，有着牵挂你的人和你牵挂着的人；人这一辈子是短暂的，所以要让自己幸福着。" class="headerlink" title="二、走出一段路程，回头一望，也是生动着、美丽着；有着你爱的人和爱你的人，有着你喜欢的事和需要你做的事，有着牵挂你的人和你牵挂着的人；人这一辈子是短暂的，所以要让自己幸福着。"></a>二、走出一段路程，回头一望，也是生动着、美丽着；有着你爱的人和爱你的人，有着你喜欢的事和需要你做的事，有着牵挂你的人和你牵挂着的人；人这一辈子是短暂的，所以要让自己幸福着。</h3><h3 id="三、一个人的美丽，并不是容颜，而是所有经历过的往事、在心中留下伤痕褪去，令人坚强而安谧。所以，优雅不是训练出来的，而是一种阅历。淡然不是伪装出来的，而是一种沉淀。"><a href="#三、一个人的美丽，并不是容颜，而是所有经历过的往事、在心中留下伤痕褪去，令人坚强而安谧。所以，优雅不是训练出来的，而是一种阅历。淡然不是伪装出来的，而是一种沉淀。" class="headerlink" title="三、一个人的美丽，并不是容颜，而是所有经历过的往事、在心中留下伤痕褪去，令人坚强而安谧。所以，优雅不是训练出来的，而是一种阅历。淡然不是伪装出来的，而是一种沉淀。"></a>三、一个人的美丽，并不是容颜，而是所有经历过的往事、在心中留下伤痕褪去，令人坚强而安谧。所以，优雅不是训练出来的，而是一种阅历。淡然不是伪装出来的，而是一种沉淀。</h3><h3 id="四、不恋尘世浮华，不写红尘纷扰，不叹世道苍凉，不惹情思哀怨，闲看花开，静待花落。"><a href="#四、不恋尘世浮华，不写红尘纷扰，不叹世道苍凉，不惹情思哀怨，闲看花开，静待花落。" class="headerlink" title="四、不恋尘世浮华，不写红尘纷扰，不叹世道苍凉，不惹情思哀怨，闲看花开，静待花落。"></a>四、不恋尘世浮华，不写红尘纷扰，不叹世道苍凉，不惹情思哀怨，闲看花开，静待花落。</h3>]]></content>
-      
-      
+      <tags>
+        <tag>并发编程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test2</title>
+    <url>/2020/05/31/ce-shi-wen-dang/test2/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这是摘要</p>
+<a id="more"></a>
+
+<p>这是正文</p>
+<blockquote>
+<p>注意： <code>&lt;!-- more --&gt;</code>前后一定要有空行，不然可能导致显示错位。</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test1</title>
+    <url>/2020/05/31/ce-shi-wen-dang/test1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这是摘要</p>
+<a id="more"></a>
+
+<h3 id="一、摸不清世间的方向，看不清未来的道路，与其在黑暗中摸索匍匐前进，不如学会静得其心。以“静”的姿态铸就人性的优雅；以“静”的淡然锤炼心的明镜；以“静”的倩影折射出世间的温暖。"><a href="#一、摸不清世间的方向，看不清未来的道路，与其在黑暗中摸索匍匐前进，不如学会静得其心。以“静”的姿态铸就人性的优雅；以“静”的淡然锤炼心的明镜；以“静”的倩影折射出世间的温暖。" class="headerlink" title="一、摸不清世间的方向，看不清未来的道路，与其在黑暗中摸索匍匐前进，不如学会静得其心。以“静”的姿态铸就人性的优雅；以“静”的淡然锤炼心的明镜；以“静”的倩影折射出世间的温暖。"></a>一、摸不清世间的方向，看不清未来的道路，与其在黑暗中摸索匍匐前进，不如学会静得其心。以“静”的姿态铸就人性的优雅；以“静”的淡然锤炼心的明镜；以“静”的倩影折射出世间的温暖。</h3><h3 id="二、走出一段路程，回头一望，也是生动着、美丽着；有着你爱的人和爱你的人，有着你喜欢的事和需要你做的事，有着牵挂你的人和你牵挂着的人；人这一辈子是短暂的，所以要让自己幸福着。"><a href="#二、走出一段路程，回头一望，也是生动着、美丽着；有着你爱的人和爱你的人，有着你喜欢的事和需要你做的事，有着牵挂你的人和你牵挂着的人；人这一辈子是短暂的，所以要让自己幸福着。" class="headerlink" title="二、走出一段路程，回头一望，也是生动着、美丽着；有着你爱的人和爱你的人，有着你喜欢的事和需要你做的事，有着牵挂你的人和你牵挂着的人；人这一辈子是短暂的，所以要让自己幸福着。"></a>二、走出一段路程，回头一望，也是生动着、美丽着；有着你爱的人和爱你的人，有着你喜欢的事和需要你做的事，有着牵挂你的人和你牵挂着的人；人这一辈子是短暂的，所以要让自己幸福着。</h3><h3 id="三、一个人的美丽，并不是容颜，而是所有经历过的往事、在心中留下伤痕褪去，令人坚强而安谧。所以，优雅不是训练出来的，而是一种阅历。淡然不是伪装出来的，而是一种沉淀。"><a href="#三、一个人的美丽，并不是容颜，而是所有经历过的往事、在心中留下伤痕褪去，令人坚强而安谧。所以，优雅不是训练出来的，而是一种阅历。淡然不是伪装出来的，而是一种沉淀。" class="headerlink" title="三、一个人的美丽，并不是容颜，而是所有经历过的往事、在心中留下伤痕褪去，令人坚强而安谧。所以，优雅不是训练出来的，而是一种阅历。淡然不是伪装出来的，而是一种沉淀。"></a>三、一个人的美丽，并不是容颜，而是所有经历过的往事、在心中留下伤痕褪去，令人坚强而安谧。所以，优雅不是训练出来的，而是一种阅历。淡然不是伪装出来的，而是一种沉淀。</h3><h3 id="四、不恋尘世浮华，不写红尘纷扰，不叹世道苍凉，不惹情思哀怨，闲看花开，静待花落。"><a href="#四、不恋尘世浮华，不写红尘纷扰，不叹世道苍凉，不惹情思哀怨，闲看花开，静待花落。" class="headerlink" title="四、不恋尘世浮华，不写红尘纷扰，不叹世道苍凉，不惹情思哀怨，闲看花开，静待花落。"></a>四、不恋尘世浮华，不写红尘纷扰，不叹世道苍凉，不惹情思哀怨，闲看花开，静待花落。</h3>]]></content>
       <categories>
-          
-          <category> 测试 </category>
-          
-          <category> 测试A </category>
-          
+        <category>测试</category>
+        <category>测试A</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 毒鸡汤 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>JDK体系结构</title>
-      <link href="/2020/05/24/jvm/jdk-ti-xi-jie-gou/"/>
-      <url>/2020/05/24/jvm/jdk-ti-xi-jie-gou/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这是摘要</p><a id="more"></a><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h1 id="主题配置修改到-Next主题进阶优化配置-部分了"><a href="#主题配置修改到-Next主题进阶优化配置-部分了" class="headerlink" title="主题配置修改到 Next主题进阶优化配置 部分了"></a>主题配置修改到 Next主题进阶优化配置 部分了</h1><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p><blockquote><p>Deploy to remote sites</p></blockquote>]]></content>
-      
-      
+      <tags>
+        <tag>毒鸡汤</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test5</title>
+    <url>/2020/05/31/ce-shi-wen-dang/test5/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>如果标题居中且下方不想显示任何 meta 信息，可以这样设置：</p>
+<a id="more"></a>]]></content>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nacos_gateway</title>
+    <url>/2020/06/13/gu-li-shang-cheng-xiang-mu-fang-dang/nacos-gateway/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>谷粒商城项目文档第一篇: nacos&amp;&amp;gateway</p>
+<a id="more"></a>
+
+<h1 id="1-Nacos概述"><a href="#1-Nacos概述" class="headerlink" title="1. Nacos概述"></a>1. Nacos概述</h1><p>官方地址：<a href="https://nacos.io" target="_blank" rel="noopener">https://nacos.io</a></p>
+<p>github地址：<a href="https://github.com/alibaba/nacos" target="_blank" rel="noopener">https://github.com/alibaba/nacos</a></p>
+<p>面试题：微服务间远程交互的过程？</p>
+<ol>
+<li>先去注册中心查询服务的服务器地址</li>
+<li>调用方给对方发送http请求</li>
+</ol>
+<h2 id="1-1-什么是-Nacos"><a href="#1-1-什么是-Nacos" class="headerlink" title="1.1.   什么是 Nacos"></a>1.1.   什么是 Nacos</h2><p>Nacos 是阿里巴巴推出来的一个新开源项目，这是一个更易于构建云原生应用的动态服务发现、配置管理和服务管理平台。</p>
+<p>Nacos 致力于帮助您发现、配置和管理微服务。Nacos 提供了一组简单易用的特性集，帮助您快速实现动态服务发现、服务配置、服务元数据及流量管理。</p>
+<p>Nacos 帮助您更敏捷和容易地构建、交付和管理微服务平台。 Nacos 是构建以“服务”为中心的现代应用架构 (例如微服务范式、云原生范式) 的服务基础设施。</p>
+<h2 id="1-2-为什么是Nacos"><a href="#1-2-为什么是Nacos" class="headerlink" title="1.2.   为什么是Nacos"></a>1.2.   为什么是Nacos</h2><p>常见的注册中心：</p>
+<ol>
+<li>Eureka（原生，2.0遇到性能瓶颈，停止维护）</li>
+<li>Zookeeper（支持，专业的独立产品。例如：dubbo）</li>
+<li>Consul（原生，GO语言开发）</li>
+<li>Nacos</li>
+</ol>
+<p>相对于 Spring Cloud Eureka 来说，Nacos 更强大。</p>
+<p><strong>Nacos = Spring Cloud Eureka + Spring Cloud Config</strong></p>
+<p>Nacos 可以与 Spring, Spring Boot, Spring Cloud 集成，并能代替 Spring Cloud Eureka, Spring Cloud Config。</p>
+<ul>
+<li><p>通过 Nacos Server 和 spring-cloud-starter-alibaba-nacos-config 实现配置的动态变更。</p>
+</li>
+<li><p>通过 Nacos Server 和 spring-cloud-starter-alibaba-nacos-discovery 实现服务的注册与发现。</p>
+</li>
+</ul>
+<h2 id="1-3-可以干什么"><a href="#1-3-可以干什么" class="headerlink" title="1.3.   可以干什么"></a>1.3.   可以干什么</h2><p>Nacos是以服务为主要服务对象的中间件，Nacos支持所有主流的服务发现、配置和管理。</p>
+<p>Nacos主要提供以下四大功能：</p>
+<ol>
+<li>服务发现和服务健康监测</li>
+<li>动态配置服务</li>
+<li>动态DNS服务</li>
+<li>服务及其元数据管理</li>
+</ol>
+<h1 id="2-Nacos快速开始"><a href="#2-Nacos快速开始" class="headerlink" title="2.  Nacos快速开始"></a>2.  Nacos快速开始</h1><p>结构图：</p>
+<p><img src="assets/1542119181336-b6dc0fc1-ed46-43a7-9e5f-68c9ca344d60.png" alt="echo service"></p>
+<p>Nacos 依赖 Java 环境来运行。如果您是从代码开始构建并运行Nacos，还需要为此配置 Maven环境，请确保是在以下版本环境中安装使用:</p>
+<ol>
+<li>64 bit OS，支持 Linux/Unix/Mac/Windows，推荐选用 Linux/Unix/Mac。</li>
+<li>64 bit JDK 1.8+</li>
+<li>Maven 3.2.x+</li>
+</ol>
+<h2 id="2-1-下载及安装"><a href="#2-1-下载及安装" class="headerlink" title="2.1.   下载及安装"></a>2.1.   下载及安装</h2><p>你可以通过源码和发行包两种方式来获取 Nacos。</p>
+<ol>
+<li>从 Github 上下载源码方式</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/alibaba/nacos.git
+<span class="token function">cd</span> nacos/
+<span class="token comment" spellcheck="true"># 切换到nacos根目录，执行下列命令</span>
+mvn -Prelease-nacos clean <span class="token function">install</span> -U  <span class="token comment" spellcheck="true"># 要下载很多依赖 会比较慢</span>
+<span class="token function">ls</span> -al distribution/target/ <span class="token comment" spellcheck="true"># 切换目录</span>
+
+<span class="token comment" spellcheck="true"># change the $version to your actual path</span>
+<span class="token function">cd</span> distribution/target/nacos-server-<span class="token variable">$version</span>/nacos/bin</code></pre>
+<p> <img src="assets/1565845455301.png" alt="1565845455301"></p>
+<ol start="2">
+<li>下载源码压缩包方式</li>
+</ol>
+<p>您可以从 <a href="https://github.com/alibaba/nacos/releases" target="_blank" rel="noopener">最新稳定版本</a> 下载 <code>nacos-server-$version.zip</code> 包。</p>
+<pre class=" language-bash"><code class="language-bash">  unzip nacos-server-<span class="token variable">$version</span>.zip 或者 <span class="token function">tar</span> -xvf nacos-server-<span class="token variable">$version</span>.tar.gz
+  <span class="token function">cd</span> nacos/bin</code></pre>
+<h2 id="2-2-启动nacos服务"><a href="#2-2-启动nacos服务" class="headerlink" title="2.2.   启动nacos服务"></a>2.2.   启动nacos服务</h2><p><strong>Linux/Unix/Mac</strong></p>
+<p>启动命令(standalone代表着单机模式运行，非集群模式):</p>
+<pre><code>sh startup.sh -m standalone</code></pre><p><strong>Windows</strong></p>
+<p>启动命令：</p>
+<pre><code>cmd startup.cmd</code></pre><p>或者双击startup.cmd运行文件。</p>
+<p>访问：<a href="http://localhost:8848/nacos" target="_blank" rel="noopener">http://localhost:8848/nacos</a></p>
+<p>用户名密码：nacos/nacos</p>
+<p><img src="assets/1565850935295.png" alt="1565850935295"></p>
+<h2 id="2-3-注册中心"><a href="#2-3-注册中心" class="headerlink" title="2.3.   注册中心"></a>2.3.   注册中心</h2><p>首先创建两个工程：nacos-provider、nacos-consumer</p>
+<p><img src="assets/1565852100033.png" alt="1565852100033"></p>
+<p><img src="assets/1565852168387.png" alt="1565852168387"></p>
+<p>创建生产者：</p>
+<p><img src="assets/1565852279616.png" alt="1565852279616"></p>
+<p><img src="assets/1565852355522.png" alt="1565852355522"></p>
+<p><img src="assets/1565852477523.png" alt="1565852477523"></p>
+<p>创建消费者：</p>
+<p><img src="assets/1565852617198.png" alt="1565852617198"></p>
+<p><img src="assets/1567250727696.png" alt="1567250727696"></p>
+<p><img src="assets/1565852777390.png" alt="1565852777390"></p>
+<p>然后，一路下一步或者ok。效果如下：</p>
+<p><img src="assets/1565852929136.png" alt="1565852929136"></p>
+<h3 id="2-3-1-生产者基本代码"><a href="#2-3-1-生产者基本代码" class="headerlink" title="2.3.1.   生产者基本代码"></a>2.3.1.   生产者基本代码</h3><p> <img src="assets/1565854507349.png" alt="1565854507349"></p>
+<p>ProviderController代码如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ProviderController</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${myName}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"hello "</span> <span class="token operator">+</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>application.properties配置如下：</p>
+<pre class=" language-properties"><code class="language-properties"><span class="token attr-name">server.port</span><span class="token punctuation">=</span><span class="token attr-value">8070</span>
+<span class="token comment" spellcheck="true"># 自定义参数</span>
+<span class="token attr-name">myName</span><span class="token punctuation">=</span><span class="token attr-value">nacos</span></code></pre>
+<h3 id="2-3-2-生产者注册到nacos"><a href="#2-3-2-生产者注册到nacos" class="headerlink" title="2.3.2.   生产者注册到nacos"></a>2.3.2.   生产者注册到nacos</h3><p>生产者注册到nacos注册中心，步骤：</p>
+<ol>
+<li><p>添加依赖：spring-cloud-starter-alibaba-nacos-discovery及springCloud</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-web<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-starter-alibaba-nacos-discovery<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>0.2.2.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>
+
+<span class="token comment" spellcheck="true">&lt;!-- SpringCloud的依赖 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencyManagement</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-dependencies<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>Greenwich.SR2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>type</span><span class="token punctuation">></span></span>pom<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>type</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>import<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencyManagement</span><span class="token punctuation">></span></span></code></pre>
+<p><strong>注意</strong>：版本 0.2.x.RELEASE 对应的是 Spring Boot 2.x 版本，版本 0.1.x.RELEASE 对应的是 Spring Boot 1.x 版本。</p>
+</li>
+<li><p>在 <code>application.properties</code> 中配置nacos服务地址和应用名</p>
+<pre class=" language-properties"><code class="language-properties"><span class="token attr-name">server.port</span><span class="token punctuation">=</span><span class="token attr-value">8070</span>
+<span class="token attr-name">spring.application.name</span><span class="token punctuation">=</span><span class="token attr-value">nacos-provider</span>
+<span class="token comment" spellcheck="true"># nacos服务地址</span>
+<span class="token attr-name">spring.cloud.nacos.discovery.server-addr</span><span class="token punctuation">=</span><span class="token attr-value">127.0.0.1:8848</span>
+<span class="token comment" spellcheck="true"># 自定义参数</span>
+<span class="token attr-name">myName</span><span class="token punctuation">=</span><span class="token attr-value">nacos</span></code></pre>
+</li>
+<li><p>通过Spring Cloud原生注解 <code>@EnableDiscoveryClient</code> 开启服务注册发现功能</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
+<span class="token annotation punctuation">@EnableDiscoveryClient</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NacosProviderApplication</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        SpringApplication<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>NacosProviderApplication<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span></code></pre>
+</li>
+</ol>
+<p>效果：</p>
+<p><img src="assets/1567251987453.png" alt="1567251987453"></p>
+<h3 id="2-3-3-消费端基本代码"><a href="#2-3-3-消费端基本代码" class="headerlink" title="2.3.3.   消费端基本代码"></a>2.3.3.   消费端基本代码</h3><p> <img src="assets/1567253090953.png" alt="1567253090953"></p>
+<p>ConsumerController代码：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ConsumerController</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"hi"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">hi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"hi provider!"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>application.properties:</p>
+<pre class=" language-properties"><code class="language-properties"><span class="token attr-name">server.port</span><span class="token punctuation">=</span><span class="token attr-value">8080</span></code></pre>
+<h3 id="2-3-4-消费者注册到nacos"><a href="#2-3-4-消费者注册到nacos" class="headerlink" title="2.3.4.   消费者注册到nacos"></a>2.3.4.   消费者注册到nacos</h3><p>消费者注册到nacos跟生产者差不多，也分3步：</p>
+<ol>
+<li><p>添加依赖：同生产者</p>
+</li>
+<li><p>在application.properties中配置nacos的服务名及服务地址：同生产者</p>
+</li>
+<li><p>在引导类（NacosConsumerApplication.java）中添加@EnableDiscoveryClient注解：同生产者</p>
+</li>
+</ol>
+<p>效果：</p>
+<p><img src="assets/1567254178699.png" alt="1567254178699"></p>
+<h3 id="2-3-5-使用feign调用服务"><a href="#2-3-5-使用feign调用服务" class="headerlink" title="2.3.5.   使用feign调用服务"></a>2.3.5.   使用feign调用服务</h3><p> <img src="assets/1567254545445.png" alt="1567254545445"></p>
+<p>以前我们使用feign来远程调用，这里也一样。引入feign的依赖：</p>
+<pre class=" language-xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-web<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-starter-alibaba-nacos-discovery<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>0.2.2.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-starter-openfeign<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>
+
+    <span class="token comment" spellcheck="true">&lt;!-- SpringCloud的依赖 --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencyManagement</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-dependencies<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>Greenwich.SR2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>type</span><span class="token punctuation">></span></span>pom<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>type</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>import<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencyManagement</span><span class="token punctuation">></span></span></code></pre>
+<p>在NacosConsumerApplication类上添加@EnableFeignClients注解：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
+<span class="token annotation punctuation">@EnableDiscoveryClient</span>
+<span class="token annotation punctuation">@EnableFeignClients</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NacosConsumerApplication</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        SpringApplication<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>NacosConsumerApplication<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span></code></pre>
+<p>编写feignClient：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@FeignClient</span><span class="token punctuation">(</span><span class="token string">"nacos-provider"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ProviderFeign</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>在Controller中使用feignClient：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ConsumerController</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> ProviderFeign providerFeign<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"hi"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">hi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>providerFeign<span class="token punctuation">.</span><span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>测试访问：</p>
+<p><img src="assets/1567255443076.png" alt="1567255443076"></p>
+<h2 id="2-4-配置中心"><a href="#2-4-配置中心" class="headerlink" title="2.4.   配置中心"></a>2.4.   配置中心</h2><p>​        在系统开发过程中，开发者通常会将一些需要变更的参数、变量等从代码中分离出来独立管理，以独立的配置文件的形式存在。目的是让静态的系统工件或者交付物（如 WAR，JAR 包等）更好地和实际的物理运行环境进行适配。配置管理一般包含在系统部署的过程中，由系统管理员或者运维人员完成。配置变更是调整系统运行时的行为的有效手段。</p>
+<p>如果微服务架构中没有使用统一配置中心时，所存在的问题：</p>
+<ul>
+<li>配置文件分散在各个项目里，不方便维护</li>
+<li>配置内容安全与权限</li>
+<li>更新配置后，项目需要重启</li>
+</ul>
+<p>nacos配置中心：<strong>系统配置的集中管理</strong>（编辑、存储、分发）、<strong>动态更新不重启</strong>、<strong>回滚配置</strong>（变更管理、历史版本管理、变更审计）等所有与配置相关的活动。</p>
+<p>案例：改造生产者中的动态配置项，由配置中心统一管理。</p>
+<p><img src="assets/1567261900469.png" alt="1567261900469"></p>
+<h3 id="2-4-1-nacos中创建统一配置"><a href="#2-4-1-nacos中创建统一配置" class="headerlink" title="2.4.1.   nacos中创建统一配置"></a>2.4.1.   nacos中创建统一配置</h3><p><img src="assets/1567262976093.png" alt="1567262976093"></p>
+<p><img src="assets/1567263334245.png" alt="1567263334245"></p>
+<ol>
+<li><p><code>dataId</code> 的完整格式如下：</p>
+<pre><code>${prefix}-${spring.profile.active}.${file-extension}</code></pre><ul>
+<li><code>prefix</code> 默认为所属工程配置<code>spring.application.name</code> 的值（即：nacos-provider），也可以通过配置项 <code>spring.cloud.nacos.config.prefix</code>来配置。</li>
+<li><code>spring.profile.active</code> 即为当前环境对应的 profile，详情可以参考 <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-profiles.html#boot-features-profiles" target="_blank" rel="noopener">Spring Boot文档</a>。 <strong>注意：当 spring.profile.active 为空时，对应的连接符 - 也将不存在，dataId 的拼接格式变成 <code>${prefix}.${file-extension}</code></strong></li>
+<li><code>file-exetension</code> 为配置内容的数据格式，可以通过配置项 <code>spring.cloud.nacos.config.file-extension</code> 来配置。<strong>目前只支持 <code>properties</code> 和 <code>yaml</code> 类型。</strong></li>
+</ul>
+<p>总结：配置所属工程的spring.application.name的值 + “.” + properties/yml</p>
+</li>
+<li><p>配置内容：</p>
+<p>项目中易变的内容。例如：myName</p>
+</li>
+</ol>
+<p><strong>当前案例中，nacos-provider工程的spring.application.name=nacos-provider，没有配置spring.profiles.active。所以这里的dataId填写的是nacos-provider.properties</strong></p>
+<h3 id="2-4-2-从配置中心读取配置"><a href="#2-4-2-从配置中心读取配置" class="headerlink" title="2.4.2.   从配置中心读取配置"></a>2.4.2.   从配置中心读取配置</h3><p>从配置中心读取配置，分以下3步：</p>
+<ol>
+<li><p>引入依赖</p>
+<p>在生产者中引入依赖：</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-starter-alibaba-nacos-config<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>0.2.2.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre>
+<p><strong>注意</strong>：版本 <a href="https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-alibaba-nacos-config" target="_blank" rel="noopener">0.2.x.RELEASE</a> 对应的是 Spring Boot 2.x 版本，版本 <a href="https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-alibaba-nacos-config" target="_blank" rel="noopener">0.1.x.RELEASE</a> 对应的是 Spring Boot 1.x 版本。</p>
+</li>
+<li><p>在 <strong><code>bootstrap.properties</code></strong> 中配置 Nacos server 的地址和应用名</p>
+<pre class=" language-properties"><code class="language-properties"><span class="token attr-name">spring.cloud.nacos.config.server-addr</span><span class="token punctuation">=</span><span class="token attr-value">127.0.0.1:8848</span>
+<span class="token comment" spellcheck="true"># 该配置影响统一配置中心中的dataId，之前已经配置过</span>
+<span class="token attr-name">spring.application.name</span><span class="token punctuation">=</span><span class="token attr-value">nacos-provider</span></code></pre>
+<p>说明：之所以需要配置 <code>spring.application.name</code> ，是因为它是构成 Nacos 配置管理 <code>dataId</code>字段的一部分。</p>
+<p>在springboot工程中，bootstrap.properties的加载优先级更高。</p>
+</li>
+<li><p>通过 Spring Cloud 原生注解 <code>@RefreshScope</code> 实现配置自动更新：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token annotation punctuation">@RefreshScope</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ProviderController</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${myName}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"hello "</span> <span class="token operator">+</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+</ol>
+<h3 id="2-4-3-名称空间切换环境"><a href="#2-4-3-名称空间切换环境" class="headerlink" title="2.4.3.   名称空间切换环境"></a>2.4.3.   名称空间切换环境</h3><p>在实际开发中，通常有多套不同的环境（默认只有public），那么这个时候可以根据指定的环境来创建不同的 namespce，例如，开发、测试和生产三个不同的环境，那么使用一套 nacos 集群可以分别建以下三个不同的 namespace。以此来实现多环境的隔离。</p>
+<p><img src="assets/1567300201637.png" alt="1567300201637"></p>
+<p>切换到配置列表：</p>
+<p><img src="assets/nacos-namespace.gif" alt="1567300201637"></p>
+<p>可以发现有四个名称空间：public（默认）以及我们自己添加的3个名称空间（prod、dev、test），可以点击查看每个名称空间下的配置文件，当然现在只有public下有一个配置。</p>
+<p>默认情况下，项目会到public下找 <code>服务名.properties</code>文件。</p>
+<p>接下来，在dev名称空间中也添加一个nacos-provider.properties配置。这时有两种方式：</p>
+<ol>
+<li>切换到dev名称空间，添加一个新的配置文件。缺点：每个环境都要重复配置类似的项目</li>
+<li><strong>直接通过clone方式添加配置，并修改即可。推荐</strong></li>
+</ol>
+<p><img src="assets/1567301645987.png" alt="1567301645987"></p>
+<p><img src="assets/1567301689032.png" alt="1567301689032"></p>
+<p><img src="assets/1567301731019.png" alt="1567301731019"></p>
+<p>点击编辑：修改配置内容，以作区分</p>
+<p><img src="assets/1567301779793.png" alt="1567301779793"></p>
+<p>在服务提供方nacos-provider中切换命名空间，修改bootstrap.properties添加如下配置</p>
+<pre class=" language-properties"><code class="language-properties"><span class="token attr-name">spring.cloud.nacos.config.namespace</span><span class="token punctuation">=</span><span class="token attr-value">7fd7e137-21c4-4723-a042-d527149e63e0</span></code></pre>
+<p>namespace的值为：</p>
+<p><img src="assets/1567302053790.png" alt="1567302053790"></p>
+<p>重启服务提供方服务，在浏览器中访问测试：</p>
+<p><img src="assets/1567302261494.png" alt="1567302261494"></p>
+<h3 id="2-4-4-回滚配置（了解）"><a href="#2-4-4-回滚配置（了解）" class="headerlink" title="2.4.4.   回滚配置（了解）"></a>2.4.4.   回滚配置（了解）</h3><p><strong>目前版本该功能有bug，回滚之后配置消失。</strong></p>
+<p>回滚配置只需要两步：</p>
+<ol>
+<li>查看历史版本</li>
+<li>回滚到某个历史版本</li>
+</ol>
+<p><img src="assets/1567303117328.png" alt="1567303117328"></p>
+<p><img src="assets/1567303168315.png" alt="1567303168315"></p>
+<h3 id="2-4-5-加载多配置文件"><a href="#2-4-5-加载多配置文件" class="headerlink" title="2.4.5.   加载多配置文件"></a>2.4.5.   加载多配置文件</h3><p>偶尔情况下需要加载多个配置文件。假如现在dev名称空间下有三个配置文件：nacos-provider.properties、redis.properties、jdbc.properties。</p>
+<p><img src="assets/1567305611637.png" alt="1567305611637"></p>
+<p>nacos-provider.properties默认加载，怎么加载另外两个配置文件？</p>
+<p>在bootstrap.properties文件中添加如下配置：</p>
+<pre class=" language-properties"><code class="language-properties"><span class="token attr-name">spring.cloud.nacos.config.ext-config[0].data-id</span><span class="token punctuation">=</span><span class="token attr-value">redis.properties</span>
+<span class="token comment" spellcheck="true"># 开启动态刷新配置，否则配置文件修改，工程无法感知</span>
+<span class="token attr-name">spring.cloud.nacos.config.ext-config[0].refresh</span><span class="token punctuation">=</span><span class="token attr-value">true</span>
+<span class="token attr-name">spring.cloud.nacos.config.ext-config[1].data-id</span><span class="token punctuation">=</span><span class="token attr-value">jdbc.properties</span>
+<span class="token attr-name">spring.cloud.nacos.config.ext-config[1].refresh</span><span class="token punctuation">=</span><span class="token attr-value">true</span></code></pre>
+<p>修改ProviderController使用redis.properties和jdbc.properties配置文件中的参数：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token annotation punctuation">@RefreshScope</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ProviderController</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${myName}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${jdbc.url}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String jdbcUrl<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${redis.url}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String redisUrl<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"hello "</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">", redis-url="</span> <span class="token operator">+</span> redisUrl <span class="token operator">+</span> <span class="token string">", jdbc-url="</span> <span class="token operator">+</span> jdbcUrl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>测试效果：</p>
+<p><img src="assets/1567306296896.png" alt="1567306296896"></p>
+<p>问题：</p>
+<p>​    修改一下配置中心中redis.properties中的配置，不重启服务。能否加载配置信息</p>
+<p>​    删掉<code>spring.cloud.nacos.config.ext-config[0].refresh=true</code>，再修改redis.properties中的配置试试</p>
+<h3 id="2-4-6-配置的分组"><a href="#2-4-6-配置的分组" class="headerlink" title="2.4.6.   配置的分组"></a>2.4.6.   配置的分组</h3><p>在实际开发中，除了不同的环境外。不同的微服务或者业务功能，可能有不同的redis及mysql数据库。</p>
+<p>区分不同的环境我们使用名称空间（namespace），区分不同的微服务或功能，使用分组（group）。</p>
+<p>当然，你也可以反过来使用，名称空间和分组只是为了更好的区分配置，提供的两个维度而已。</p>
+<p>新增一个redis.properties，所属分组为provider：</p>
+<p><img src="assets/1567307163038.png" alt="1567307163038"></p>
+<p>现在开发环境中有两个redis.propertis配置文件，一个是默认分组（DEFAULT_GROUP），一个是provider组</p>
+<p>默认情况下从DEFAULT_GROUP分组中读取redis.properties，如果要切换到provider分组下的redis.properties，需要添加如下配置：</p>
+<pre class=" language-properties"><code class="language-properties"><span class="token comment" spellcheck="true"># 指定分组</span>
+<span class="token attr-name">spring.cloud.nacos.config.ext-config[0].group</span><span class="token punctuation">=</span><span class="token attr-value">provider</span></code></pre>
+<p>缺点：</p>
+<p>​        将来每个分组下会有太多的配置文件，不利于维护。</p>
+<p>最佳实践：</p>
+<p>​        <strong>命名空间区分业务功能，分组区分环境。</strong></p>
+<h1 id="3-服务网关Gateway"><a href="#3-服务网关Gateway" class="headerlink" title="3. 服务网关Gateway"></a>3. 服务网关Gateway</h1><p>API 网关出现的原因是微服务架构的出现，不同的微服务一般会有不同的网络地址，而外部客户端可能需要调用多个服务的接口才能完成一个业务需求，如果让客户端直接与各个微服务通信，会有以下的问题：</p>
+<ol>
+<li><p>破坏了服务无状态特点。</p>
+<p>为了保证对外服务的安全性，我们需要实现对服务访问的权限控制，而开放服务的权限控制机制将会贯穿并污染整个开放服务的业务逻辑，这会带来的最直接问题是，破坏了服务集群中REST API无状态的特点。</p>
+<pre><code>  从具体开发和测试的角度来说，在工作中除了要考虑实际的业务逻辑之外，还需要额外考虑对接口访问的控制处理。</code></pre></li>
+<li><p>无法直接复用既有接口。</p>
+<p>当我们需要对一个即有的集群内访问接口，实现外部服务访问时，我们不得不通过在原有接口上增加校验逻辑，或增加一个代理调用来实现权限控制，无法直接复用原有的接口。</p>
+</li>
+</ol>
+<p>以上这些问题可以借助 API 网关解决。API 网关是介于客户端和服务器端之间的中间层，所有的外部请求都会先经过 API 网关这一层。也就是说，API 的实现方面更多的考虑业务逻辑，而安全、性能、监控可以交由 API 网关来做，这样既提高业务灵活性又不缺安全性，典型的架构图如图所示：</p>
+<p> <img src="assets/1567310156296.png" alt="1567310156296"></p>
+<h2 id="3-1-快速开始"><a href="#3-1-快速开始" class="headerlink" title="3.1.   快速开始"></a>3.1.   快速开始</h2><p>创建网关module：</p>
+<p><img src="assets/1567310403942.png" alt="1567310403942"></p>
+<p><img src="assets/1567310497409.png" alt="1567310497409"></p>
+<p>完成后：</p>
+<p> <img src="assets/1567310618844.png" alt="1567310618844"></p>
+<h3 id="3-1-1-引入依赖"><a href="#3-1-1-引入依赖" class="headerlink" title="3.1.1.   引入依赖"></a>3.1.1.   引入依赖</h3><p>已引入，如下。pom.xml中的依赖：</p>
+<pre class=" language-xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-starter-gateway<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencyManagement</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-dependencies<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>${spring-cloud.version}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>type</span><span class="token punctuation">></span></span>pom<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>type</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>import<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencyManagement</span><span class="token punctuation">></span></span></code></pre>
+<h3 id="3-1-2-编写路由规则"><a href="#3-1-2-编写路由规则" class="headerlink" title="3.1.2.   编写路由规则"></a>3.1.2.   编写路由规则</h3><p>为了演示路由到不同服务，这里把消费者和生产者都配置在网关中</p>
+<p>application.yml</p>
+<pre class=" language-yml"><code class="language-yml">server:
+  port: 8090
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: nacos-consumer
+          uri: http://127.0.0.1:8080
+          predicates:
+            - Path=/hi
+        - id: nacos-provider
+          uri: http://127.0.0.1:8070
+          predicates:
+            - Path=/hello</code></pre>
+<h3 id="3-1-3-启动测试"><a href="#3-1-3-启动测试" class="headerlink" title="3.1.3.   启动测试"></a>3.1.3.   启动测试</h3><p>通过网关路径访问消费者或者生产者。</p>
+<p><img src="assets/1567318777833.png" alt="1567318777833"></p>
+<h2 id="3-2-路由规则详解"><a href="#3-2-路由规则详解" class="headerlink" title="3.2.   路由规则详解"></a>3.2.   路由规则详解</h2><p><img src="assets/1568906267000.png" alt="1568906267000"></p>
+<p>基本概念：</p>
+<ul>
+<li><strong>Route</strong>：路由网关的基本构建块。它由ID，目的URI，断言（Predicate）集合和过滤器（filter）集合组成。如果断言聚合为真，则匹配该路由。</li>
+<li><strong>Predicate</strong>：这是一个 Java 8函数式断言。允许开发人员匹配来自HTTP请求的任何内容，例如请求头或参数。</li>
+<li><strong>过滤器</strong>：可以在发送下游请求之前或之后修改请求和响应。</li>
+</ul>
+<p><strong>路由根据断言进行匹配，匹配成功就会转发请求给URI，在转发请求之前或者之后可以添加过滤器。</strong><img src="%5Bhttps://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.2.RELEASE/reference/html/#gateway-request-predicates-factories%5D" alt="Spring Cloud Gateway网址"></p>
+<h3 id="3-2-1-断言工厂"><a href="#3-2-1-断言工厂" class="headerlink" title="3.2.1.   断言工厂"></a>3.2.1.   断言工厂</h3><p>Spring Cloud Gateway包含许多内置的Route Predicate工厂。所有这些断言都匹配HTTP请求的不同属性。多路由断言工厂通过<code>and</code>组合。</p>
+<p>官方提供的路由工厂：</p>
+<p> <img src="assets/1567318676724.png" alt="1567318676724"></p>
+<p>这些断言工厂的配置方式，参照官方文档：<a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.1.0.RELEASE/single/spring-cloud-gateway.html" target="_blank" rel="noopener">https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.1.0.RELEASE/single/spring-cloud-gateway.html</a></p>
+<p><img src="assets/1567318580097.png" alt="1567318580097"></p>
+<p><img src="assets/20190502120932678.png" alt="img"></p>
+<p>这里重点掌握请求路径路由断言的配置方式：</p>
+<p><img src="assets/1567318968400.png" alt="1567318968400"></p>
+<pre class=" language-yml"><code class="language-yml">spring:
+  cloud:
+    gateway:
+      routes:
+      - id: host_route
+        uri: http://example.org
+        predicates:
+        - Path=/foo/{segment},/bar/{segment}</code></pre>
+<p>这个路由匹配以/foo或者/bar开头的路径，转发到http:example.org。例如 <code>/foo/1</code> or <code>/foo/bar</code> or <code>/bar/baz</code>.</p>
+<h3 id="3-2-2-过滤器工厂"><a href="#3-2-2-过滤器工厂" class="headerlink" title="3.2.2.   过滤器工厂"></a>3.2.2.   过滤器工厂</h3><p>路由过滤器允许以某种方式修改传入的HTTP请求或传出的HTTP响应。路径过滤器的范围限定为特定路由。Spring Cloud Gateway包含许多内置的GatewayFilter工厂。</p>
+<p> <img src="assets/1567323105648.png" alt="1567323105648"></p>
+<p>这些过滤器工厂的配置方式，同样参照官方文档：<a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.1.0.RELEASE/single/spring-cloud-gateway.html" target="_blank" rel="noopener">https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.1.0.RELEASE/single/spring-cloud-gateway.html</a></p>
+<p> <img src="assets/1567323164745.png" alt="1567323164745"></p>
+<p>过滤器 有 20 多个 实现类,根据过滤器工厂的用途来划分，可以分为以下几种：Header、Parameter、Path、Body、Status、Session、Redirect、Retry、RateLimiter和Hystrix</p>
+<p><img src="assets/20181202154250869.png" alt="img"></p>
+<p>这里重点掌握PrefixPath GatewayFilter Factory</p>
+<p><img src="assets/1567325859435.png" alt="1567325859435"></p>
+<p>上面的配置中，所有的<code>/foo/**</code>开始的路径都会命中配置的router，并执行过滤器的逻辑，在本案例中配置了RewritePath过滤器工厂，此工厂将/foo/(?.*)重写为{segment}，然后转发到<a href="http://example.org。比如在网页上请求localhost:8090/foo/forezp，此时会将请求转发到http://example.org/forezp的页面" target="_blank" rel="noopener">http://example.org。比如在网页上请求localhost:8090/foo/forezp，此时会将请求转发到http://example.org/forezp的页面</a></p>
+<p>​        在开发中由于所有微服务的访问都要经过网关，为了区分不同的微服务，通常会在路径前加上一个标识，例如：访问服务提供方：<code>http://localhost:8090/provider/hello</code> ；访问服务消费方：<code>http://localhost:8090/consumer/hi</code>  如果不重写地址，直接转发的话，转发后的路径为：<code>http://localhost:8070/provider/hello</code>和<code>http://localhost:8080/consumer/hi</code>明显多了一个provider或者consumer，导致转发失败。</p>
+<p>这时，我们就用上了路径重写，配置如下：</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8090</span>
+<span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">cloud</span><span class="token punctuation">:</span>
+    <span class="token key atrule">gateway</span><span class="token punctuation">:</span>
+      <span class="token key atrule">routes</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> nacos<span class="token punctuation">-</span>consumer
+          <span class="token key atrule">uri</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//127.0.0.1<span class="token punctuation">:</span><span class="token number">8080</span>
+          <span class="token key atrule">predicates</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> Path=/consumer/**
+          <span class="token key atrule">filters</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> RewritePath=/consumer/(<span class="token punctuation">?</span>&lt;segment<span class="token punctuation">></span>.*)<span class="token punctuation">,</span>/$\<span class="token punctuation">{</span>segment<span class="token punctuation">}</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> nacos<span class="token punctuation">-</span>provider
+          <span class="token key atrule">uri</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//127.0.0.1<span class="token punctuation">:</span><span class="token number">8070</span>
+          <span class="token key atrule">predicates</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> Path=/provider/**
+          <span class="token key atrule">filters</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> RewritePath=/provider/(<span class="token punctuation">?</span>&lt;segment<span class="token punctuation">></span>.*)<span class="token punctuation">,</span>/$\<span class="token punctuation">{</span>segment<span class="token punctuation">}</span></code></pre>
+<p><strong>注意</strong>：<code>Path=/consumer/**</code>及<code>Path=/provider/**</code>的变化</p>
+<p>测试：</p>
+<p><img src="assets/1567325669010.png" alt="1567325669010"></p>
+<h2 id="3-3-面向服务的路由"><a href="#3-3-面向服务的路由" class="headerlink" title="3.3.   面向服务的路由"></a>3.3.   面向服务的路由</h2><p><img src="assets/1568908873341.png" alt="1568908873341"></p>
+<p>如果要做到负载均衡，则必须把网关工程注册到nacos注册中心，然后通过服务名访问。</p>
+<h3 id="3-3-1-把网关服务注册到nacos"><a href="#3-3-1-把网关服务注册到nacos" class="headerlink" title="3.3.1.   把网关服务注册到nacos"></a>3.3.1.   把网关服务注册到nacos</h3><ol>
+<li><p>引入nacos的相关依赖：</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-starter-alibaba-nacos-discovery<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>0.2.2.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-starter-alibaba-nacos-config<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>0.2.2.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre>
+</li>
+<li><p>配置nacos服务地址及服务名：</p>
+<p>   <img src="assets/1567316026329.png" alt="1567316026329"></p>
+<p>bootstrap.yml中的配置：</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">application</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> gateway<span class="token punctuation">-</span>demo
+  <span class="token key atrule">cloud</span><span class="token punctuation">:</span>
+    <span class="token key atrule">nacos</span><span class="token punctuation">:</span>
+      <span class="token key atrule">config</span><span class="token punctuation">:</span>
+        <span class="token key atrule">server-addr</span><span class="token punctuation">:</span> 127.0.0.1<span class="token punctuation">:</span><span class="token number">8848</span></code></pre>
+<p>application.yml中的配置：</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8090</span>
+<span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">cloud</span><span class="token punctuation">:</span>
+    <span class="token key atrule">nacos</span><span class="token punctuation">:</span>
+      <span class="token key atrule">discovery</span><span class="token punctuation">:</span>
+        <span class="token key atrule">server-addr</span><span class="token punctuation">:</span> 127.0.0.1<span class="token punctuation">:</span><span class="token number">8848</span>
+    <span class="token key atrule">gateway</span><span class="token punctuation">:</span>
+      <span class="token key atrule">routes</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> nacos<span class="token punctuation">-</span>consumer
+          <span class="token key atrule">uri</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//127.0.0.1<span class="token punctuation">:</span><span class="token number">8080</span>
+          <span class="token key atrule">predicates</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> Path=/consumer/**
+          <span class="token key atrule">filters</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> RewritePath=/consumer/(<span class="token punctuation">?</span>&lt;segment<span class="token punctuation">></span>.*)<span class="token punctuation">,</span>/$\<span class="token punctuation">{</span>segment<span class="token punctuation">}</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> nacos<span class="token punctuation">-</span>provider
+          <span class="token key atrule">uri</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//127.0.0.1<span class="token punctuation">:</span><span class="token number">8070</span>
+          <span class="token key atrule">predicates</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> Path=/provider/**
+          <span class="token key atrule">filters</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> RewritePath=/provider/(<span class="token punctuation">?</span>&lt;segment<span class="token punctuation">></span>.*)<span class="token punctuation">,</span>/$\<span class="token punctuation">{</span>segment<span class="token punctuation">}</span></code></pre>
+</li>
+<li><p>把网关注入到nacos</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
+<span class="token annotation punctuation">@EnableDiscoveryClient</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GatewayDemoApplication</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        SpringApplication<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>GatewayDemoApplication<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span></code></pre>
+</li>
+</ol>
+<h3 id="3-3-2-修改配置，通过服务名路由"><a href="#3-3-2-修改配置，通过服务名路由" class="headerlink" title="3.3.2.   修改配置，通过服务名路由"></a>3.3.2.   修改配置，通过服务名路由</h3><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8090</span>
+<span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">cloud</span><span class="token punctuation">:</span>
+    <span class="token key atrule">nacos</span><span class="token punctuation">:</span>
+      <span class="token key atrule">discovery</span><span class="token punctuation">:</span>
+        <span class="token key atrule">server-addr</span><span class="token punctuation">:</span> 127.0.0.1<span class="token punctuation">:</span><span class="token number">8848</span>
+    <span class="token key atrule">gateway</span><span class="token punctuation">:</span>
+      <span class="token key atrule">routes</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> nacos<span class="token punctuation">-</span>consumer
+          <span class="token key atrule">uri</span><span class="token punctuation">:</span> lb<span class="token punctuation">:</span>//nacos<span class="token punctuation">-</span>consumer
+          <span class="token key atrule">predicates</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> Path=/consumer/**
+          <span class="token key atrule">filters</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> RewritePath=/consumer/(<span class="token punctuation">?</span>&lt;segment<span class="token punctuation">></span>.*)<span class="token punctuation">,</span>/$\<span class="token punctuation">{</span>segment<span class="token punctuation">}</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> nacos<span class="token punctuation">-</span>provider
+          <span class="token key atrule">uri</span><span class="token punctuation">:</span> lb<span class="token punctuation">:</span>//nacos<span class="token punctuation">-</span>provider
+          <span class="token key atrule">predicates</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> Path=/provider/**
+          <span class="token key atrule">filters</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> RewritePath=/provider/(<span class="token punctuation">?</span>&lt;segment<span class="token punctuation">></span>.*)<span class="token punctuation">,</span>/$\<span class="token punctuation">{</span>segment<span class="token punctuation">}</span></code></pre>
+<p>语法：lb://服务名</p>
+<p>lb：LoadBalance，代表负载均衡的方式</p>
+<p>服务名取决于nacos的服务列表中的服务名</p>
+<p><img src="assets/1567322529258.png" alt="1567322529258"></p>
+<h2 id="3-4-路由的java代码配置方式（了解）"><a href="#3-4-路由的java代码配置方式（了解）" class="headerlink" title="3.4.   路由的java代码配置方式（了解）"></a>3.4.   路由的java代码配置方式（了解）</h2><p>参见官方文档：</p>
+<p><img src="assets/1567328302375.png" alt="1567328302375"></p>
+<p>代码如下：</p>
+<pre><code>@Bean
+public RouteLocator customRouteLocator(RouteLocatorBuilder builder, ThrottleGatewayFilterFactory throttle) {
+    return builder.routes()
+            .route(r -&gt; r.host(&quot;**.abc.org&quot;).and().path(&quot;/image/png&quot;)
+                .filters(f -&gt;
+                        f.addResponseHeader(&quot;X-TestHeader&quot;, &quot;foobar&quot;))
+                .uri(&quot;http://httpbin.org:80&quot;)
+            )
+            .route(r -&gt; r.path(&quot;/image/webp&quot;)
+                .filters(f -&gt;
+                        f.addResponseHeader(&quot;X-AnotherHeader&quot;, &quot;baz&quot;))
+                .uri(&quot;http://httpbin.org:80&quot;)
+            )
+            .route(r -&gt; r.order(-1)
+                .host(&quot;**.throttle.org&quot;).and().path(&quot;/get&quot;)
+                .filters(f -&gt; f.filter(throttle.apply(1,
+                        1,
+                        10,
+                        TimeUnit.SECONDS)))
+                .uri(&quot;http://httpbin.org:80&quot;)
+            )
+            .build();
+}</code></pre>]]></content>
       <categories>
-          
-          <category> Java </category>
-          
-          <category> JDK </category>
-          
+        <category>nacos</category>
+        <category>gateway</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> JVM </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2020/05/03/ce-shi-wen-dang/hello-world/"/>
-      <url>/2020/05/03/ce-shi-wen-dang/hello-world/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>meta 区域显示外链按钮</p><p>这是摘要</p><a id="more"></a><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h1 id="主题配置修改到-Next主题进阶优化配置-部分了"><a href="#主题配置修改到-Next主题进阶优化配置-部分了" class="headerlink" title="主题配置修改到 Next主题进阶优化配置 部分了"></a>主题配置修改到 Next主题进阶优化配置 部分了</h1><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> 测试 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>渲染公式（MathJax）</title>
-      <link href="/2020/02/23/ce-shi-wen-dang/example-md/"/>
-      <url>/2020/02/23/ce-shi-wen-dang/example-md/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>more：</p><a id="more"></a><p>$$t+1=2$$</p><p>$$<br>\mbox{积累因子}=\begin{cases}<br>1+ni &amp; \mbox{单利}\\<br>(1+i)^n &amp; \mbox{复利}<br>\end{cases}<br>$$</p><p>$$<br>\begin{equation}<br>\sum_{i=0}^n F_i \cdot \phi (H, p_i) - \sum_{i=1}^n a_i \cdot ( \tilde{x_i}, \tilde{y_i}) + b_i \cdot ( \tilde{x_i}^2 , \tilde{y_i}^2 )<br>\end{equation}<br>$$<br>$$<br>\begin{equation}<br>\beta^*(D) = \mathop{argmin} \limits_{\beta} \lambda {||\beta||}^2 + \sum_{i=1}^n max(0, 1 - y_i f_{\beta}(x_i))<br>\end{equation}<br>$$</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> 测试 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-  
-  
+      <tags>
+        <tag>项目文档</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在CentOS中安装Gitlab</title>
+    <url>/2020/10/02/an-zhuang-jiao-cheng/ru-he-zai-centos-zhong-an-zhuang-gitlab/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>前言: Gitlab对机器的要求比较高, 如果仅用于学习, 建议在本地跑虚拟机安装Gitlab; 如果用云服务器的话, 最好给服务器分配至少4G内存</p>
+</blockquote>
+<h2 id="以下是Gitlab的安装步骤"><a href="#以下是Gitlab的安装步骤" class="headerlink" title="以下是Gitlab的安装步骤"></a>以下是Gitlab的安装步骤</h2><h3 id="1-先检查依赖-sshd"><a href="#1-先检查依赖-sshd" class="headerlink" title="1. 先检查依赖: sshd"></a>1. 先检查依赖: sshd</h3><pre class=" language-shell"><code class="language-shell">[root@localhost download]# rpm -qa|grep openssh-server
+openssh-server-7.4p1-21.el7.x86_64
+
+[root@localhost download]# ps -e|grep sshd
+  695 ?        00:00:00 sshd
+ 3013 ?        00:00:00 sshd
+ 3016 ?        00:00:00 sshd
+</code></pre>
+<br>
+如果没有的话, 需要安装该依赖:
+
+<pre class=" language-shell"><code class="language-shell">yum install -y curl policycoreutils-python openssh-server
+systemctl enable sshd
+systemctl start sshd
+firewall-cmd --permanent --add-service=http
+systemctl reload firewalld</code></pre>
+<blockquote>
+<p>PS: 因为我是root账号, 所以每行命令前不加sudo, 否则就要把sudo加上</p>
+</blockquote>
+<hr>
+<h3 id="2-检查postfix是否安装"><a href="#2-检查postfix是否安装" class="headerlink" title="2. 检查postfix是否安装"></a>2. 检查postfix是否安装</h3><pre class=" language-shell"><code class="language-shell">[root@localhost download]# rpm -qa|grep postfix
+postfix-2.10.1-9.el7.x86_64
+
+[root@localhost download]# ps -e|grep postfix</code></pre>
+<p>如果没有一样要先手动安装：</p>
+<pre class=" language-shell"><code class="language-shell">yum install postfix
+systemctl enable postfix
+systemctl start postfix</code></pre>
+<hr>
+<p>做完以上准备工作后, 开始准备下载安装Gitlab</p>
+<blockquote>
+<p>Gitlab下载地址: <a href="https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/</a></p>
+</blockquote>
+<blockquote>
+<p>由于我是用vagrant安装CentOS, 所以可以通过在Vagrantfile添加一下配置让服务器内存增加到4G:</p>
+</blockquote>
+<pre class=" language-shell"><code class="language-shell">  config.vm.provider "virtualbox" do |v|
+    v.memory = 4096
+    v.cpus = 2
+  end</code></pre>
+<hr>
+<h3 id="3-找到你要存放的软件的目录"><a href="#3-找到你要存放的软件的目录" class="headerlink" title="3. 找到你要存放的软件的目录"></a>3. 找到你要存放的软件的目录</h3><pre class=" language-shell"><code class="language-shell">(1) mkdir /usr/local/download   # 创建download目录
+
+(2) cd /usr/local/download
+
+(3) wget https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/gitlab-ce-13.4.0-ce.0.el7.x86_64.rpm</code></pre>
+<p>通过以上步骤把Gitlab安装包下载下来</p>
+<blockquote>
+<p>如果wget不能使用, 先通过yum install wget安装</p>
+</blockquote>
+<hr>
+<h3 id="4-安装并配置GItlab"><a href="#4-安装并配置GItlab" class="headerlink" title="4. 安装并配置GItlab"></a>4. 安装并配置GItlab</h3><pre class=" language-shell"><code class="language-shell">[root@localhost download]# (1) rpm -ivh https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/gitlab-ce-13.4.0-ce.0.el7.x86_64.rpm  #安装Gitlab
+
+(2) vi /etc/gitlab/gitlab.rb  # 编辑gitlab.rb文件
+
+(3) external_url 'http://192.168.56.10'     #找到external_url， 并配置成本机的ip地址
+
+(4) gitlab-ctl reconfigure      # 然后运行该命令, 这步执行时间比较久，如果最后执行失败，一般是机器配置不够</code></pre>
+<hr>
+<h3 id="5-安装成功之后重启"><a href="#5-安装成功之后重启" class="headerlink" title="5. 安装成功之后重启"></a>5. 安装成功之后重启</h3><pre class=" language-shell"><code class="language-shell">gitlab-ctl restart</code></pre>
+<hr>
+<h3 id="6-检查是否安装成功"><a href="#6-检查是否安装成功" class="headerlink" title="6. 检查是否安装成功"></a>6. 检查是否安装成功</h3><pre class=" language-shell"><code class="language-shell">netstat -tunlp  # 查看端口占用
+
+firewall-cmd --zone=public --list-ports     # 查看防火墙
+firewall-cmd --zone=public --add-port=80/tcp --permanent
+firewall-cmd --reload</code></pre>
+<hr>
+<h3 id="7-访问Gitlab-http-192-168-56-10-刚登登录时会让你重置密码-用户名是root-密码则是你设置的那个-至此-Gitlab就可以使用了"><a href="#7-访问Gitlab-http-192-168-56-10-刚登登录时会让你重置密码-用户名是root-密码则是你设置的那个-至此-Gitlab就可以使用了" class="headerlink" title="7. 访问Gitlab: http://192.168.56.10, 刚登登录时会让你重置密码, 用户名是root, 密码则是你设置的那个, 至此, Gitlab就可以使用了."></a>7. 访问Gitlab: <a href="http://192.168.56.10" target="_blank" rel="noopener">http://192.168.56.10</a>, 刚登登录时会让你重置密码, 用户名是root, 密码则是你设置的那个, 至此, Gitlab就可以使用了.</h3><hr>
+<h2 id="有些人可能因为某些步骤导致gitlab安装不成功-那么该如何删除"><a href="#有些人可能因为某些步骤导致gitlab安装不成功-那么该如何删除" class="headerlink" title="有些人可能因为某些步骤导致gitlab安装不成功, 那么该如何删除?"></a>有些人可能因为某些步骤导致gitlab安装不成功, 那么该如何删除?</h2><h3 id="1-停止gitlab"><a href="#1-停止gitlab" class="headerlink" title="1. 停止gitlab"></a>1. 停止gitlab</h3><pre><code>gitlab-ctl stop</code></pre><h3 id="2-卸载gitlab"><a href="#2-卸载gitlab" class="headerlink" title="2. 卸载gitlab"></a>2. 卸载gitlab</h3><pre><code> rpm -e gitlab-ce</code></pre><h3 id="3-查看gitlab进程"><a href="#3-查看gitlab进程" class="headerlink" title="3. 查看gitlab进程"></a>3. 查看gitlab进程</h3><pre><code>ps -ef|grep gitlab  # 杀掉第一个守护进程, 即: /opt/gitlab/service log
+kill -9 4473    # 杀掉该进程, 4473是该进程的pid, 杀掉后需要查看gitlab进程是否还存在</code></pre><h3 id="4-删除gitlab文件"><a href="#4-删除gitlab文件" class="headerlink" title="4. 删除gitlab文件"></a>4. 删除gitlab文件</h3><pre><code>find / -name *gitlab*|xargs rm -rf  # 删除所有包含gitlab的文件及目录
+find / -name gitlab |xargs rm -rf   # 删除gitlab-ctl uninstall时自动在root下备份的配置文件
+ls /root/gitlab*                    # 看看有没有，有也删除</code></pre><p>通过以上几步就可以彻底卸载gitlab</p>
+<p>用到的文档资料:</p>
+<ul>
+<li>修改vagrant虚拟机内存配置: <a href="https://www.vagrantup.com/docs/providers/virtualbox/configuration.html" target="_blank" rel="noopener">https://www.vagrantup.com/docs/providers/virtualbox/configuration.html</a></li>
+<li>安装wget命令: <a href="https://www.php.cn/linux-419500.html" target="_blank" rel="noopener">https://www.php.cn/linux-419500.html</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Gitlab</category>
+      </categories>
+      <tags>
+        <tag>CentOS</tag>
+        <tag>Gitlab</tag>
+      </tags>
+  </entry>
 </search>

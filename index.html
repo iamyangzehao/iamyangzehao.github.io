@@ -513,9 +513,215 @@
         
           
         
+          
+        
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h2 class="title">
+    <a href="/2020/10/02/an-zhuang-jiao-cheng/ru-he-zai-centos-zhong-an-zhuang-gitlab/">
+      如何在CentOS中安装Gitlab
+    </a>
+  </h2>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>请设置文章作者</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Gitlab/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>Gitlab</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年10月2日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/2020/10/02/an-zhuang-jiao-cheng/ru-he-zai-centos-zhong-an-zhuang-gitlab/" class="leancloud_visitors" data-flag-title="如何在CentOS中安装Gitlab">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/2020/10/02/an-zhuang-jiao-cheng/ru-he-zai-centos-zhong-an-zhuang-gitlab/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2020/10/02/an-zhuang-jiao-cheng/ru-he-zai-centos-zhong-an-zhuang-gitlab/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>前言: Gitlab对机器的要求比较高, 如果仅用于学习, 建议在本地跑虚拟机安装Gitlab; 如果用云服务器的话, 最好给服务器分配至少4G内存</p>
+</blockquote>
+<h2 id="以下是Gitlab的安装步骤"><a href="#以下是Gitlab的安装步骤" class="headerlink" title="以下是Gitlab的安装步骤"></a>以下是Gitlab的安装步骤</h2><h3 id="1-先检查依赖-sshd"><a href="#1-先检查依赖-sshd" class="headerlink" title="1. 先检查依赖: sshd"></a>1. 先检查依赖: sshd</h3><pre class=" language-shell"><code class="language-shell">[root@localhost download]# rpm -qa|grep openssh-server
+openssh-server-7.4p1-21.el7.x86_64
+
+[root@localhost download]# ps -e|grep sshd
+  695 ?        00:00:00 sshd
+ 3013 ?        00:00:00 sshd
+ 3016 ?        00:00:00 sshd
+</code></pre>
+<br>
+如果没有的话, 需要安装该依赖:
+
+<pre class=" language-shell"><code class="language-shell">yum install -y curl policycoreutils-python openssh-server
+systemctl enable sshd
+systemctl start sshd
+firewall-cmd --permanent --add-service=http
+systemctl reload firewalld</code></pre>
+<blockquote>
+<p>PS: 因为我是root账号, 所以每行命令前不加sudo, 否则就要把sudo加上</p>
+</blockquote>
+<hr>
+<h3 id="2-检查postfix是否安装"><a href="#2-检查postfix是否安装" class="headerlink" title="2. 检查postfix是否安装"></a>2. 检查postfix是否安装</h3><pre class=" language-shell"><code class="language-shell">[root@localhost download]# rpm -qa|grep postfix
+postfix-2.10.1-9.el7.x86_64
+
+[root@localhost download]# ps -e|grep postfix</code></pre>
+<p>如果没有一样要先手动安装：</p>
+<pre class=" language-shell"><code class="language-shell">yum install postfix
+systemctl enable postfix
+systemctl start postfix</code></pre>
+<hr>
+<p>做完以上准备工作后, 开始准备下载安装Gitlab</p>
+<blockquote>
+<p>Gitlab下载地址: <a href="https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/</a></p>
+</blockquote>
+<blockquote>
+<p>由于我是用vagrant安装CentOS, 所以可以通过在Vagrantfile添加一下配置让服务器内存增加到4G:</p>
+</blockquote>
+<pre class=" language-shell"><code class="language-shell">  config.vm.provider "virtualbox" do |v|
+    v.memory = 4096
+    v.cpus = 2
+  end</code></pre>
+<hr>
+<h3 id="3-找到你要存放的软件的目录"><a href="#3-找到你要存放的软件的目录" class="headerlink" title="3. 找到你要存放的软件的目录"></a>3. 找到你要存放的软件的目录</h3><pre class=" language-shell"><code class="language-shell">(1) mkdir /usr/local/download   # 创建download目录
+
+(2) cd /usr/local/download
+
+(3) wget https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/gitlab-ce-13.4.0-ce.0.el7.x86_64.rpm</code></pre>
+<p>通过以上步骤把Gitlab安装包下载下来</p>
+<blockquote>
+<p>如果wget不能使用, 先通过yum install wget安装</p>
+</blockquote>
+<hr>
+<h3 id="4-安装并配置GItlab"><a href="#4-安装并配置GItlab" class="headerlink" title="4. 安装并配置GItlab"></a>4. 安装并配置GItlab</h3><pre class=" language-shell"><code class="language-shell">[root@localhost download]# (1) rpm -ivh https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/gitlab-ce-13.4.0-ce.0.el7.x86_64.rpm  #安装Gitlab
+
+(2) vi /etc/gitlab/gitlab.rb  # 编辑gitlab.rb文件
+
+(3) external_url 'http://192.168.56.10'     #找到external_url， 并配置成本机的ip地址
+
+(4) gitlab-ctl reconfigure      # 然后运行该命令, 这步执行时间比较久，如果最后执行失败，一般是机器配置不够</code></pre>
+<hr>
+<h3 id="5-安装成功之后重启"><a href="#5-安装成功之后重启" class="headerlink" title="5. 安装成功之后重启"></a>5. 安装成功之后重启</h3><pre class=" language-shell"><code class="language-shell">gitlab-ctl restart</code></pre>
+<hr>
+<h3 id="6-检查是否安装成功"><a href="#6-检查是否安装成功" class="headerlink" title="6. 检查是否安装成功"></a>6. 检查是否安装成功</h3><pre class=" language-shell"><code class="language-shell">netstat -tunlp  # 查看端口占用
+
+firewall-cmd --zone=public --list-ports     # 查看防火墙
+firewall-cmd --zone=public --add-port=80/tcp --permanent
+firewall-cmd --reload</code></pre>
+<hr>
+<h3 id="7-访问Gitlab-http-192-168-56-10-刚登登录时会让你重置密码-用户名是root-密码则是你设置的那个-至此-Gitlab就可以使用了"><a href="#7-访问Gitlab-http-192-168-56-10-刚登登录时会让你重置密码-用户名是root-密码则是你设置的那个-至此-Gitlab就可以使用了" class="headerlink" title="7. 访问Gitlab: http://192.168.56.10, 刚登登录时会让你重置密码, 用户名是root, 密码则是你设置的那个, 至此, Gitlab就可以使用了."></a>7. 访问Gitlab: <a href="http://192.168.56.10" target="_blank" rel="noopener">http://192.168.56.10</a>, 刚登登录时会让你重置密码, 用户名是root, 密码则是你设置的那个, 至此, Gitlab就可以使用了.</h3><hr>
+<h2 id="有些人可能因为某些步骤导致gitlab安装不成功-那么该如何删除"><a href="#有些人可能因为某些步骤导致gitlab安装不成功-那么该如何删除" class="headerlink" title="有些人可能因为某些步骤导致gitlab安装不成功, 那么该如何删除?"></a>有些人可能因为某些步骤导致gitlab安装不成功, 那么该如何删除?</h2><h3 id="1-停止gitlab"><a href="#1-停止gitlab" class="headerlink" title="1. 停止gitlab"></a>1. 停止gitlab</h3><pre><code>gitlab-ctl stop</code></pre><h3 id="2-卸载gitlab"><a href="#2-卸载gitlab" class="headerlink" title="2. 卸载gitlab"></a>2. 卸载gitlab</h3><pre><code> rpm -e gitlab-ce</code></pre><h3 id="3-查看gitlab进程"><a href="#3-查看gitlab进程" class="headerlink" title="3. 查看gitlab进程"></a>3. 查看gitlab进程</h3><pre><code>ps -ef|grep gitlab  # 杀掉第一个守护进程, 即: /opt/gitlab/service log
+kill -9 4473    # 杀掉该进程, 4473是该进程的pid, 杀掉后需要查看gitlab进程是否还存在</code></pre><h3 id="4-删除gitlab文件"><a href="#4-删除gitlab文件" class="headerlink" title="4. 删除gitlab文件"></a>4. 删除gitlab文件</h3><pre><code>find / -name *gitlab*|xargs rm -rf  # 删除所有包含gitlab的文件及目录
+find / -name gitlab |xargs rm -rf   # 删除gitlab-ctl uninstall时自动在root下备份的配置文件
+ls /root/gitlab*                    # 看看有没有，有也删除</code></pre><p>通过以上几步就可以彻底卸载gitlab</p>
+<p>用到的文档资料:</p>
+<ul>
+<li>修改vagrant虚拟机内存配置: <a href="https://www.vagrantup.com/docs/providers/virtualbox/configuration.html" target="_blank" rel="noopener">https://www.vagrantup.com/docs/providers/virtualbox/configuration.html</a></li>
+<li>安装wget命令: <a href="https://www.php.cn/linux-419500.html" target="_blank" rel="noopener">https://www.php.cn/linux-419500.html</a></li>
+</ul>
+
+      
+    </div>
+    
+      
+    
+  </section>
+</article>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -1157,126 +1363,6 @@
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2020/06/21/kafka/centos-an-zhuang-kafka/">
-      CentOS安装Kafka
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' href="/" rel="nofollow">
-    <img no-lazy src="">
-    <p>请设置文章作者</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年6月21日</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-  <div class="new-meta-item browse valine">
-    <a class='notlink'>
-      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-      
-      <span id="/2020/06/21/kafka/centos-an-zhuang-kafka/" class="leancloud_visitors" data-flag-title="CentOS安装Kafka">
-      <p>
-        <span class="leancloud-visitors-count"></span>
-      </p>
-      </span>
-    </a>
-  </div>
-
-
-            
-          
-            
-              
-<div class="new-meta-item comments-count">
-  
-  <a href="/2020/06/21/kafka/centos-an-zhuang-kafka/#comments">
-    <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/2020/06/21/kafka/centos-an-zhuang-kafka/">0</span>
-    <span class="leancloud-comments-count">&nbsp;</span>
-  </a>
-</div>
-
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近刚开始学习Kafka，第一步肯定是学会怎么安装Kafka，现在我来讲解一下</p>
-      
-    </div>
-    
-      
-        <a class= "readmore" href="/2020/06/21/kafka/centos-an-zhuang-kafka/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
     
   </section>
   
@@ -1394,6 +1480,11 @@
             ><div class='name'>CentOS</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box"
+            title="/categories/Gitlab/" href="/categories/Gitlab/"
+            id="categoriesGitlab"
+            ><div class='name'>Gitlab</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
             title="/categories/JDK/" href="/categories/JDK/"
             id="categoriesJDK"
             ><div class='name'>JDK</div><div class='badge'>(1)</div></a></li>
@@ -1485,7 +1576,7 @@
 
 
     <div class='content'>
-      <a href="/tags/ASM/" style="font-size: 14px; color: #999">ASM</a> <a href="/tags/JVM/" style="font-size: 19px; color: #777">JVM</a> <a href="/tags/Jenkins/" style="font-size: 14px; color: #999">Jenkins</a> <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/SpringBoot/" style="font-size: 14px; color: #999">SpringBoot</a> <a href="/tags/SpringMVC/" style="font-size: 14px; color: #999">SpringMVC</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/" style="font-size: 14px; color: #999">分库分表</a> <a href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" style="font-size: 14px; color: #999">并发编程</a> <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" style="font-size: 14px; color: #999">性能优化</a> <a href="/tags/%E6%AF%92%E9%B8%A1%E6%B1%A4/" style="font-size: 14px; color: #999">毒鸡汤</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 24px; color: #555">测试</a> <a href="/tags/%E9%97%AE%E9%A2%98%E7%BA%A0%E9%94%99/" style="font-size: 14px; color: #999">问题纠错</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3/" style="font-size: 14px; color: #999">项目文档</a>
+      <a href="/tags/ASM/" style="font-size: 14px; color: #999">ASM</a> <a href="/tags/CentOS/" style="font-size: 14px; color: #999">CentOS</a> <a href="/tags/Gitlab/" style="font-size: 14px; color: #999">Gitlab</a> <a href="/tags/JVM/" style="font-size: 19px; color: #777">JVM</a> <a href="/tags/Jenkins/" style="font-size: 14px; color: #999">Jenkins</a> <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/SpringBoot/" style="font-size: 14px; color: #999">SpringBoot</a> <a href="/tags/SpringMVC/" style="font-size: 14px; color: #999">SpringMVC</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/" style="font-size: 14px; color: #999">分库分表</a> <a href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" style="font-size: 14px; color: #999">并发编程</a> <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" style="font-size: 14px; color: #999">性能优化</a> <a href="/tags/%E6%AF%92%E9%B8%A1%E6%B1%A4/" style="font-size: 14px; color: #999">毒鸡汤</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 24px; color: #555">测试</a> <a href="/tags/%E9%97%AE%E9%A2%98%E7%BA%A0%E9%94%99/" style="font-size: 14px; color: #999">问题纠错</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3/" style="font-size: 14px; color: #999">项目文档</a>
     </div>
   </section>
 
